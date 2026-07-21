@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HACKER ACADEMY | BY PS · </title>
+  <!-- Fonts & icons (keep from original, plus extra) -->
+  <link rel="stylesheet" href="https://use.typekit.net/ryt3opf.css">
+  <link rel="stylesheet" href="https://kit.fontawesome.com/8161086d56.css" crossorigin="anonymous">
+  <!-- Bootstrap 4 + main styling (condensed but keeping spirit) -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Animate.css for extra pop -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #0b0e1a;
+      font-family: "acumin-pro", "Inter", sans-serif;
+      color: #e0e5f0;
+      overflow-x: hidden;
+    }
+    /* animated gradient background (cyber grid + moving glow) */
+    .bg-cyber {
+      position: relative;
+      background: #030614;
+      z-index: 0;
+    }
+    .bg-cyber::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-image: 
+        linear-gradient(rgba(0, 255, 170, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 170, 0.02) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: -2;
+    }
+    .bg-cyber::after {
+      content: "";
+      position: fixed;
+      top: -20%; left: -10%;
+      width: 120%; height: 120%;
+      background: radial-gradient(circle at 30% 40%, rgba(0, 255, 200, 0.1), transparent 50%);
+      animation: moveGlow 18s infinite alternate ease-in-out;
+      z-index: -1;
+      pointer-events: none;
+    }
+    @keyframes moveGlow {
+      0% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+      100% { transform: translate(-5%, -5%) scale(1.2); opacity: 0.8; }
+    }
+
+    /* animated text glitch / hacker style */
+    .glitch {
+      font-weight: 800;
+      text-transform: uppercase;
+      position: relative;
+      text-shadow: 0.05em 0 0 rgba(255, 0, 100, 0.6), -0.05em -0.025em 0 rgba(0, 255, 255, 0.6);
+      animation: glitch-shake 0.3s infinite alternate;
+    }
+    @keyframes glitch-shake {
+      0% { transform: translate(0); }
+      20% { transform: translate(-1px, 1px); }
+      40% { transform: translate(-1px, -1px); }
+      60% { transform: translate(1px, 1px); }
+      80% { transform: translate(1px, -1px); }
+      100% { transform: translate(0); }
+    }
+
+    /* floating elements */
+    .float-slow { animation: float 6s ease-in-out infinite; }
+    .float-medium { animation: float 4s ease-in-out infinite; }
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+      100% { transform: translateY(0px); }
+    }
+
+    /* card hover 3d / enhanced */
+    .card-3d {
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      transform-style: preserve-3d;
+      perspective: 1000px;
+    }
+    .card-3d:hover {
+      transform: translateY(-12px) rotateX(2deg) rotateY(2deg) scale(1.02);
+      box-shadow: 0 25px 40px -10px rgba(0, 255, 200, 0.4);
+    }
+
+    /* gradient text animation */
+    .gradient-text-animated {
+      background: linear-gradient(90deg, #a0f0ea, #ffb86b, #ff6bcb, #a0f0ea);
+      background-size: 300% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: gradientFlow 6s linear infinite;
+    }
+    @keyframes gradientFlow {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+
+    /* pulse border */
+    .pulse-border {
+      border: 2px solid rgba(0, 255, 200, 0.3);
+      animation: pulseBorder 2s infinite;
+    }
+    @keyframes pulseBorder {
+      0% { border-color: rgba(0, 255, 200, 0.3); box-shadow: 0 0 0 0 rgba(0, 255, 200, 0.3); }
+      50% { border-color: rgba(0, 255, 200, 0.8); box-shadow: 0 0 20px 5px rgba(0, 255, 200, 0.5); }
+      100% { border-color: rgba(0, 255, 200, 0.3); box-shadow: 0 0 0 0 rgba(0, 255, 200, 0.1); }
+    }
+
+    /* navbar custom */
+    .navbar-glass {
+      background: rgba(10, 20, 30, 0.5);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(0, 255, 200, 0.2);
+      animation: navSlideIn 0.8s ease-out;
+    }
+    @keyframes navSlideIn {
+      0% { opacity: 0; transform: translateY(-30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* custom button with glow */
+    .btn-glow {
+      background: linear-gradient(145deg, #00cc88, #0066ff);
+      border: none;
+      transition: 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-glow::before {
+      content: "";
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.6s;
+    }
+    .btn-glow:hover::before { left: 100%; }
+    .btn-glow:hover {
+      box-shadow: 0 0 25px #00cc88;
+      transform: scale(1.07);
+    }
+
+    /* count-up flash */
+    .stat-number { font-size: 3.5rem; font-weight: 900; display: inline-block; }
+
+    /* carousel like original but animated */
+    .slick-fade-item { transition: all 0.5s; }
+
+    /* additional neon */
+    .text-neon { color: #7efff0; text-shadow: 0 0 8px #0ff; }
+
+    /* animated logo spin */
+    .logo-spin { animation: spinGlow 6s infinite; }
+    @keyframes spinGlow {
+      0% { filter: drop-shadow(0 0 5px #0ff); }
+      50% { filter: drop-shadow(0 0 20px #f0f); transform: rotate(2deg); }
+      100% { filter: drop-shadow(0 0 5px #0ff); }
+    }
+
+    /* main title styling */
+    .main-title {
+      font-size: 4.2rem;
+      font-weight: 800;
+      line-height: 1.1;
+    }
+
+    /* background overlay dark */
+    .section-dark { background: rgba(0, 0, 0, 0.3); backdrop-filter: blur(2px); }
+
+    /* make sure container text is visible */
+    h1, h2, h3, p { color: #f0f4ff; }
+    .text-muted { color: #a9b7d4 !important; }
+
+    /* badge animation */
+    .badge-pulse { animation: badgePulse 2s infinite; }
+    @keyframes badgePulse { 0% { opacity: 0.7; } 50% { opacity: 1; } }
+
+    /* fixing original dots / backgrounds */
+    .bg-filter-dots { background: radial-gradient(#1f3a3f 1px, transparent 1px); background-size: 20px 20px; }
+  </style>
+</head>
+<body class="bg-cyber">
+
+<!-- announcement animated -->
+<div class="d-flex justify-content-center bg-gradient py-2" style="background: #1c2c3c; border-bottom: 1px solid cyan;">
+  <span class="mx-2 animate__animated animate__flash animate__infinite infinite">🆕 HACKER ACADEMY BY PS</span>
+  <a class="text-warning font-weight-bold arrow-link" href="#">Learn More →</a>
+</div>
+
+<!-- NAVBAR (enhanced with glassmorphism) -->
+<header class="sticky-top" style="z-index: 99;">
+  <nav class="navbar navbar-expand-xl navbar-dark navbar-glass py-2">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 30'%3E%3Ctext x='5' y='22' fill='%2300ffff' font-size='22' font-weight='bold'%3EHACKER%3C/text%3E%3Ctext x='5' y='22' fill='%23ff44aa' dx='110'%3EACADEMY%3C/text%3E%3C/svg%3E" alt="Hacker Academy" height="38" class="logo-spin">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menuHacker">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menuHacker">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link mx-2" href="#">Certifications</a></li>
+          <li class="nav-item"><a class="nav-link mx-2" href="#">Paths</a></li>
+          <li class="nav-item"><a class="nav-link mx-2" href="#">Modules</a></li>
+          <li class="nav-item"><a class="nav-link mx-2" href="#">Business</a></li>
+          <li class="nav-item"><a class="nav-link mx-2" href="#">Labs</a></li>
+        </ul>
+        <div class="d-flex">
+          <a href="#" class="btn btn-outline-info mr-2 animate__animated animate__pulse">Sign In</a>
+          <a href="#" class="btn btn-glow text-white">Start for Free</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <!-- HERO section with video (we embed a loop animation) -->
+  <section class="position-relative overflow-hidden" style="min-height: 85vh;">
+    <video autoplay muted loop playsinline class="position-absolute w-100 h-100" style="object-fit: cover; opacity: 0.3; z-index: -1;">
+      <source src="https://academy-cdn.hackthebox.com/public/production/videos/frontpage/hero-video.webm" type="video/webm">
+    </video>
+    <div class="container text-center d-flex flex-column justify-content-center min-vh-50" style="padding-top: 10rem; padding-bottom: 5rem;">
+      <div class="row">
+        <div class="col-12">
+          <h1 class="main-title glitch gradient-text-animated animate__animated animate__fadeInDown">
+            Your cyber journey <br> becomes <span class="text-neon">legendary</span>.
+          </h1>
+          <p class="lead text-info mt-4 animate__animated animate__fadeInUp animate__delay-1s">#1 hands-on hacking academy · guided courses · real simulations</p>
+          <div class="mt-5 animate__animated animate__zoomIn animate__delay-1s">
+            <a href="#" class="btn btn-glow btn-lg px-5 py-3 mr-3 rounded-pill">START FOR FREE</a>
+            <a href="#" class="btn btn-outline-light btn-lg px-5 py-3 rounded-pill">FOR BUSINESS</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- floating elements -->
+    <div class="d-none d-md-block">
+      <i class="fas fa-shield-alt text-info position-absolute" style="top:20%; left:5%; font-size: 4rem; opacity:0.2; animation: float 8s infinite;"></i>
+      <i class="fas fa-code text-warning position-absolute" style="bottom:15%; right:7%; font-size: 5rem; opacity:0.15; animation: float 6s infinite reverse;"></i>
+    </div>
+  </section>
+
+  <!-- top cards (Certification & Master new skills) animated 3D -->
+  <section class="container my-5">
+    <div class="row">
+      <div class="col-md-6 mb-4 animate__animated animate__fadeInLeft">
+        <div class="card card-3d bg-transparent border-0 p-4 text-center" style="background: rgba(10,25,35,0.7); backdrop-filter: blur(8px);">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 24 24' fill='%2300ffff'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E" class="mx-auto float-medium" alt="cert" width="100">
+          <h3 class="mt-3 gradient-text-animated">Get certified with HTB</h3>
+          <p class="text-info">Skyrocket your resume. Land your dream job.</p>
+          <a href="#" class="btn btn-outline-info stretched-link">View Job Role Paths →</a>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4 animate__animated animate__fadeInRight">
+        <div class="card card-3d bg-transparent border-0 p-4 text-center" style="background: rgba(10,25,35,0.7); backdrop-filter: blur(8px);">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 24 24' fill='%23ffaa33'%3E%3Cpath d='M20 7h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v3H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zM10 4h4v3h-4V4z'/%3E%3C/svg%3E" class="mx-auto float-slow" alt="skill" width="100">
+          <h3 class="mt-3 gradient-text-animated">Master new skills</h3>
+          <p class="text-warning">Offensive & defensive security — skill paths.</p>
+          <a href="#" class="btn btn-outline-warning stretched-link">View Skill Paths →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats + learners animated counters -->
+  <section class="container text-center my-5 py-5 section-dark rounded">
+    <div class="row align-items-center">
+      <div class="col-md-4">
+        <div class="stat-number text-info animate__animated animate__fadeInUp" id="learnersCounter">2.6M</div>
+        <p class="lead">learners advancing</p>
+      </div>
+      <div class="col-md-4">
+        <div class="stat-number text-warning animate__animated animate__fadeInUp" id="reviewsCounter">50k+</div>
+        <p class="lead">⭐ 5-star reviews</p>
+      </div>
+      <div class="col-md-4">
+        <div class="stat-number text-success animate__animated animate__fadeInUp" id="modulesCounter">155+</div>
+        <p class="lead">cybersecurity modules</p>
+      </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='40' viewBox='0 0 200 40'%3E%3Ctext x='0' y='25' fill='%2399ccff' font-size='18'%3ELake Superior College%3C/text%3E%3C/svg%3E" class="col-3 mx-2 float-medium">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='40' viewBox='0 0 150 40'%3E%3Ctext x='0' y='25' fill='%23ffaa66' font-size='18'%3ENVISO%3C/text%3E%3C/svg%3E" class="col-3 mx-2 float-slow">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='40' viewBox='0 0 250 40'%3E%3Ctext x='0' y='25' fill='%23aaffaa' font-size='18'%3ESecurity Risk Advisors%3C/text%3E%3C/svg%3E" class="col-3 mx-2 float-medium">
+    </div>
+  </section>
+
+  <!-- Why Hacker Academy flipping cards (original concept animated) -->
+  <section class="container my-5">
+    <h2 class="text-center glitch mb-5"><span class="gradient-text-animated">Why HACKER ACADEMY</span></h2>
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card bg-dark border-0 card-3d p-3 h-100">
+          <i class="fas fa-flag fa-3x text-info mb-3"></i>
+          <h4>Guided Courses</h4>
+          <p>Threat‑informed, real‑world examples, skills assessment.</p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card bg-dark border-0 card-3d p-3 h-100">
+          <i class="fas fa-laptop fa-3x text-warning mb-3"></i>
+          <h4>In‑browser Pentesting VM</h4>
+          <p>Pwnbox, zero infra setup. Practice anywhere.</p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card bg-dark border-0 card-3d p-3 h-100">
+          <i class="fas fa-bolt fa-3x text-success mb-3"></i>
+          <h4>Highly Practical</h4>
+          <p>Interactive exercises against real apps.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TABS: job role / skill paths (original but animated) -->
+  <section class="container">
+    <ul class="nav nav-pills justify-content-center mb-4" id="myTab" role="tablist">
+      <li class="nav-item"><a class="nav-link active btn-outline-info mx-2" data-toggle="pill" href="#jobRole">💼 JOB ROLE PATHS</a></li>
+      <li class="nav-item"><a class="nav-link btn-outline-warning mx-2" data-toggle="pill" href="#skillPaths">⚡ SKILL PATHS</a></li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane fade show active" id="jobRole">
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <div class="card bg-transparent border-info pulse-border animate__animated animate__fadeInUp">
+              <div class="card-body">
+                <h5 class="card-title">Junior Cybersecurity Associate</h5>
+                <p class="card-text">20 Modules · exam included</p>
+                <span class="badge badge-success">$490</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="card bg-transparent border-info pulse-border animate__animated animate__fadeInUp">
+              <div class="card-body">
+                <h5 class="card-title">Penetration Testing Specialist</h5>
+                <p class="card-text">28 Modules · exam included</p>
+                <span class="badge badge-success">$490</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="card bg-transparent border-info pulse-border animate__animated animate__fadeInUp">
+              <div class="card-body">
+                <h5 class="card-title">Web Exploitation Expert</h5>
+                <p class="card-text">15 Modules · exam</p>
+                <span class="badge badge-warning">$1260</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="skillPaths">
+        <div class="row">
+          <div class="col-md-4 mb-4"><div class="card bg-dark"><div class="card-body"><h6>Basic Toolset</h6><p>7 modules · 93 sections</p></div></div></div>
+          <div class="col-md-4 mb-4"><div class="card bg-dark"><div class="card-body"><h6>Local Privilege Escalation</h6><p>2 modules · 61 sections</p></div></div></div>
+          <div class="col-md-4 mb-4"><div class="card bg-dark"><div class="card-body"><h6>Binary Exploitation</h6><p>4 modules · 62 sections</p></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modules carousel style (simplified) -->
+  <section class="container-fluid bg-dark py-5 my-5">
+    <div class="container">
+      <h2 class="text-center text-white mb-4"><span class="gradient-text-animated">155+ cybersecurity modules</span></h2>
+      <div class="row text-center">
+        <div class="col-md-3 col-6 mb-3"><span class="badge badge-info p-3 d-block animate__animated animate__pulse">Learning Process</span></div>
+        <div class="col-md-3 col-6 mb-3"><span class="badge badge-info p-3 d-block">Linux Fundamentals</span></div>
+        <div class="col-md-3 col-6 mb-3"><span class="badge badge-warning p-3 d-block">Web Requests</span></div>
+        <div class="col-md-3 col-6 mb-3"><span class="badge badge-success p-3 d-block">Active Directory</span></div>
+      </div>
+      <div class="text-center mt-4">
+        <a href="#" class="btn btn-glow btn-lg">Browse All Modules →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials animated -->
+  <section class="container my-5">
+    <div id="testiCarousel" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner text-center bg-dark p-5 rounded">
+        <div class="carousel-item active">
+          <p class="lead">“Hack The Box is where my infosec journey started. HTB Academy builds strong knowledge.”</p>
+          <footer>— Firat Acar, Red Teamer</footer>
+        </div>
+        <div class="carousel-item">
+          <p class="lead">“Students get hired only a month after using HTB Academy!”</p>
+          <footer>— Matthew McCullough, Lead Instructor</footer>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#testiCarousel" role="button" data-slide="prev"><span class="carousel-control-prev-icon"></span></a>
+      <a class="carousel-control-next" href="#testiCarousel" role="button" data-slide="next"><span class="carousel-control-next-icon"></span></a>
+    </div>
+  </section>
+
+  <!-- bottom CTA with sliding words -->
+  <section class="container mb-5">
+    <div class="card bg-gradient p-5 text-center" style="background: linear-gradient(145deg, #001c26, #002b36);">
+      <h2 class="display-4 glitch">Learn cybersecurity, <br> invest in your <span class="text-warning animate__animated animate__flash animate__infinite">future</span></h2>
+      <div class="mt-4">
+        <a href="#" class="btn btn-glow btn-lg px-5">Start for Free</a>
+        <a href="#" class="btn btn-outline-light btn-lg ml-3 px-5">For Business</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- footer simplified -->
+<footer class="bg-dark py-4 border-top border-info">
+  <div class="container d-flex justify-content-between">
+    <span>© 2026 Hacker Academy by ps</span>
+    <span>
+      <a href="#" class="text-info mx-2">Privacy</a> | 
+      <a href="#" class="text-info mx-2">Terms</a> |
+      <a href="#" class="text-info mx-2">FAQ</a>
+    </span>
+  </div>
+</footer>
+
+<!-- scripts -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- simple counter animation -->
+<script>
+  (function() {
+    // quick fake counter animation (just for show)
+    let counters = document.querySelectorAll('.stat-number');
+    counters.forEach(c => {
+      let val = c.innerText.replace(/[^0-9.]/g, '');
+      if (val.includes('M')) val = parseFloat(val)*1000000;
+      else val = parseInt(val) || 2600000;
+    });
+  })();
+</script>
+<!-- add a floating glitch effect on title -->
+<script>
+  setInterval(() => {
+    let g = document.querySelector('.glitch');
+    if(g) g.style.transform = `translate(${Math.random()*2-1}px, ${Math.random()*2-1}px)`;
+  }, 200);
+</script>
+</body>
+</html>
