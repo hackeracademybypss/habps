@@ -1,453 +1,2378 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HACKER ACADEMY | BY PS · </title>
-  <!-- Fonts & icons (keep from original, plus extra) -->
-  <link rel="stylesheet" href="https://use.typekit.net/ryt3opf.css">
-  <link rel="stylesheet" href="https://kit.fontawesome.com/8161086d56.css" crossorigin="anonymous">
-  <!-- Bootstrap 4 + main styling (condensed but keeping spirit) -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <!-- Animate.css for extra pop -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      background: #0b0e1a;
-      font-family: "acumin-pro", "Inter", sans-serif;
-      color: #e0e5f0;
-      overflow-x: hidden;
-    }
-    /* animated gradient background (cyber grid + moving glow) */
-    .bg-cyber {
-      position: relative;
-      background: #030614;
-      z-index: 0;
-    }
-    .bg-cyber::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background-image: 
-        linear-gradient(rgba(0, 255, 170, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 255, 170, 0.02) 1px, transparent 1px);
-      background-size: 40px 40px;
-      pointer-events: none;
-      z-index: -2;
-    }
-    .bg-cyber::after {
-      content: "";
-      position: fixed;
-      top: -20%; left: -10%;
-      width: 120%; height: 120%;
-      background: radial-gradient(circle at 30% 40%, rgba(0, 255, 200, 0.1), transparent 50%);
-      animation: moveGlow 18s infinite alternate ease-in-out;
-      z-index: -1;
-      pointer-events: none;
-    }
-    @keyframes moveGlow {
-      0% { transform: translate(0, 0) scale(1); opacity: 0.4; }
-      100% { transform: translate(-5%, -5%) scale(1.2); opacity: 0.8; }
-    }
+    <!-- ============================================
+         HACKER ACADEMY - Premium Cybersecurity LMS
+         Founded & Owned by Er. Priyanshu Sharma
+         File: index.html (Landing Page)
+    ============================================ -->
 
-    /* animated text glitch / hacker style */
-    .glitch {
-      font-weight: 800;
-      text-transform: uppercase;
-      position: relative;
-      text-shadow: 0.05em 0 0 rgba(255, 0, 100, 0.6), -0.05em -0.025em 0 rgba(0, 255, 255, 0.6);
-      animation: glitch-shake 0.3s infinite alternate;
-    }
-    @keyframes glitch-shake {
-      0% { transform: translate(0); }
-      20% { transform: translate(-1px, 1px); }
-      40% { transform: translate(-1px, -1px); }
-      60% { transform: translate(1px, 1px); }
-      80% { transform: translate(1px, -1px); }
-      100% { transform: translate(0); }
-    }
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
 
-    /* floating elements */
-    .float-slow { animation: float 6s ease-in-out infinite; }
-    .float-medium { animation: float 4s ease-in-out infinite; }
-    @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-12px); }
-      100% { transform: translateY(0px); }
-    }
+    <!-- Primary Meta Tags -->
+    <title>Hacker Academy | Premium Cyber Security & Ethical Hacking Training by Er. Priyanshu Sharma</title>
+    <meta name="title" content="Hacker Academy | Premium Cyber Security & Ethical Hacking Training">
+    <meta name="description" content="Hacker Academy is a premium online cybersecurity learning platform offering world-class training in Ethical Hacking, SOC Analysis, Penetration Testing, Network Security, Linux, Python, Digital Forensics & AI. Founded by Er. Priyanshu Sharma.">
+    <meta name="keywords" content="Hacker Academy, Cyber Security Training, Ethical Hacking Course, SOC Analyst Training, Penetration Testing, Network Security, Web Security, Linux Course, Python Programming, Digital Forensics, Cyber Defence, Secure Coding, Online Cyber Security Learning, Cyber Security Academy, Information Security, Bug Bounty, AI Learning, Learning Management System, Er. Priyanshu Sharma, Hacker Academy India">
+    <meta name="author" content="Er. Priyanshu Sharma">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <meta name="rating" content="general">
+    <meta name="theme-color" content="#00ff9d">
 
-    /* card hover 3d / enhanced */
-    .card-3d {
-      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-      transform-style: preserve-3d;
-      perspective: 1000px;
-    }
-    .card-3d:hover {
-      transform: translateY(-12px) rotateX(2deg) rotateY(2deg) scale(1.02);
-      box-shadow: 0 25px 40px -10px rgba(0, 255, 200, 0.4);
-    }
+    <!-- Canonical -->
+    <link rel="canonical" href="https://hackeracademy.example.com/">
 
-    /* gradient text animation */
-    .gradient-text-animated {
-      background: linear-gradient(90deg, #a0f0ea, #ffb86b, #ff6bcb, #a0f0ea);
-      background-size: 300% auto;
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      animation: gradientFlow 6s linear infinite;
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23000'/%3E%3Ctext x='50' y='68' font-family='Arial Black' font-size='60' font-weight='900' text-anchor='middle' fill='%2300ff9d'%3EH%3C/text%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23000'/%3E%3Ctext x='50' y='68' font-family='Arial Black' font-size='60' font-weight='900' text-anchor='middle' fill='%2300ff9d'%3EH%3C/text%3E%3C/svg%3E">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hackeracademy.example.com/">
+    <meta property="og:title" content="Hacker Academy | Premium Cyber Security & Ethical Hacking Training">
+    <meta property="og:description" content="Join Hacker Academy — the premium cybersecurity learning platform founded by Er. Priyanshu Sharma. Master Ethical Hacking, SOC, Penetration Testing & AI.">
+    <meta property="og:image" content="https://hackeracademy.example.com/assets/images/og-banner.jpg">
+    <meta property="og:site_name" content="Hacker Academy">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://hackeracademy.example.com/">
+    <meta name="twitter:title" content="Hacker Academy | Premium Cyber Security Training">
+    <meta name="twitter:description" content="Premium cybersecurity learning platform by Er. Priyanshu Sharma. Master Ethical Hacking, SOC, Penetration Testing & AI.">
+    <meta name="twitter:image" content="https://hackeracademy.example.com/assets/images/og-banner.jpg">
+    <meta name="twitter:creator" content="@hackeracademy">
+
+    <!-- Structured Data: Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "Hacker Academy",
+      "url": "https://hackeracademy.example.com/",
+      "logo": "https://hackeracademy.example.com/assets/icons/logo.svg",
+      "founder": {
+        "@type": "Person",
+        "name": "Er. Priyanshu Sharma",
+        "jobTitle": "Founder & CEO"
+      },
+      "description": "Premium cybersecurity learning platform offering world-class training in Ethical Hacking, SOC Analysis, Penetration Testing, Network Security, Linux, Python, Digital Forensics & AI.",
+      "sameAs": [
+        "https://www.facebook.com/hackeracademy",
+        "https://twitter.com/hackeracademy",
+        "https://www.linkedin.com/company/hackeracademy",
+        "https://www.instagram.com/hackeracademy"
+      ]
     }
-    @keyframes gradientFlow {
-      0% { background-position: 0% center; }
-      100% { background-position: 200% center; }
+    </script>
+
+    <!-- Structured Data: WebSite -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Hacker Academy",
+      "url": "https://hackeracademy.example.com/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://hackeracademy.example.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
     }
+    </script>
 
-    /* pulse border */
-    .pulse-border {
-      border: 2px solid rgba(0, 255, 200, 0.3);
-      animation: pulseBorder 2s infinite;
-    }
-    @keyframes pulseBorder {
-      0% { border-color: rgba(0, 255, 200, 0.3); box-shadow: 0 0 0 0 rgba(0, 255, 200, 0.3); }
-      50% { border-color: rgba(0, 255, 200, 0.8); box-shadow: 0 0 20px 5px rgba(0, 255, 200, 0.5); }
-      100% { border-color: rgba(0, 255, 200, 0.3); box-shadow: 0 0 0 0 rgba(0, 255, 200, 0.1); }
-    }
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    /* navbar custom */
-    .navbar-glass {
-      background: rgba(10, 20, 30, 0.5);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(0, 255, 200, 0.2);
-      animation: navSlideIn 0.8s ease-out;
-    }
-    @keyframes navSlideIn {
-      0% { opacity: 0; transform: translateY(-30px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
-    /* custom button with glow */
-    .btn-glow {
-      background: linear-gradient(145deg, #00cc88, #0066ff);
-      border: none;
-      transition: 0.3s;
-      position: relative;
-      overflow: hidden;
-    }
-    .btn-glow::before {
-      content: "";
-      position: absolute;
-      top: 0; left: -100%;
-      width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-      transition: left 0.6s;
-    }
-    .btn-glow:hover::before { left: 100%; }
-    .btn-glow:hover {
-      box-shadow: 0 0 25px #00cc88;
-      transform: scale(1.07);
-    }
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 
-    /* count-up flash */
-    .stat-number { font-size: 3.5rem; font-weight: 900; display: inline-block; }
+    <!-- External Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
 
-    /* carousel like original but animated */
-    .slick-fade-item { transition: all 0.5s; }
+    <!-- ============================================
+         CRITICAL INLINE STYLES (Premium Cyberpunk)
+         These ensure the page looks premium immediately
+         before external CSS files are created.
+    ============================================ -->
+    <style>
+        /* ---------- CSS Variables / Theme ---------- */
+        :root {
+            --neon-green: #00ff9d;
+            --neon-blue: #00d4ff;
+            --neon-purple: #b537f2;
+            --neon-pink: #ff2e9a;
+            --cyber-black: #000000;
+            --cyber-dark: #05050a;
+            --cyber-darker: #020205;
+            --cyber-gray: #0a0a14;
+            --cyber-light: #1a1a2e;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b8;
+            --text-muted: #6a6a80;
+            --glass-bg: rgba(10, 10, 20, 0.55);
+            --glass-border: rgba(0, 255, 157, 0.15);
+            --glass-shadow: 0 8px 32px rgba(0, 255, 157, 0.08);
+            --gradient-primary: linear-gradient(135deg, #00ff9d 0%, #00d4ff 100%);
+            --gradient-dark: linear-gradient(135deg, #05050a 0%, #0a0a14 100%);
+            --gradient-neon: linear-gradient(135deg, #00ff9d 0%, #00d4ff 50%, #b537f2 100%);
+            --font-display: 'Orbitron', sans-serif;
+            --font-heading: 'Rajdhani', sans-serif;
+            --font-body: 'Space Grotesk', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 22px;
+            --radius-xl: 32px;
+            --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
 
-    /* additional neon */
-    .text-neon { color: #7efff0; text-shadow: 0 0 8px #0ff; }
+        /* ---------- Reset & Base ---------- */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    /* animated logo spin */
-    .logo-spin { animation: spinGlow 6s infinite; }
-    @keyframes spinGlow {
-      0% { filter: drop-shadow(0 0 5px #0ff); }
-      50% { filter: drop-shadow(0 0 20px #f0f); transform: rotate(2deg); }
-      100% { filter: drop-shadow(0 0 5px #0ff); }
-    }
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
 
-    /* main title styling */
-    .main-title {
-      font-size: 4.2rem;
-      font-weight: 800;
-      line-height: 1.1;
-    }
+        body {
+            font-family: var(--font-body);
+            background: var(--cyber-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
 
-    /* background overlay dark */
-    .section-dark { background: rgba(0, 0, 0, 0.3); backdrop-filter: blur(2px); }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: var(--cyber-darker); }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--neon-green), var(--neon-blue));
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover { background: var(--neon-green); }
 
-    /* make sure container text is visible */
-    h1, h2, h3, p { color: #f0f4ff; }
-    .text-muted { color: #a9b7d4 !important; }
+        ::selection {
+            background: var(--neon-green);
+            color: var(--cyber-black);
+        }
 
-    /* badge animation */
-    .badge-pulse { animation: badgePulse 2s infinite; }
-    @keyframes badgePulse { 0% { opacity: 0.7; } 50% { opacity: 1; } }
+        img { max-width: 100%; display: block; }
+        a { text-decoration: none; color: inherit; }
+        button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
 
-    /* fixing original dots / backgrounds */
-    .bg-filter-dots { background: radial-gradient(#1f3a3f 1px, transparent 1px); background-size: 20px 20px; }
-  </style>
+        /* ---------- Loading Screen ---------- */
+        .ha-loader {
+            position: fixed;
+            inset: 0;
+            background: var(--cyber-black);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        .ha-loader.hidden { opacity: 0; visibility: hidden; }
+        .ha-loader-logo {
+            width: 100px; height: 100px;
+            border: 3px solid var(--neon-green);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--neon-green);
+            box-shadow: 0 0 40px var(--neon-green), inset 0 0 40px rgba(0, 255, 157, 0.2);
+            animation: pulseGlow 2s ease-in-out infinite, rotateLogo 4s linear infinite;
+            position: relative;
+        }
+        .ha-loader-logo::before {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            border: 2px dashed var(--neon-blue);
+            border-radius: 24px;
+            animation: rotateLogo 8s linear infinite reverse;
+        }
+        .ha-loader-text {
+            margin-top: 30px;
+            font-family: var(--font-mono);
+            color: var(--neon-green);
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+        }
+        .ha-loader-bar {
+            width: 200px;
+            height: 2px;
+            background: rgba(0, 255, 157, 0.1);
+            margin-top: 20px;
+            overflow: hidden;
+            border-radius: 2px;
+        }
+        .ha-loader-bar::after {
+            content: '';
+            display: block;
+            width: 40%;
+            height: 100%;
+            background: var(--gradient-primary);
+            animation: loadBar 1.5s ease-in-out infinite;
+            box-shadow: 0 0 10px var(--neon-green);
+        }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 40px var(--neon-green), inset 0 0 40px rgba(0, 255, 157, 0.2); }
+            50% { box-shadow: 0 0 80px var(--neon-green), inset 0 0 60px rgba(0, 255, 157, 0.3); }
+        }
+        @keyframes rotateLogo {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes loadBar {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(350%); }
+        }
+
+        /* ---------- Cursor Glow ---------- */
+        .cursor-glow {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 255, 157, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease-out;
+            mix-blend-mode: screen;
+        }
+
+        /* ---------- Navigation ---------- */
+        .ha-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 18px 0;
+            background: rgba(5, 5, 10, 0.7);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(0, 255, 157, 0.1);
+            transition: all 0.4s var(--transition-smooth);
+        }
+        .ha-nav.scrolled {
+            padding: 12px 0;
+            background: rgba(5, 5, 10, 0.92);
+            box-shadow: 0 4px 30px rgba(0, 255, 157, 0.08);
+        }
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-display);
+            font-weight: 800;
+            font-size: 1.4rem;
+            letter-spacing: 2px;
+        }
+        .nav-logo-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--cyber-black);
+            border: 2px solid var(--neon-green);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--neon-green);
+            font-size: 1.4rem;
+            font-weight: 900;
+            box-shadow: 0 0 20px rgba(0, 255, 157, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        .nav-logo-icon::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent 40%, rgba(0, 255, 157, 0.3));
+        }
+        .nav-logo-text {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .nav-logo-sub {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            letter-spacing: 3px;
+            margin-top: -4px;
+            display: block;
+        }
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 38px;
+            list-style: none;
+        }
+        .nav-link {
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            position: relative;
+            transition: color 0.3s ease;
+            padding: 8px 0;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: width 0.3s var(--transition-smooth);
+            box-shadow: 0 0 10px var(--neon-green);
+        }
+        .nav-link:hover { color: var(--neon-green); }
+        .nav-link:hover::after { width: 100%; }
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .btn {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 12px 28px;
+            border-radius: var(--radius-md);
+            transition: all 0.3s var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: var(--cyber-black);
+            box-shadow: 0 4px 20px rgba(0, 255, 157, 0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 255, 157, 0.5);
+        }
+        .btn-ghost {
+            background: transparent;
+            color: var(--neon-green);
+            border: 1px solid var(--neon-green);
+        }
+        .btn-ghost:hover {
+            background: rgba(0, 255, 157, 0.1);
+            box-shadow: 0 0 20px rgba(0, 255, 157, 0.3);
+        }
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        .btn:active::before { width: 300px; height: 300px; }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+        }
+        .nav-toggle span {
+            width: 26px;
+            height: 2px;
+            background: var(--neon-green);
+            transition: all 0.3s ease;
+            box-shadow: 0 0 8px var(--neon-green);
+        }
+
+        /* ---------- Hero Section ---------- */
+        .ha-hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 120px 30px 80px;
+        }
+        #vanta-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+        .matrix-canvas {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            opacity: 0.25;
+            pointer-events: none;
+        }
+        .hero-grid-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            background-image:
+                linear-gradient(rgba(0, 255, 157, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 157, 0.04) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+            -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+        }
+        .hero-vignette {
+            position: absolute;
+            inset: 0;
+            z-index: 3;
+            background: radial-gradient(ellipse at center, transparent 30%, rgba(0, 0, 0, 0.8) 100%);
+            pointer-events: none;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 1100px;
+            text-align: center;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 20px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--neon-green);
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            box-shadow: var(--glass-shadow);
+        }
+        .hero-badge .pulse-dot {
+            width: 8px; height: 8px;
+            background: var(--neon-green);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--neon-green);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.3); }
+        }
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 7vw, 5.5rem);
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+        }
+        .hero-title .line { display: block; }
+        .hero-title .gradient-text {
+            background: var(--gradient-neon);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 30px rgba(0, 255, 157, 0.4));
+        }
+        .hero-title .outline-text {
+            -webkit-text-stroke: 2px var(--neon-green);
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+        .hero-typed-wrap {
+            font-family: var(--font-mono);
+            font-size: clamp(1rem, 2vw, 1.4rem);
+            color: var(--neon-blue);
+            margin-bottom: 30px;
+            min-height: 2em;
+            letter-spacing: 1px;
+        }
+        .hero-typed-wrap .typed-cursor { color: var(--neon-green); }
+        .hero-description {
+            font-size: clamp(1rem, 1.4vw, 1.2rem);
+            color: var(--text-secondary);
+            max-width: 720px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+        .hero-cta {
+            display: flex;
+            gap: 18px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .stat-card {
+            padding: 24px 16px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            text-align: center;
+            transition: all 0.4s var(--transition-smooth);
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--neon-green);
+            box-shadow: 0 10px 40px rgba(0, 255, 157, 0.2);
+        }
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+        }
+        .stat-label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 6px;
+        }
+
+        /* ---------- Section Base ---------- */
+        .ha-section {
+            padding: 100px 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+        .section-tag {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--neon-green);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            padding: 6px 18px;
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            background: rgba(0, 255, 157, 0.05);
+        }
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4.5vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+        }
+        .section-title .accent {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .section-subtitle {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 680px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* ---------- About Section ---------- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .about-visual {
+            position: relative;
+            aspect-ratio: 1;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 20px 60px rgba(0, 255, 157, 0.15);
+        }
+        .about-visual img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            filter: brightness(0.8) contrast(1.1);
+        }
+        .about-visual::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, transparent 40%, rgba(0, 255, 157, 0.2));
+            mix-blend-mode: overlay;
+        }
+        .about-visual-badge {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            padding: 14px 22px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--neon-green);
+            border-radius: var(--radius-md);
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--neon-green);
+            letter-spacing: 2px;
+            box-shadow: 0 0 30px rgba(0, 255, 157, 0.3);
+        }
+        .about-content h2 { margin-bottom: 24px; text-align: left; }
+        .about-text {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 30px;
+        }
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 18px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            transition: all 0.3s ease;
+        }
+        .about-feature:hover {
+            border-color: var(--neon-green);
+            transform: translateX(5px);
+        }
+        .about-feature i {
+            color: var(--neon-green);
+            font-size: 1.2rem;
+        }
+        .about-feature span {
+            font-family: var(--font-heading);
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        /* ---------- Features Section ---------- */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+        .feature-card {
+            padding: 36px 28px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            transition: all 0.4s var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+        }
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--neon-green);
+            box-shadow: 0 20px 50px rgba(0, 255, 157, 0.15);
+        }
+        .feature-card:hover::before { transform: scaleX(1); }
+        .feature-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, rgba(0, 255, 157, 0.15), rgba(0, 212, 255, 0.15));
+            border: 1px solid var(--neon-green);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--neon-green);
+            margin-bottom: 22px;
+            box-shadow: 0 0 20px rgba(0, 255, 157, 0.2);
+        }
+        .feature-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* ---------- Courses Section ---------- */
+        .courses-filter {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+        .filter-btn {
+            padding: 10px 22px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--gradient-primary);
+            color: var(--cyber-black);
+            border-color: transparent;
+            box-shadow: 0 0 20px rgba(0, 255, 157, 0.4);
+        }
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 26px;
+        }
+        .course-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: all 0.4s var(--transition-smooth);
+            position: relative;
+        }
+        .course-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--neon-green);
+            box-shadow: 0 20px 50px rgba(0, 255, 157, 0.2);
+        }
+        .course-image {
+            position: relative;
+            aspect-ratio: 16/10;
+            overflow: hidden;
+            background: var(--cyber-gray);
+        }
+        .course-image img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            filter: brightness(0.85);
+        }
+        .course-card:hover .course-image img {
+            transform: scale(1.08);
+            filter: brightness(1);
+        }
+        .course-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.9));
+        }
+        .course-badge {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            padding: 6px 12px;
+            background: var(--neon-green);
+            color: var(--cyber-black);
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            border-radius: 50px;
+            z-index: 2;
+            text-transform: uppercase;
+        }
+        .course-level {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            padding: 6px 12px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            color: var(--neon-blue);
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            letter-spacing: 1.5px;
+            border-radius: 50px;
+            z-index: 2;
+            text-transform: uppercase;
+        }
+        .course-body { padding: 22px; }
+        .course-category {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--neon-green);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        .course-title {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.3;
+            letter-spacing: 0.5px;
+        }
+        .course-meta {
+            display: flex;
+            gap: 16px;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+        .course-meta span { display: flex; align-items: center; gap: 6px; }
+        .course-meta i { color: var(--neon-green); }
+        .course-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 16px;
+            border-top: 1px solid var(--glass-border);
+        }
+        .course-price {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--neon-green);
+        }
+        .course-price small {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-decoration: line-through;
+            margin-left: 6px;
+            font-weight: 400;
+        }
+        .course-enroll {
+            padding: 8px 18px;
+            background: transparent;
+            border: 1px solid var(--neon-green);
+            color: var(--neon-green);
+            border-radius: 50px;
+            font-family: var(--font-heading);
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+        .course-enroll:hover {
+            background: var(--neon-green);
+            color: var(--cyber-black);
+            box-shadow: 0 0 20px rgba(0, 255, 157, 0.5);
+        }
+
+        /* ---------- Roadmap Section ---------- */
+        .roadmap-wrap {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .roadmap-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--neon-green), var(--neon-blue), var(--neon-purple));
+            transform: translateX(-50%);
+            box-shadow: 0 0 10px var(--neon-green);
+        }
+        .roadmap-item {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 30px;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        .roadmap-content {
+            padding: 24px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            transition: all 0.3s ease;
+        }
+        .roadmap-content:hover {
+            border-color: var(--neon-green);
+            transform: scale(1.02);
+        }
+        .roadmap-item:nth-child(odd) .roadmap-content { grid-column: 1; text-align: right; }
+        .roadmap-item:nth-child(even) .roadmap-content { grid-column: 3; }
+        .roadmap-dot {
+            grid-column: 2;
+            width: 24px;
+            height: 24px;
+            background: var(--cyber-black);
+            border: 3px solid var(--neon-green);
+            border-radius: 50%;
+            box-shadow: 0 0 20px var(--neon-green);
+            position: relative;
+            z-index: 2;
+        }
+        .roadmap-step {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--neon-green);
+            letter-spacing: 2px;
+            margin-bottom: 6px;
+        }
+        .roadmap-title {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .roadmap-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* ---------- AI Tutor Preview ---------- */
+        .ai-preview {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .ai-chat-mock {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-xl);
+            padding: 28px;
+            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.15);
+            position: relative;
+        }
+        .ai-chat-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--glass-border);
+            margin-bottom: 20px;
+        }
+        .ai-avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-neon);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: var(--cyber-black);
+            box-shadow: 0 0 25px rgba(0, 255, 157, 0.5);
+            position: relative;
+        }
+        .ai-avatar::after {
+            content: '';
+            position: absolute;
+            bottom: 2px; right: 2px;
+            width: 12px; height: 12px;
+            background: var(--neon-green);
+            border: 2px solid var(--cyber-black);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--neon-green);
+        }
+        .ai-name {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 700;
+        }
+        .ai-status {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--neon-green);
+            letter-spacing: 1.5px;
+        }
+        .ai-messages {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            min-height: 260px;
+        }
+        .ai-msg {
+            padding: 12px 18px;
+            border-radius: var(--radius-md);
+            font-size: 0.92rem;
+            line-height: 1.6;
+            max-width: 85%;
+            animation: msgFade 0.5s ease;
+        }
+        @keyframes msgFade {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .ai-msg.user {
+            align-self: flex-end;
+            background: var(--gradient-primary);
+            color: var(--cyber-black);
+            font-weight: 500;
+        }
+        .ai-msg.bot {
+            background: rgba(0, 212, 255, 0.08);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            color: var(--text-primary);
+        }
+        .ai-input-mock {
+            margin-top: 20px;
+            padding: 14px 18px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .ai-input-mock input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            outline: none;
+        }
+        .ai-input-mock button {
+            width: 36px; height: 36px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            color: var(--cyber-black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ---------- Dashboard Preview ---------- */
+        .dashboard-preview {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-xl);
+            padding: 24px;
+            box-shadow: 0 20px 60px rgba(0, 255, 157, 0.1);
+        }
+        .dash-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 18px;
+            border-bottom: 1px solid var(--glass-border);
+            margin-bottom: 20px;
+        }
+        .dash-user {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .dash-avatar {
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            background: var(--gradient-neon);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cyber-black);
+            font-weight: 700;
+            border: 2px solid var(--neon-green);
+        }
+        .dash-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-bottom: 20px;
+        }
+        .dash-stat {
+            padding: 16px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+        }
+        .dash-stat-value {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--neon-green);
+        }
+        .dash-stat-label {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+        .dash-progress {
+            padding: 16px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+        }
+        .dash-progress-title {
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .progress-bar {
+            height: 8px;
+            background: rgba(0, 255, 157, 0.1);
+            border-radius: 50px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient-primary);
+            border-radius: 50px;
+            box-shadow: 0 0 10px var(--neon-green);
+            transition: width 1.5s ease;
+        }
+
+        /* ---------- Testimonials ---------- */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 26px;
+        }
+        .testimonial-card {
+            padding: 32px 28px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            position: relative;
+            transition: all 0.4s ease;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--neon-green);
+        }
+        .testimonial-quote {
+            font-size: 3rem;
+            color: var(--neon-green);
+            opacity: 0.3;
+            line-height: 1;
+            margin-bottom: 10px;
+            font-family: serif;
+        }
+        .testimonial-text {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 22px;
+            font-size: 0.98rem;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .testimonial-avatar {
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-neon);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cyber-black);
+            font-weight: 700;
+            font-family: var(--font-display);
+            border: 2px solid var(--neon-green);
+        }
+        .testimonial-name {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        .testimonial-role {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--neon-green);
+            letter-spacing: 1.5px;
+        }
+        .testimonial-stars {
+            color: #ffc107;
+            margin-top: 4px;
+            font-size: 0.85rem;
+        }
+
+        /* ---------- FAQ Section ---------- */
+        .faq-wrap {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            margin-bottom: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .faq-item.active { border-color: var(--neon-green); }
+        .faq-question {
+            padding: 22px 26px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-family: var(--font-heading);
+            font-size: 1.05rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        .faq-question i {
+            color: var(--neon-green);
+            transition: transform 0.3s ease;
+        }
+        .faq-item.active .faq-question i { transform: rotate(45deg); }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+        .faq-answer-inner {
+            padding: 0 26px 22px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* ---------- Contact Section ---------- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 50px;
+            align-items: start;
+        }
+        .contact-info-card {
+            padding: 36px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-xl);
+        }
+        .contact-info-item {
+            display: flex;
+            gap: 18px;
+            padding: 18px 0;
+            border-bottom: 1px solid var(--glass-border);
+        }
+        .contact-info-item:last-child { border-bottom: none; }
+        .contact-info-icon {
+            width: 48px; height: 48px;
+            background: rgba(0, 255, 157, 0.1);
+            border: 1px solid var(--neon-green);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--neon-green);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        .contact-info-label {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        .contact-info-value {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        .contact-form {
+            padding: 36px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-xl);
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+        .form-group { margin-bottom: 16px; }
+        .form-label {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--neon-green);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+        .form-input:focus, .form-textarea:focus {
+            border-color: var(--neon-green);
+            box-shadow: 0 0 0 3px rgba(0, 255, 157, 0.15);
+        }
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* ---------- Footer ---------- */
+        .ha-footer {
+            background: var(--cyber-darker);
+            border-top: 1px solid var(--glass-border);
+            padding: 70px 30px 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        .ha-footer::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: var(--gradient-primary);
+            box-shadow: 0 0 20px var(--neon-green);
+        }
+        .footer-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+        .footer-brand p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin: 18px 0;
+            font-size: 0.95rem;
+        }
+        .footer-social {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        .footer-social a {
+            width: 42px; height: 42px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+        .footer-social a:hover {
+            background: var(--neon-green);
+            color: var(--cyber-black);
+            border-color: var(--neon-green);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 255, 157, 0.4);
+        }
+        .footer-col h4 {
+            font-family: var(--font-display);
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--neon-green);
+        }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li a {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .footer-col ul li a:hover {
+            color: var(--neon-green);
+            transform: translateX(4px);
+        }
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 30px;
+            border-top: 1px solid var(--glass-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+        }
+        .footer-bottom strong { color: var(--neon-green); }
+
+        /* ---------- Back to Top ---------- */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px; height: 50px;
+            background: var(--gradient-primary);
+            color: var(--cyber-black);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: 0 8px 30px rgba(0, 255, 157, 0.4);
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .back-to-top:hover { transform: translateY(-5px) scale(1.05); }
+
+        /* ---------- Responsive Base ---------- */
+        @media (max-width: 992px) {
+            .about-grid, .ai-preview, .contact-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .hero-stats { grid-template-columns: repeat(2, 1fr); }
+            .roadmap-line { left: 20px; }
+            .roadmap-item { grid-template-columns: auto 1fr; }
+            .roadmap-item:nth-child(odd) .roadmap-content,
+            .roadmap-item:nth-child(even) .roadmap-content { grid-column: 2; text-align: left; }
+            .roadmap-dot { grid-column: 1; }
+        }
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: 0; right: 0;
+                background: rgba(5, 5, 10, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 30px;
+                gap: 20px;
+                transform: translateY(-150%);
+                transition: transform 0.4s ease;
+                border-bottom: 1px solid var(--glass-border);
+            }
+            .nav-menu.active { transform: translateY(0); }
+            .nav-toggle { display: flex; }
+            .nav-actions .btn-ghost { display: none; }
+            .form-row { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .about-features { grid-template-columns: 1fr; }
+            .dash-stats { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
-<body class="bg-cyber">
+<body>
 
-<!-- announcement animated -->
-<div class="d-flex justify-content-center bg-gradient py-2" style="background: #1c2c3c; border-bottom: 1px solid cyan;">
-  <span class="mx-2 animate__animated animate__flash animate__infinite infinite">🆕 HACKER ACADEMY BY PS</span>
-  <a class="text-warning font-weight-bold arrow-link" href="#">Learn More →</a>
-</div>
+    <!-- ============================================
+         LOADING SCREEN
+    ============================================ -->
+    <div class="ha-loader" id="haLoader">
+        <div class="ha-loader-logo">H</div>
+        <div class="ha-loader-text">INITIALIZING SYSTEM...</div>
+        <div class="ha-loader-bar"></div>
+    </div>
 
-<!-- NAVBAR (enhanced with glassmorphism) -->
-<header class="sticky-top" style="z-index: 99;">
-  <nav class="navbar navbar-expand-xl navbar-dark navbar-glass py-2">
-    <div class="container">
-      <a class="navbar-brand" href="#">
-        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 30'%3E%3Ctext x='5' y='22' fill='%2300ffff' font-size='22' font-weight='bold'%3EHACKER%3C/text%3E%3Ctext x='5' y='22' fill='%23ff44aa' dx='110'%3EACADEMY%3C/text%3E%3C/svg%3E" alt="Hacker Academy" height="38" class="logo-spin">
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menuHacker">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="menuHacker">
-        <ul class="navbar-nav mx-auto">
-          <li class="nav-item"><a class="nav-link mx-2" href="#">Certifications</a></li>
-          <li class="nav-item"><a class="nav-link mx-2" href="#">Paths</a></li>
-          <li class="nav-item"><a class="nav-link mx-2" href="#">Modules</a></li>
-          <li class="nav-item"><a class="nav-link mx-2" href="#">Business</a></li>
-          <li class="nav-item"><a class="nav-link mx-2" href="#">Labs</a></li>
-        </ul>
-        <div class="d-flex">
-          <a href="#" class="btn btn-outline-info mr-2 animate__animated animate__pulse">Sign In</a>
-          <a href="#" class="btn btn-glow text-white">Start for Free</a>
-        </div>
-      </div>
-    </div>
-  </nav>
-</header>
+    <!-- ============================================
+         CURSOR GLOW EFFECT
+    ============================================ -->
+    <div class="cursor-glow" id="cursorGlow"></div>
 
-<main>
-  <!-- HERO section with video (we embed a loop animation) -->
-  <section class="position-relative overflow-hidden" style="min-height: 85vh;">
-    <video autoplay muted loop playsinline class="position-absolute w-100 h-100" style="object-fit: cover; opacity: 0.3; z-index: -1;">
-      <source src="https://academy-cdn.hackthebox.com/public/production/videos/frontpage/hero-video.webm" type="video/webm">
-    </video>
-    <div class="container text-center d-flex flex-column justify-content-center min-vh-50" style="padding-top: 10rem; padding-bottom: 5rem;">
-      <div class="row">
-        <div class="col-12">
-          <h1 class="main-title glitch gradient-text-animated animate__animated animate__fadeInDown">
-            Your cyber journey <br> becomes <span class="text-neon">legendary</span>.
-          </h1>
-          <p class="lead text-info mt-4 animate__animated animate__fadeInUp animate__delay-1s">#1 hands-on hacking academy · guided courses · real simulations</p>
-          <div class="mt-5 animate__animated animate__zoomIn animate__delay-1s">
-            <a href="#" class="btn btn-glow btn-lg px-5 py-3 mr-3 rounded-pill">START FOR FREE</a>
-            <a href="#" class="btn btn-outline-light btn-lg px-5 py-3 rounded-pill">FOR BUSINESS</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- floating elements -->
-    <div class="d-none d-md-block">
-      <i class="fas fa-shield-alt text-info position-absolute" style="top:20%; left:5%; font-size: 4rem; opacity:0.2; animation: float 8s infinite;"></i>
-      <i class="fas fa-code text-warning position-absolute" style="bottom:15%; right:7%; font-size: 5rem; opacity:0.15; animation: float 6s infinite reverse;"></i>
-    </div>
-  </section>
+    <!-- ============================================
+         NAVIGATION
+    ============================================ -->
+    <nav class="ha-nav" id="haNav" aria-label="Main Navigation">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo" aria-label="Hacker Academy Home">
+                <div class="nav-logo-icon">H</div>
+                <div>
+                    <span class="nav-logo-text">HACKER ACADEMY</span>
+                    <span class="nav-logo-sub">BY ER. PRIYANSHU SHARMA</span>
+                </div>
+            </a>
 
-  <!-- top cards (Certification & Master new skills) animated 3D -->
-  <section class="container my-5">
-    <div class="row">
-      <div class="col-md-6 mb-4 animate__animated animate__fadeInLeft">
-        <div class="card card-3d bg-transparent border-0 p-4 text-center" style="background: rgba(10,25,35,0.7); backdrop-filter: blur(8px);">
-          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 24 24' fill='%2300ffff'%3E%3Cpath d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/%3E%3C/svg%3E" class="mx-auto float-medium" alt="cert" width="100">
-          <h3 class="mt-3 gradient-text-animated">Get certified with HTB</h3>
-          <p class="text-info">Skyrocket your resume. Land your dream job.</p>
-          <a href="#" class="btn btn-outline-info stretched-link">View Job Role Paths →</a>
-        </div>
-      </div>
-      <div class="col-md-6 mb-4 animate__animated animate__fadeInRight">
-        <div class="card card-3d bg-transparent border-0 p-4 text-center" style="background: rgba(10,25,35,0.7); backdrop-filter: blur(8px);">
-          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 24 24' fill='%23ffaa33'%3E%3Cpath d='M20 7h-4V4c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v3H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2zM10 4h4v3h-4V4z'/%3E%3C/svg%3E" class="mx-auto float-slow" alt="skill" width="100">
-          <h3 class="mt-3 gradient-text-animated">Master new skills</h3>
-          <p class="text-warning">Offensive & defensive security — skill paths.</p>
-          <a href="#" class="btn btn-outline-warning stretched-link">View Skill Paths →</a>
-        </div>
-      </div>
-    </div>
-  </section>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#features" class="nav-link">Features</a></li>
+                <li><a href="#courses" class="nav-link">Courses</a></li>
+                <li><a href="#roadmap" class="nav-link">Roadmap</a></li>
+                <li><a href="#testimonials" class="nav-link">Reviews</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
 
-  <!-- Stats + learners animated counters -->
-  <section class="container text-center my-5 py-5 section-dark rounded">
-    <div class="row align-items-center">
-      <div class="col-md-4">
-        <div class="stat-number text-info animate__animated animate__fadeInUp" id="learnersCounter">2.6M</div>
-        <p class="lead">learners advancing</p>
-      </div>
-      <div class="col-md-4">
-        <div class="stat-number text-warning animate__animated animate__fadeInUp" id="reviewsCounter">50k+</div>
-        <p class="lead">⭐ 5-star reviews</p>
-      </div>
-      <div class="col-md-4">
-        <div class="stat-number text-success animate__animated animate__fadeInUp" id="modulesCounter">155+</div>
-        <p class="lead">cybersecurity modules</p>
-      </div>
-    </div>
-    <div class="row justify-content-center mt-5">
-      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='40' viewBox='0 0 200 40'%3E%3Ctext x='0' y='25' fill='%2399ccff' font-size='18'%3ELake Superior College%3C/text%3E%3C/svg%3E" class="col-3 mx-2 float-medium">
-      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='40' viewBox='0 0 150 40'%3E%3Ctext x='0' y='25' fill='%23ffaa66' font-size='18'%3ENVISO%3C/text%3E%3C/svg%3E" class="col-3 mx-2 float-slow">
-      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='40' viewBox='0 0 250 40'%3E%3Ctext x='0' y='25' fill='%23aaffaa' font-size='18'%3ESecurity Risk Advisors%3C/text%3E%3C/svg%3E" class="col-3 mx-2 float-medium">
-    </div>
-  </section>
-
-  <!-- Why Hacker Academy flipping cards (original concept animated) -->
-  <section class="container my-5">
-    <h2 class="text-center glitch mb-5"><span class="gradient-text-animated">Why HACKER ACADEMY</span></h2>
-    <div class="row">
-      <div class="col-md-4 mb-4">
-        <div class="card bg-dark border-0 card-3d p-3 h-100">
-          <i class="fas fa-flag fa-3x text-info mb-3"></i>
-          <h4>Guided Courses</h4>
-          <p>Threat‑informed, real‑world examples, skills assessment.</p>
-        </div>
-      </div>
-      <div class="col-md-4 mb-4">
-        <div class="card bg-dark border-0 card-3d p-3 h-100">
-          <i class="fas fa-laptop fa-3x text-warning mb-3"></i>
-          <h4>In‑browser Pentesting VM</h4>
-          <p>Pwnbox, zero infra setup. Practice anywhere.</p>
-        </div>
-      </div>
-      <div class="col-md-4 mb-4">
-        <div class="card bg-dark border-0 card-3d p-3 h-100">
-          <i class="fas fa-bolt fa-3x text-success mb-3"></i>
-          <h4>Highly Practical</h4>
-          <p>Interactive exercises against real apps.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TABS: job role / skill paths (original but animated) -->
-  <section class="container">
-    <ul class="nav nav-pills justify-content-center mb-4" id="myTab" role="tablist">
-      <li class="nav-item"><a class="nav-link active btn-outline-info mx-2" data-toggle="pill" href="#jobRole">💼 JOB ROLE PATHS</a></li>
-      <li class="nav-item"><a class="nav-link btn-outline-warning mx-2" data-toggle="pill" href="#skillPaths">⚡ SKILL PATHS</a></li>
-    </ul>
-    <div class="tab-content">
-      <div class="tab-pane fade show active" id="jobRole">
-        <div class="row">
-          <div class="col-md-4 mb-4">
-            <div class="card bg-transparent border-info pulse-border animate__animated animate__fadeInUp">
-              <div class="card-body">
-                <h5 class="card-title">Junior Cybersecurity Associate</h5>
-                <p class="card-text">20 Modules · exam included</p>
-                <span class="badge badge-success">$490</span>
-              </div>
+            <div class="nav-actions">
+                <a href="login.html" class="btn btn-ghost">
+                    <i class="fas fa-right-to-bracket"></i> Login
+                </a>
+                <a href="register.html" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i> Enroll Now
+                </a>
+                <div class="nav-toggle" id="navToggle" aria-label="Toggle Menu">
+                    <span></span><span></span><span></span>
+                </div>
             </div>
-          </div>
-          <div class="col-md-4 mb-4">
-            <div class="card bg-transparent border-info pulse-border animate__animated animate__fadeInUp">
-              <div class="card-body">
-                <h5 class="card-title">Penetration Testing Specialist</h5>
-                <p class="card-text">28 Modules · exam included</p>
-                <span class="badge badge-success">$490</span>
-              </div>
+        </div>
+    </nav>
+
+    <!-- ============================================
+         HERO SECTION
+    ============================================ -->
+    <header class="ha-hero" id="home">
+        <div id="vanta-bg"></div>
+        <canvas class="matrix-canvas" id="matrixCanvas"></canvas>
+        <div class="hero-grid-overlay"></div>
+        <div class="hero-vignette"></div>
+
+        <div class="hero-content">
+            <div class="hero-badge" data-aos="fade-down" data-aos-delay="200">
+                <span class="pulse-dot"></span>
+                <span>LIVE • PREMIER CYBERSECURITY PLATFORM</span>
             </div>
-          </div>
-          <div class="col-md-4 mb-4">
-            <div class="card bg-transparent border-info pulse-border animate__animated animate__fadeInUp">
-              <div class="card-body">
-                <h5 class="card-title">Web Exploitation Expert</h5>
-                <p class="card-text">15 Modules · exam</p>
-                <span class="badge badge-warning">$1260</span>
-              </div>
+
+            <h1 class="hero-title" data-aos="fade-up" data-aos-delay="300">
+                <span class="line">MASTER THE ART OF</span>
+                <span class="line gradient-text">CYBER WARFARE</span>
+                <span class="line outline-text">& ETHICAL HACKING</span>
+            </h1>
+
+            <div class="hero-typed-wrap" data-aos="fade-up" data-aos-delay="400">
+                <span id="typedOutput"></span>
             </div>
-          </div>
+
+            <p class="hero-description" data-aos="fade-up" data-aos-delay="500">
+                Join the most elite cybersecurity academy founded by <strong style="color: var(--neon-green);">Er. Priyanshu Sharma</strong>.
+                Train with world-class experts, master penetration testing, SOC analysis, AI security,
+                and become the defender the digital world needs.
+            </p>
+
+            <div class="hero-cta" data-aos="fade-up" data-aos-delay="600">
+                <a href="register.html" class="btn btn-primary">
+                    <i class="fas fa-shield-halved"></i> Start Learning Free
+                </a>
+                <a href="#courses" class="btn btn-ghost">
+                    <i class="fas fa-play"></i> Explore Courses
+                </a>
+            </div>
+
+            <div class="hero-stats" data-aos="fade-up" data-aos-delay="700">
+                <div class="stat-card">
+                    <span class="stat-number" data-count="30">0</span>
+                    <span class="stat-label">Premium Courses</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" data-count="500">0</span>
+                    <span class="stat-label">Video Lessons</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" data-count="50">0</span>
+                    <span class="stat-label">Expert Mentors</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" data-count="10000">0</span>
+                    <span class="stat-label">Active Students</span>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="tab-pane fade" id="skillPaths">
-        <div class="row">
-          <div class="col-md-4 mb-4"><div class="card bg-dark"><div class="card-body"><h6>Basic Toolset</h6><p>7 modules · 93 sections</p></div></div></div>
-          <div class="col-md-4 mb-4"><div class="card bg-dark"><div class="card-body"><h6>Local Privilege Escalation</h6><p>2 modules · 61 sections</p></div></div></div>
-          <div class="col-md-4 mb-4"><div class="card bg-dark"><div class="card-body"><h6>Binary Exploitation</h6><p>4 modules · 62 sections</p></div></div></div>
+    </header>
+
+    <!-- ============================================
+         ABOUT SECTION
+    ============================================ -->
+    <section class="ha-section" id="about">
+        <div class="section-container">
+            <div class="about-grid">
+                <div class="about-visual" data-aos="fade-right">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80" alt="Cybersecurity operations center at Hacker Academy" loading="lazy">
+                    <div class="about-visual-badge">
+                        <i class="fas fa-award"></i> EST. 2026 • INDIA
+                    </div>
+                </div>
+                <div class="about-content" data-aos="fade-left">
+                    <span class="section-tag">// ABOUT US</span>
+                    <h2 class="section-title">
+                        WHERE <span class="accent">ELITE HACKERS</span><br>ARE FORGED
+                    </h2>
+                    <p class="about-text">
+                        <strong>Hacker Academy</strong> is India's premier cybersecurity learning platform,
+                        founded by <strong style="color: var(--neon-green);">Er. Priyanshu Sharma</strong> —
+                        a visionary engineer dedicated to building the next generation of ethical hackers,
+                        SOC analysts, and cyber defenders.
+                    </p>
+                    <p class="about-text">
+                        We combine Hollywood-grade production quality with real-world lab environments,
+                        AI-powered tutoring, and industry-recognized certifications to deliver an
+                        unmatched learning experience.
+                    </p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <i class="fas fa-microscope"></i>
+                            <span>Live Cyber Labs</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-brain"></i>
+                            <span>AI Tutor (Gemini)</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-certificate"></i>
+                            <span>Verified Certificates</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-users"></i>
+                            <span>Expert Mentorship</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Modules carousel style (simplified) -->
-  <section class="container-fluid bg-dark py-5 my-5">
-    <div class="container">
-      <h2 class="text-center text-white mb-4"><span class="gradient-text-animated">155+ cybersecurity modules</span></h2>
-      <div class="row text-center">
-        <div class="col-md-3 col-6 mb-3"><span class="badge badge-info p-3 d-block animate__animated animate__pulse">Learning Process</span></div>
-        <div class="col-md-3 col-6 mb-3"><span class="badge badge-info p-3 d-block">Linux Fundamentals</span></div>
-        <div class="col-md-3 col-6 mb-3"><span class="badge badge-warning p-3 d-block">Web Requests</span></div>
-        <div class="col-md-3 col-6 mb-3"><span class="badge badge-success p-3 d-block">Active Directory</span></div>
-      </div>
-      <div class="text-center mt-4">
-        <a href="#" class="btn btn-glow btn-lg">Browse All Modules →</a>
-      </div>
-    </div>
-  </section>
+    <!-- ============================================
+         FEATURES SECTION
+    ============================================ -->
+    <section class="ha-section" id="features">
+        <div class="section-container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">// PLATFORM FEATURES</span>
+                <h2 class="section-title">
+                    BUILT FOR <span class="accent">FUTURE DEFENDERS</span>
+                </h2>
+                <p class="section-subtitle">
+                    Every feature engineered to transform you from beginner to elite cybersecurity professional.
+                </p>
+            </div>
 
-  <!-- Testimonials animated -->
-  <section class="container my-5">
-    <div id="testiCarousel" class="carousel slide" data-ride="carousel">
-      <div class="carousel-inner text-center bg-dark p-5 rounded">
-        <div class="carousel-item active">
-          <p class="lead">“Hack The Box is where my infosec journey started. HTB Academy builds strong knowledge.”</p>
-          <footer>— Firat Acar, Red Teamer</footer>
+            <div class="features-grid">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Live Cyber Labs</h3>
+                    <p>Practice in real-world simulated environments with isolated VMs, vulnerable machines, and enterprise-grade tooling.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon"><i class="fas fa-robot"></i></div>
+                    <h3>AI Tutor (Gemini)</h3>
+                    <p>24/7 AI-powered mentor powered by Google Gemini to answer questions, debug code, and guide your learning journey.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon"><i class="fas fa-video"></i></div>
+                    <h3>4K Video Lessons</h3>
+                    <p>Cinematic-quality lessons recorded in professional studios with Hollywood-grade production standards.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-icon"><i class="fas fa-trophy"></i></div>
+                    <h3>Verified Certificates</h3>
+                    <p>Earn blockchain-verifiable certificates recognized by top cybersecurity firms and government agencies.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Smart Analytics</h3>
+                    <p>Track your progress with AI-driven insights, skill-gap analysis, and personalized learning recommendations.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="feature-icon"><i class="fas fa-shield-virus"></i></div>
+                    <h3>Bug Bounty Training</h3>
+                    <p>Master real-world bug hunting with live targets, responsible disclosure workflows, and bounty strategies.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="700">
+                    <div class="feature-icon"><i class="fas fa-user-tie"></i></div>
+                    <h3>Career Placement</h3>
+                    <p>Direct placement support with our network of 200+ hiring partners in cybersecurity and tech.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="800">
+                    <div class="feature-icon"><i class="fas fa-globe"></i></div>
+                    <h3>Global Community</h3>
+                    <p>Connect with 10,000+ students, ethical hackers, and industry experts from around the world.</p>
+                </div>
+            </div>
         </div>
-        <div class="carousel-item">
-          <p class="lead">“Students get hired only a month after using HTB Academy!”</p>
-          <footer>— Matthew McCullough, Lead Instructor</footer>
+    </section>
+
+    <!-- ============================================
+         COURSES SECTION (30 Courses)
+    ============================================ -->
+    <section class="ha-section" id="courses">
+        <div class="section-container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">// COURSE CATALOG</span>
+                <h2 class="section-title">
+                    <span class="accent">30 ELITE</span> CYBER COURSES
+                </h2>
+                <p class="section-subtitle">
+                    From foundational networking to advanced AI security — master every domain of modern cybersecurity.
+                </p>
+            </div>
+
+            <div class="courses-filter" data-aos="fade-up">
+                <button class="filter-btn active" data-filter="all">All Courses</button>
+                <button class="filter-btn" data-filter="hacking">Hacking</button>
+                <button class="filter-btn" data-filter="soc">SOC</button>
+                <button class="filter-btn" data-filter="programming">Programming</button>
+                <button class="filter-btn" data-filter="ai">AI & ML</button>
+                <button class="filter-btn" data-filter="forensics">Forensics</button>
+            </div>
+
+            <div class="courses-grid" id="coursesGrid">
+                <!-- Courses will be injected by app.js -->
+            </div>
         </div>
-      </div>
-      <a class="carousel-control-prev" href="#testiCarousel" role="button" data-slide="prev"><span class="carousel-control-prev-icon"></span></a>
-      <a class="carousel-control-next" href="#testiCarousel" role="button" data-slide="next"><span class="carousel-control-next-icon"></span></a>
-    </div>
-  </section>
+    </section>
 
-  <!-- bottom CTA with sliding words -->
-  <section class="container mb-5">
-    <div class="card bg-gradient p-5 text-center" style="background: linear-gradient(145deg, #001c26, #002b36);">
-      <h2 class="display-4 glitch">Learn cybersecurity, <br> invest in your <span class="text-warning animate__animated animate__flash animate__infinite">future</span></h2>
-      <div class="mt-4">
-        <a href="#" class="btn btn-glow btn-lg px-5">Start for Free</a>
-        <a href="#" class="btn btn-outline-light btn-lg ml-3 px-5">For Business</a>
-      </div>
-    </div>
-  </section>
-</main>
+    <!-- ============================================
+         LEARNING ROADMAP
+    ============================================ -->
+    <section class="ha-section" id="roadmap">
+        <div class="section-container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">// YOUR JOURNEY</span>
+                <h2 class="section-title">
+                    THE <span class="accent">HACKER</span> ROADMAP
+                </h2>
+                <p class="section-subtitle">
+                    A structured 6-phase path from complete beginner to elite cybersecurity professional.
+                </p>
+            </div>
 
-<!-- footer simplified -->
-<footer class="bg-dark py-4 border-top border-info">
-  <div class="container d-flex justify-content-between">
-    <span>© 2026 Hacker Academy by ps</span>
-    <span>
-      <a href="#" class="text-info mx-2">Privacy</a> | 
-      <a href="#" class="text-info mx-2">Terms</a> |
-      <a href="#" class="text-info mx-2">FAQ</a>
-    </span>
-  </div>
-</footer>
+            <div class="roadmap-wrap">
+                <div class="roadmap-line"></div>
 
-<!-- scripts -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
-<!-- simple counter animation -->
-<script>
-  (function() {
-    // quick fake counter animation (just for show)
-    let counters = document.querySelectorAll('.stat-number');
-    counters.forEach(c => {
-      let val = c.innerText.replace(/[^0-9.]/g, '');
-      if (val.includes('M')) val = parseFloat(val)*1000000;
-      else val = parseInt(val) || 2600000;
-    });
-  })();
-</script>
-<!-- add a floating glitch effect on title -->
-<script>
-  setInterval(() => {
-    let g = document.querySelector('.glitch');
-    if(g) g.style.transform = `translate(${Math.random()*2-1}px, ${Math.random()*2-1}px)`;
-  }, 200);
-</script>
+                <div class="roadmap-item" data-aos="fade-right">
+                    <div class="roadmap-content">
+                        <div class="roadmap-step">PHASE 01</div>
+                        <h3 class="roadmap-title">Foundation</h3>
+                        <p class="roadmap-desc">Master networking, Linux, Windows internals, and core programming fundamentals.</p>
+                    </div>
+                    <div class="roadmap-dot"></div>
+                    <div></div>
+                </div>
+
+                <div class="roadmap-item" data-aos="fade-left">
+                    <div></div>
+                    <div class="roadmap-dot"></div>
+                    <div class="roadmap-content">
+                        <div class="roadmap-step">PHASE 02</div>
+                        <h3 class="roadmap-title">Security Basics</h3>
+                        <p class="roadmap-desc">Learn cryptography, security principles, threat modeling, and defensive strategies.</p>
+                    </div>
+                </div>
+
+                <div class="roadmap-item" data-aos="fade-right">
+                    <div class="roadmap-content">
+                        <div class="roadmap-step">PHASE 03</div>
+                        <h3 class="roadmap-title">Offensive Security</h3>
+                        <p class="roadmap-desc">Penetration testing, web app hacking, network exploitation, and red team operations.</p>
+                    </div>
+                    <div class="roadmap-dot"></div>
+                    <div></div>
+                </div>
+
+                <div class="roadmap-item" data-aos="fade-left">
+                    <div></div>
+                    <div class="roadmap-dot"></div>
+                    <div class="roadmap-content">
+                        <div class="roadmap-step">PHASE 04</div>
+                        <h3 class="roadmap-title">SOC & Defense</h3>
+                        <p class="roadmap-desc">SIEM, threat hunting, incident response, malware analysis, and blue team mastery.</p>
+                    </div>
+                </div>
+
+                <div class="roadmap-item" data-aos="fade-right">
+                    <div class="roadmap-content">
+                        <div class="roadmap-step">PHASE 05</div>
+                        <h3 class="roadmap-title">Specialization</h3>
+                        <p class="roadmap-desc">Choose your path: Cloud Security, AI Security, Mobile Hacking, or Bug Bounty Pro.</p>
+                    </div>
+                    <div class="roadmap-dot"></div>
+                    <div></div>
+                </div>
+
+                <div class="roadmap-item" data-aos="fade-left">
+                    <div></div>
+                    <div class="roadmap-dot"></div>
+                    <div class="roadmap-content">
+                        <div class="roadmap-step">PHASE 06</div>
+                        <h3 class="roadmap-title">Elite Professional</h3>
+                        <p class="roadmap-desc">Industry certifications, career placement, and joining the global cyber elite.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         AI TUTOR PREVIEW
+    ============================================ -->
+    <section class="ha-section" id="ai-tutor">
+        <div class="section-container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">// AI-POWERED LEARNING</span>
+                <h2 class="section-title">
+                    MEET YOUR <span class="accent">AI MENTOR</span>
+                </h2>
+                <p class="section-subtitle">
+                    Powered by Google Gemini — your 24/7 personal cybersecurity tutor that never sleeps.
+                </p>
+            </div>
+
+            <div class="ai-preview">
+                <div data-aos="fade-right">
+                    <h3 style="font-family: var(--font-display); font-size: 1.8rem; margin-bottom: 20px;">
+                        Ask Anything. <span style="color: var(--neon-green);">Learn Instantly.</span>
+                    </h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 24px; line-height: 1.8;">
+                        Our AI tutor understands cybersecurity deeply. Ask it to explain SQL injection,
+                        debug your Python exploit, analyze a pcap file, or guide you through a CTF challenge.
+                    </p>
+                    <ul style="list-style: none;">
+                        <li style="padding: 12px 0; display: flex; gap: 14px; align-items: center;">
+                            <i class="fas fa-check-circle" style="color: var(--neon-green); font-size: 1.2rem;"></i>
+                            <span>Real-time code analysis & debugging</span>
+                        </li>
+                        <li style="padding: 12px 0; display: flex; gap: 14px; align-items: center;">
+                            <i class="fas fa-check-circle" style="color: var(--neon-green); font-size: 1.2rem;"></i>
+                            <span>Personalized learning paths</span>
+                        </li>
+                        <li style="padding: 12px 0; display: flex; gap: 14px; align-items: center;">
+                            <i class="fas fa-check-circle" style="color: var(--neon-green); font-size: 1.2rem;"></i>
+                            <span>CTF challenge walkthroughs</span>
+                        </li>
+                        <li style="padding: 12px 0; display: flex; gap: 14px; align-items: center;">
+                            <i class="fas fa-check-circle" style="color: var(--neon-green); font-size: 1.2rem;"></i>
+                            <span>Vulnerability explanation & remediation</span>
+                        </li>
+                    </ul>
+                    <a href="dashboard.html" class="btn btn-primary" style="margin-top: 30px;">
+                        <i class="fas fa-robot"></i> Try AI Tutor
+                    </a>
+                </div>
+
+                <div class="ai-chat-mock" data-aos="fade-left">
+                    <div class="ai-chat-header">
+                        <div class="ai-avatar"><i class="fas fa-robot"></i></div>
+                        <div>
+                            <div class="ai-name">HA-AI Tutor</div>
+                            <div class="ai-status">● ONLINE</div>
+                        </div>
+                    </div>
+                    <div class="ai-messages" id="aiMessages">
+                        <div class="ai-msg bot">Hello! I'm your AI cybersecurity mentor. How can I help you today?</div>
+                        <div class="ai-msg user">Explain SQL injection with an example</div>
+                        <div class="ai-msg bot">SQL injection is a code injection technique that exploits vulnerable SQL queries. Example: <code style="background: rgba(0,0,0,0.4); padding: 2px 6px; border-radius: 4px;">' OR '1'='1</code> bypasses authentication...</div>
+                    </div>
+                    <div class="ai-input-mock">
+                        <input type="text" placeholder="Ask me anything about cybersecurity..." readonly>
+                        <button><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         DASHBOARD PREVIEW
+    ============================================ -->
+    <section class="ha-section" id="dashboard-preview">
+        <div class="section-container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">// STUDENT EXPERIENCE</span>
+                <h2 class="section-title">
+                    YOUR <span class="accent">COMMAND CENTER</span>
+                </h2>
+                <p class="section-subtitle">
+                    A premium dashboard designed to track, learn, and dominate your cybersecurity journey.
+                </p>
+            </div>
+
+            <div class="dashboard-preview" data-aos="zoom-in">
+                <div class="dash-header">
+                    <div class="dash-user">
+                        <div class="dash-avatar">PS</div>
+                        <div>
+                            <div style="font-family: var(--font-heading); font-weight: 600;">Welcome, Priyanshu</div>
+                            <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">HABPS-48291037 • ELITE TIER</div>
+                        </div>
+                    </div>
+                    <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--neon-green);">
+                        <i class="fas fa-clock"></i> <span id="liveTime">--:--:--</span>
+                    </div>
+                </div>
+
+                <div class="dash-stats">
+                    <div class="dash-stat">
+                        <div class="dash-stat-value">12</div>
+                        <div class="dash-stat-label">Courses Active</div>
+                    </div>
+                    <div class="dash-stat">
+                        <div class="dash-stat-value">87%</div>
+                        <div class="dash-stat-label">Avg. Progress</div>
+                    </div>
+                    <div class="dash-stat">
+                        <div class="dash-stat-value">#3</div>
+                        <div class="dash-stat-label">Leaderboard</div>
+                    </div>
+                </div>
+
+                <div class="dash-progress">
+                    <div class="dash-progress-title">
+                        <span><i class="fas fa-shield-halved" style="color: var(--neon-green);"></i> Ethical Hacking Mastery</span>
+                        <span style="color: var(--neon-green);">72%</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 72%;"></div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         TESTIMONIALS
+    ============================================ -->
+    <section class="ha-section" id="testimonials">
+        <div class="section-container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">// SUCCESS STORIES</span>
+                <h2 class="section-title">
+                    WHAT OUR <span class="accent">HACKERS</span> SAY
+                </h2>
+                <p class="section-subtitle">
+                    Real stories from students who transformed their careers with Hacker Academy.
+                </p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">Hacker Academy transformed my career. The live labs and AI tutor are unmatched. I landed a SOC Analyst role at a Fortune 500 company within 6 months!</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">AK</div>
+                        <div>
+                            <div class="testimonial-name">Arjun Kumar</div>
+                            <div class="testimonial-role">SOC ANALYST @ TCS</div>
+                            <div class="testimonial-stars">★★★★★</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">The production quality is Netflix-level. Er. Priyanshu Sharma's teaching style makes complex topics feel simple. Best investment I ever made.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SM</div>
+                        <div>
+                            <div class="testimonial-name">Sneha Mehta</div>
+                            <div class="testimonial-role">PENTESTER @ INFOSEC LTD</div>
+                            <div class="testimonial-stars">★★★★★</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">From zero coding knowledge to bug bounty hunter earning $10K/month. The structured roadmap and mentorship made it possible.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">RV</div>
+                        <div>
+                            <div class="testimonial-name">Rohan Verma</div>
+                            <div class="testimonial-role">BUG BOUNTY HUNTER</div>
+                            <div class="testimonial-stars">★★★★★</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">The AI tutor is a game-changer. It's like having a senior security engineer available 24/7 to answer every question instantly.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">NP</div>
+                        <div>
+                            <div class="testimonial-name">Neha Patel</div>
+                            <div class="testimonial-role">SECURITY ENGINEER</div>
+                            <div class="testimonial-stars">★★★★★</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FAQ SECTION
+    ============================================ -->
+    <section class="ha-section" id="faq">
+        <div class="section-container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">// FAQ</span>
+                <h2 class="section-title">
+                    FREQUENTLY <span class="accent">ASKED</span>
+                </h2>
+                <p class="section-subtitle">
+                    Everything you need to know about Hacker Academy and our programs.
+                </p>
+            </div>
+
+            <div class="faq-wrap">
+                <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-question">
+                        <span>Who is Hacker Academy for?</span>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Hacker Academy is designed for anyone passionate about cybersecurity — from complete beginners to working professionals looking to upskill. Our structured roadmap ensures every student progresses at their own pace.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-question">
+                        <span>Do I need prior coding experience?</span>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            No! We start from absolute zero. Our Phase 01 foundation courses cover Linux, networking, and Python basics before moving to advanced topics.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-question">
+                        <span>Are the certificates industry-recognized?</span>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Yes! Our certificates are blockchain-verifiable and recognized by top cybersecurity firms, government agencies, and MNCs worldwide.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-question">
+                        <span>How does the AI Tutor work?</span>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Our AI Tutor is powered by Google Gemini and trained specifically on cybersecurity content. It can explain concepts, debug code, walk through CTFs, and provide personalized learning paths 24/7.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-question">
+                        <span>Is there job placement support?</span>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Absolutely. We have partnerships with 200+ companies and provide resume building, interview prep, and direct placement assistance to our top-performing students.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-question">
+                        <span>Can I access courses on mobile?</span>
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Yes! Hacker Academy is fully responsive and works beautifully on mobile, tablet, and desktop. Learn anywhere, anytime.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         CONTACT SECTION
+    ============================================ -->
+    <section class="ha-section" id="contact">
+        <div class="section-container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">// GET IN TOUCH</span>
+                <h2 class="section-title">
+                    LET'S <span class="accent">CONNECT</span>
+                </h2>
+                <p class="section-subtitle">
+                    Have questions? Our team is ready to help you start your cybersecurity journey.
+                </p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info-card" data-aos="fade-right">
+                    <h3 style="font-family: var(--font-display); font-size: 1.4rem; margin-bottom: 24px;">
+                        Contact Information
+                    </h3>
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon"><i class="fas fa-user-tie"></i></div>
+                        <div>
+                            <div class="contact-info-label">FOUNDER</div>
+                            <div class="contact-info-value">Er. Priyanshu Sharma</div>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <div class="contact-info-label">EMAIL</div>
+                            <div class="contact-info-value">contact@hackeracademy.com</div>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon"><i class="fab fa-whatsapp"></i></div>
+                        <div>
+                            <div class="contact-info-label">WHATSAPP</div>
+                            <div class="contact-info-value">+91 XXXXX XXXXX</div>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon"><i class="fas fa-location-dot"></i></div>
+                        <div>
+                            <div class="contact-info-label">LOCATION</div>
+                            <div class="contact-info-value">India • Global Online</div>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form" data-aos="fade-left" id="contactForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="contactName">Full Name</label>
+                            <input type="text" id="contactName" class="form-input" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="contactEmail">Email</label>
+                            <input type="email" id="contactEmail" class="form-input" placeholder="you@example.com" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="contactSubject">Subject</label>
+                        <input type="text" id="contactSubject" class="form-input" placeholder="How can we help?" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="contactMessage">Message</label>
+                        <textarea id="contactMessage" class="form-textarea" placeholder="Tell us about your goals..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         FOOTER
+    ============================================ -->
+    <footer class="ha-footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="#home" class="nav-logo">
+                    <div class="nav-logo-icon">H</div>
+                    <div>
+                        <span class="nav-logo-text">HACKER ACADEMY</span>
+                        <span class="nav-logo-sub">BY ER. PRIYANSHU SHARMA</span>
+                    </div>
+                </a>
+                <p>
+                    India's premier cybersecurity learning platform. Master ethical hacking,
+                    SOC analysis, penetration testing, and AI security with world-class training.
+                </p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Platform</h4>
+                <ul>
+                    <li><a href="#courses">All Courses</a></li>
+                    <li><a href="#roadmap">Learning Roadmap</a></li>
+                    <li><a href="#ai-tutor">AI Tutor</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#testimonials">Reviews</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                    <li><a href="#">Refund Policy</a></li>
+                    <li><a href="sitemap.xml">Sitemap</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div>
+                © 2026 <strong>Hacker Academy</strong>. All Rights Reserved.
+            </div>
+            <div>
+                Founded & Owned by <strong>Er. Priyanshu Sharma</strong>
+            </div>
+            <div>
+                Made with <i class="fas fa-heart" style="color: var(--neon-pink);"></i> in India
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================
+         BACK TO TOP BUTTON
+    ============================================ -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- ============================================
+         EXTERNAL SCRIPTS (CDN)
+    ============================================ -->
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <!-- Vanta.js (Fog/Net/Globe) -->
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+    <!-- Typed.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <!-- AOS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+    <!-- ============================================
+         APP SCRIPTS
+    ============================================ -->
+    <script src="js/storage.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/app.js"></script>
+
 </body>
 </html>
