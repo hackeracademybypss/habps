@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ============================================
+         HACKER ACADEMY - CERTIFICATE PAGE
+         Founded & Owned by Er. Priyanshu Sharma
+         File: certificate.html
+    ============================================ -->
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Certificate | Hacker Academy - Verified Cybersecurity Credentials</title>
+    <meta name="title" content="Certificate | Hacker Academy - Verified Cybersecurity Credentials">
+    <meta name="description" content="View and download your verified Hacker Academy certificates. Share your achievements on LinkedIn, print official credentials, and showcase your cybersecurity expertise.">
+    <meta name="keywords" content="Hacker Academy Certificate, Cyber Security Certificate, Ethical Hacking Credential, Verified Certificate, SOC Certification, Er. Priyanshu Sharma">
+    <meta name="author" content="Er. Priyanshu Sharma">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#00ff9d">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://hackeracademy.example.com/certificate.html">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23000'/%3E%3Ctext x='50' y='68' font-family='Arial Black' font-size='60' font-weight='900' text-anchor='middle' fill='%2300ff9d'%3EH%3C/text%3E%3C/svg%3E">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hackeracademy.example.com/certificate.html">
+    <meta property="og:title" content="Certificate | Hacker Academy">
+    <meta property="og:description" content="View and download your verified Hacker Academy certificates.">
+    <meta property="og:site_name" content="Hacker Academy">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Certificate | Hacker Academy">
+    <meta name="twitter:description" content="View and download your verified Hacker Academy certificates.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/certificate.css">
+
+    <!-- Critical Inline Styles -->
+    <style>
+        /* Loading Screen */
+        .ha-loader {
+            position: fixed;
+            inset: 0;
+            background: var(--cyber-black);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        .ha-loader.hidden { opacity: 0; visibility: hidden; }
+        .ha-loader-logo {
+            width: 100px; height: 100px;
+            border: 3px solid var(--neon-green);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--neon-green);
+            box-shadow: 0 0 40px var(--neon-green), inset 0 0 40px rgba(0, 255, 157, 0.2);
+            animation: pulseGlow 2s ease-in-out infinite, rotateLogo 4s linear infinite;
+            position: relative;
+        }
+        .ha-loader-logo::before {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            border: 2px dashed var(--neon-blue);
+            border-radius: 24px;
+            animation: rotateLogo 8s linear infinite reverse;
+        }
+        .ha-loader-text {
+            margin-top: 30px;
+            font-family: var(--font-mono);
+            color: var(--neon-green);
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+        }
+        .ha-loader-bar {
+            width: 200px;
+            height: 2px;
+            background: rgba(0, 255, 157, 0.1);
+            margin-top: 20px;
+            overflow: hidden;
+            border-radius: 2px;
+        }
+        .ha-loader-bar::after {
+            content: '';
+            display: block;
+            width: 40%;
+            height: 100%;
+            background: var(--gradient-primary);
+            animation: loadBar 1.5s ease-in-out infinite;
+            box-shadow: 0 0 10px var(--neon-green);
+        }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 40px var(--neon-green), inset 0 0 40px rgba(0, 255, 157, 0.2); }
+            50% { box-shadow: 0 0 80px var(--neon-green), inset 0 0 60px rgba(0, 255, 157, 0.3); }
+        }
+        @keyframes rotateLogo {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes loadBar {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(350%); }
+        }
+
+        /* Toast Container */
+        .toast-container {
+            position: fixed;
+            top: 100px;
+            right: 30px;
+            z-index: 10001;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            pointer-events: none;
+        }
+
+        /* Back Button */
+        .certificate-back {
+            position: fixed;
+            top: 24px;
+            left: 24px;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            color: var(--text-secondary);
+            font-family: var(--font-heading);
+            font-size: 0.82rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .certificate-back:hover {
+            color: var(--neon-green);
+            border-color: var(--neon-green);
+            transform: translateX(-4px);
+            box-shadow: 0 0 20px rgba(0, 255, 157, 0.2);
+        }
+
+        /* Copied State */
+        .copied {
+            background: var(--neon-green) !important;
+            color: var(--cyber-black) !important;
+            border-color: var(--neon-green) !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================
+         LOADING SCREEN
+    ============================================ -->
+    <div class="ha-loader" id="haLoader">
+        <div class="ha-loader-logo">H</div>
+        <div class="ha-loader-text">LOADING CERTIFICATE...</div>
+        <div class="ha-loader-bar"></div>
+    </div>
+
+    <!-- ============================================
+         BACK TO DASHBOARD
+    ============================================ -->
+    <a href="dashboard.html" class="certificate-back">
+        <i class="fas fa-arrow-left"></i> Back to Dashboard
+    </a>
+
+    <!-- ============================================
+         CERTIFICATE LAYOUT
+    ============================================ -->
+    <div class="certificate-layout">
+        <div class="certificate-container">
+            
+            <!-- ============================================
+                 SINGLE CERTIFICATE VIEW
+            ============================================ -->
+            <div class="certificate-preview-section">
+                <div class="certificate-preview-card">
+                    
+                    <!-- Header -->
+                    <div class="certificate-preview-header">
+                        <h2 class="certificate-preview-title">
+                            <i class="fas fa-certificate"></i>
+                            Your Certificate
+                        </h2>
+                        <div class="certificate-preview-actions">
+                            <button class="btn btn-ghost btn-sm" id="copyIdBtn">
+                                <i class="fas fa-copy"></i> Copy ID
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- ============================================
+                         CERTIFICATE TEMPLATE (A4 Landscape)
+                    ============================================ -->
+                    <div class="certificate-template">
+                        
+                        <!-- Corner Decorations -->
+                        <div class="certificate-corner tl"></div>
+                        <div class="certificate-corner tr"></div>
+                        <div class="certificate-corner bl"></div>
+                        <div class="certificate-corner br"></div>
+
+                        <!-- Certificate Content -->
+                        <div class="certificate-content">
+                            
+                            <!-- Logo -->
+                            <div class="certificate-logo">
+                                <div class="certificate-logo-icon">H</div>
+                                <div class="certificate-logo-text">
+                                    <div class="certificate-logo-title">HACKER ACADEMY</div>
+                                    <div class="certificate-logo-sub">BY ER. PRIYANSHU SHARMA</div>
+                                </div>
+                            </div>
+
+                            <!-- Heading -->
+                            <h1 class="certificate-heading">Certificate of Completion</h1>
+                            <div class="certificate-subheading">This is to certify that</div>
+
+                            <!-- Recipient -->
+                            <div class="certificate-recipient">Student Name</div>
+
+                            <!-- Course -->
+                            <div class="certificate-course">Has successfully completed the course in</div>
+                            <h3 class="certificate-course" style="font-size: 1.5rem; margin-top: 8px;">Course Name</h3>
+
+                            <!-- Description -->
+                            <p class="certificate-description">
+                                This certificate is proudly presented for successfully completing the course at Hacker Academy, 
+                                demonstrating exceptional knowledge and skills in cybersecurity.
+                            </p>
+
+                            <!-- Details -->
+                            <div class="certificate-details">
+                                <div class="certificate-detail-item">
+                                    <div class="certificate-detail-label">Issue Date</div>
+                                    <div class="certificate-detail-value date" id="certificateDate">—</div>
+                                </div>
+
+                                <div class="certificate-signature">
+                                    <div class="certificate-signature-line"></div>
+                                    <div class="certificate-signature-name">Er. Priyanshu Sharma</div>
+                                    <div class="certificate-signature-title">Founder & CEO</div>
+                                </div>
+
+                                <div class="certificate-detail-item">
+                                    <div class="certificate-detail-label">Certificate ID</div>
+                                    <div class="certificate-detail-value" id="certificateId">—</div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ============================================
+                 CERTIFICATE DETAILS
+            ============================================ -->
+            <div class="certificate-details-section">
+                <div class="certificate-details-header">
+                    <h3 class="certificate-details-title">
+                        <i class="fas fa-info-circle"></i>
+                        Certificate Details
+                    </h3>
+                </div>
+                <div class="certificate-info-grid">
+                    <!-- Details will be rendered here by JS -->
+                </div>
+            </div>
+
+            <!-- ============================================
+                 CERTIFICATE ACTIONS
+            ============================================ -->
+            <div class="certificate-actions-section">
+                <h3 class="certificate-actions-title">
+                    <i class="fas fa-share-nodes"></i>
+                    Share & Download
+                </h3>
+                <p style="color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 20px;">
+                    Share your achievement with the world or download a copy for your records.
+                </p>
+                <div class="certificate-actions-grid">
+                    <button class="certificate-action-btn download" id="downloadBtn">
+                        <i class="fas fa-download"></i>
+                        <span>Download PDF</span>
+                    </button>
+                    <button class="certificate-action-btn share" id="shareBtn">
+                        <i class="fas fa-share"></i>
+                        <span>Share</span>
+                    </button>
+                    <button class="certificate-action-btn print" id="printBtn">
+                        <i class="fas fa-print"></i>
+                        <span>Print</span>
+                    </button>
+                    <button class="certificate-action-btn linkedin" id="linkedinBtn">
+                        <i class="fab fa-linkedin-in"></i>
+                        <span>Add to LinkedIn</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ============================================
+                 CERTIFICATE LIST SECTION
+            ============================================ -->
+            <div class="certificate-list-section">
+                <div class="certificate-list-header">
+                    <h3 class="certificate-list-title">
+                        <i class="fas fa-award"></i>
+                        All My Certificates
+                        <span class="certificate-list-count">0</span>
+                    </h3>
+                </div>
+                <div class="certificates-grid" id="certificatesGrid">
+                    <!-- Certificate cards will be rendered here -->
+                </div>
+            </div>
+
+            <!-- ============================================
+                 EMPTY STATE
+            ============================================ -->
+            <div class="certificate-empty-state" style="display: none;">
+                <div class="certificate-empty-icon">
+                    <i class="fas fa-certificate"></i>
+                </div>
+                <h3 class="certificate-empty-title">No Certificates Yet</h3>
+                <p class="certificate-empty-text">
+                    Complete courses and pass quizzes to earn verified certificates. 
+                    Start your learning journey today!
+                </p>
+                <a href="dashboard.html" class="btn btn-primary">
+                    <i class="fas fa-rocket"></i> Start Learning
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ============================================
+         EXTERNAL SCRIPTS
+    ============================================ -->
+    <script src="js/storage.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/certificate.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,1622 @@
+/* ============================================
+   HACKER ACADEMY — RESPONSIVE STYLESHEET
+   Premium Cyberpunk Responsive System
+   Founded & Owned by Er. Priyanshu Sharma
+   File: css/responsive.css
+   Version: 1.0.0
+   
+   BREAKPOINTS:
+   - 1400px : Large Desktop
+   - 1200px : Desktop
+   - 992px  : Small Desktop / Landscape Tablet
+   - 768px  : Tablet Portrait
+   - 576px  : Large Mobile
+   - 480px  : Mobile
+   - 380px  : Small Mobile
+============================================ */
+
+/* ============================================
+   1. RESPONSIVE UTILITIES
+============================================ */
+.show-mobile { display: none !important; }
+.show-tablet { display: none !important; }
+.hide-mobile { display: block !important; }
+.hide-tablet { display: block !important; }
+
+/* ============================================
+   2. LARGE DESKTOP (max-width: 1400px)
+============================================ */
+@media (max-width: 1400px) {
+    .section-container {
+        max-width: 1200px;
+    }
+    
+    .nav-container {
+        max-width: 1200px;
+    }
+    
+    .footer-grid {
+        max-width: 1200px;
+    }
+    
+    .hero-stats {
+        max-width: 800px;
+    }
+    
+    .roadmap-wrap {
+        max-width: 800px;
+    }
+}
+
+/* ============================================
+   3. DESKTOP (max-width: 1200px)
+============================================ */
+@media (max-width: 1200px) {
+    /* Typography Adjustments */
+    .hero-title {
+        font-size: clamp(2.2rem, 6vw, 4.5rem);
+    }
+    
+    .section-title {
+        font-size: clamp(1.8rem, 4vw, 3rem);
+    }
+    
+    /* Navigation */
+    .nav-menu {
+        gap: 28px;
+    }
+    
+    .nav-link {
+        font-size: 0.9rem;
+    }
+    
+    /* Hero */
+    .hero-stats {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+    }
+    
+    .stat-card {
+        padding: 20px 14px;
+    }
+    
+    .stat-number {
+        font-size: clamp(1.4rem, 2.5vw, 2rem);
+    }
+    
+    /* About */
+    .about-grid {
+        gap: 40px;
+    }
+    
+    /* Courses */
+    .courses-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 22px;
+    }
+    
+    /* AI Preview */
+    .ai-preview {
+        gap: 40px;
+    }
+    
+    /* Contact */
+    .contact-grid {
+        gap: 36px;
+    }
+    
+    /* Footer */
+    .footer-grid {
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        gap: 40px;
+    }
+}
+
+/* ============================================
+   4. SMALL DESKTOP / LANDSCAPE TABLET (max-width: 992px)
+============================================ */
+@media (max-width: 992px) {
+    /* Section Padding */
+    .ha-section {
+        padding: 80px 24px;
+    }
+    
+    /* Typography */
+    .hero-title {
+        font-size: clamp(2rem, 5.5vw, 3.8rem);
+        letter-spacing: -1px;
+    }
+    
+    .section-title {
+        font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+    }
+    
+    .section-subtitle {
+        font-size: 1rem;
+    }
+    
+    /* Hero Stats */
+    .hero-stats {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 500px;
+    }
+    
+    /* About Section */
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    
+    .about-visual {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    .about-content {
+        text-align: center;
+    }
+    
+    .about-content h2 {
+        text-align: center;
+    }
+    
+    .about-features {
+        max-width: 600px;
+        margin: 30px auto 0;
+    }
+    
+    /* Features Grid */
+    .features-grid {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 22px;
+    }
+    
+    /* Roadmap */
+    .roadmap-wrap {
+        max-width: 700px;
+    }
+    
+    .roadmap-line {
+        left: 24px;
+    }
+    
+    .roadmap-item {
+        grid-template-columns: auto 1fr;
+        gap: 20px;
+    }
+    
+    .roadmap-item:nth-child(odd) .roadmap-content,
+    .roadmap-item:nth-child(even) .roadmap-content {
+        grid-column: 2;
+        text-align: left;
+    }
+    
+    .roadmap-dot {
+        grid-column: 1;
+    }
+    
+    .roadmap-item > div:last-child {
+        display: none;
+    }
+    
+    /* AI Preview */
+    .ai-preview {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+    
+    .ai-preview > div:first-child {
+        text-align: center;
+    }
+    
+    .ai-preview ul {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    
+    .ai-preview ul li {
+        justify-content: flex-start;
+        text-align: left;
+    }
+    
+    .ai-chat-mock {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    
+    /* Testimonials */
+    .testimonials-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 22px;
+    }
+    
+    /* Contact */
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .contact-info-card,
+    .contact-form {
+        max-width: 600px;
+        margin: 0 auto;
+        width: 100%;
+    }
+    
+    /* Footer */
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+    }
+    
+    .footer-brand {
+        grid-column: 1 / -1;
+        text-align: center;
+    }
+    
+    .footer-social {
+        justify-content: center;
+    }
+    
+    /* Dashboard Preview */
+    .dash-stats {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    /* Modal */
+    .modal {
+        max-width: 90%;
+    }
+    
+    /* Toast */
+    .toast-container {
+        right: 20px;
+        left: 20px;
+    }
+    
+    .toast {
+        min-width: auto;
+        max-width: 100%;
+    }
+}
+
+/* ============================================
+   5. TABLET PORTRAIT (max-width: 768px)
+============================================ */
+@media (max-width: 768px) {
+    /* Hide cursor glow on touch devices */
+    .cursor-glow {
+        display: none !important;
+    }
+    
+    /* Disable heavy animations on mobile */
+    .ha-loader-logo::before {
+        animation-duration: 12s;
+    }
+    
+    /* Section Padding */
+    .ha-section {
+        padding: 70px 20px;
+    }
+    
+    .section-header {
+        margin-bottom: 50px;
+    }
+    
+    /* Navigation */
+    .ha-nav {
+        padding: 14px 0;
+    }
+    
+    .nav-container {
+        padding: 0 20px;
+    }
+    
+    .nav-logo {
+        font-size: 1.2rem;
+    }
+    
+    .nav-logo-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+    
+    .nav-logo-sub {
+        font-size: 0.6rem;
+        letter-spacing: 2px;
+    }
+    
+    .nav-toggle {
+        display: flex;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 68px;
+        left: 0;
+        right: 0;
+        background: rgba(5, 5, 10, 0.98);
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
+        flex-direction: column;
+        padding: 30px 20px;
+        gap: 0;
+        transform: translateY(-150%);
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        border-bottom: 1px solid var(--glass-border);
+        max-height: calc(100vh - 68px);
+        overflow-y: auto;
+    }
+    
+    .nav-menu.active {
+        transform: translateY(0);
+    }
+    
+    .nav-menu li {
+        width: 100%;
+        border-bottom: 1px solid var(--glass-border);
+    }
+    
+    .nav-menu li:last-child {
+        border-bottom: none;
+    }
+    
+    .nav-link {
+        display: block;
+        padding: 18px 0;
+        font-size: 1rem;
+        letter-spacing: 2px;
+    }
+    
+    .nav-actions .btn-ghost {
+        display: none;
+    }
+    
+    .nav-actions .btn-primary {
+        padding: 10px 20px;
+        font-size: 0.8rem;
+    }
+    
+    /* Hero */
+    .ha-hero {
+        padding: 100px 20px 60px;
+        min-height: 100vh;
+    }
+    
+    .hero-badge {
+        font-size: 0.7rem;
+        padding: 6px 16px;
+        letter-spacing: 1.5px;
+        margin-bottom: 24px;
+    }
+    
+    .hero-title {
+        font-size: clamp(1.8rem, 7vw, 3rem);
+        margin-bottom: 20px;
+    }
+    
+    .hero-typed-wrap {
+        font-size: clamp(0.9rem, 3vw, 1.1rem);
+        margin-bottom: 24px;
+    }
+    
+    .hero-description {
+        font-size: 0.95rem;
+        margin-bottom: 32px;
+        padding: 0 10px;
+    }
+    
+    .hero-cta {
+        flex-direction: column;
+        gap: 14px;
+        margin-bottom: 50px;
+    }
+    
+    .hero-cta .btn {
+        width: 100%;
+        max-width: 320px;
+    }
+    
+    /* About Features */
+    .about-features {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .about-feature {
+        padding: 12px 16px;
+    }
+    
+    /* Courses Filter */
+    .courses-filter {
+        gap: 8px;
+        margin-bottom: 40px;
+    }
+    
+    .filter-btn {
+        padding: 8px 16px;
+        font-size: 0.75rem;
+        letter-spacing: 1.5px;
+    }
+    
+    /* Courses Grid */
+    .courses-grid {
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 20px;
+    }
+    
+    .course-body {
+        padding: 18px;
+    }
+    
+    .course-title {
+        font-size: 1.1rem;
+    }
+    
+    /* Roadmap */
+    .roadmap-content {
+        padding: 20px;
+    }
+    
+    .roadmap-title {
+        font-size: 1.05rem;
+    }
+    
+    .roadmap-desc {
+        font-size: 0.85rem;
+    }
+    
+    /* AI Chat */
+    .ai-chat-mock {
+        padding: 22px;
+    }
+    
+    .ai-messages {
+        min-height: 220px;
+    }
+    
+    .ai-msg {
+        font-size: 0.85rem;
+        padding: 10px 14px;
+    }
+    
+    /* Dashboard Preview */
+    .dashboard-preview {
+        padding: 20px;
+    }
+    
+    .dash-header {
+        flex-direction: column;
+        gap: 14px;
+        align-items: flex-start;
+    }
+    
+    .dash-stats {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .dash-stat {
+        padding: 14px;
+    }
+    
+    /* Testimonials */
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .testimonial-card {
+        padding: 26px 22px;
+    }
+    
+    /* FAQ */
+    .faq-question {
+        padding: 18px 20px;
+        font-size: 0.95rem;
+    }
+    
+    .faq-answer-inner {
+        padding: 0 20px 18px;
+        font-size: 0.9rem;
+    }
+    
+    /* Contact */
+    .contact-info-card,
+    .contact-form {
+        padding: 26px;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    
+    /* Footer */
+    .ha-footer {
+        padding: 50px 20px 24px;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        margin-bottom: 36px;
+    }
+    
+    .footer-col {
+        text-align: center;
+    }
+    
+    .footer-col h4 {
+        font-size: 0.95rem;
+    }
+    
+    .footer-col ul li a {
+        font-size: 0.88rem;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+        padding-top: 24px;
+        font-size: 0.75rem;
+    }
+    
+    /* Back to Top */
+    .back-to-top {
+        width: 44px;
+        height: 44px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 1rem;
+    }
+    
+    /* Modal */
+    .modal-overlay {
+        padding: 16px;
+    }
+    
+    .modal-header,
+    .modal-body,
+    .modal-footer {
+        padding: 20px;
+    }
+    
+    .modal-title {
+        font-size: 1.05rem;
+    }
+    
+    /* Toast */
+    .toast-container {
+        top: 80px;
+        right: 16px;
+        left: 16px;
+    }
+    
+    .toast {
+        padding: 14px 16px;
+    }
+    
+    .toast-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+    
+    .toast-title {
+        font-size: 0.88rem;
+    }
+    
+    .toast-message {
+        font-size: 0.8rem;
+    }
+}
+
+/* ============================================
+   6. LARGE MOBILE (max-width: 576px)
+============================================ */
+@media (max-width: 576px) {
+    /* Section Padding */
+    .ha-section {
+        padding: 60px 16px;
+    }
+    
+    .section-header {
+        margin-bottom: 40px;
+    }
+    
+    .section-tag {
+        font-size: 0.7rem;
+        padding: 5px 14px;
+        letter-spacing: 3px;
+    }
+    
+    /* Navigation */
+    .nav-container {
+        padding: 0 16px;
+    }
+    
+    .nav-logo-text {
+        font-size: 1.05rem;
+    }
+    
+    .nav-actions .btn-primary {
+        padding: 8px 16px;
+        font-size: 0.75rem;
+        letter-spacing: 1.5px;
+    }
+    
+    /* Hero */
+    .ha-hero {
+        padding: 90px 16px 50px;
+    }
+    
+    .hero-badge {
+        font-size: 0.65rem;
+        padding: 5px 12px;
+        margin-bottom: 20px;
+    }
+    
+    .hero-title {
+        font-size: clamp(1.6rem, 8vw, 2.4rem);
+        letter-spacing: -0.5px;
+    }
+    
+    .hero-typed-wrap {
+        font-size: 0.85rem;
+        margin-bottom: 20px;
+    }
+    
+    .hero-description {
+        font-size: 0.88rem;
+        margin-bottom: 28px;
+    }
+    
+    .hero-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .stat-card {
+        padding: 16px 10px;
+    }
+    
+    .stat-number {
+        font-size: 1.4rem;
+    }
+    
+    .stat-label {
+        font-size: 0.65rem;
+        letter-spacing: 1.5px;
+    }
+    
+    /* About */
+    .about-visual {
+        aspect-ratio: 4/3;
+    }
+    
+    .about-visual-badge {
+        padding: 10px 16px;
+        font-size: 0.75rem;
+    }
+    
+    /* Features */
+    .feature-card {
+        padding: 26px 22px;
+    }
+    
+    .feature-icon {
+        width: 54px;
+        height: 54px;
+        font-size: 1.5rem;
+        margin-bottom: 18px;
+    }
+    
+    .feature-card h3 {
+        font-size: 1.05rem;
+    }
+    
+    .feature-card p {
+        font-size: 0.88rem;
+    }
+    
+    /* Courses */
+    .courses-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+    
+    .course-image {
+        aspect-ratio: 16/9;
+    }
+    
+    .course-badge,
+    .course-level {
+        padding: 5px 10px;
+        font-size: 0.65rem;
+    }
+    
+    .course-title {
+        font-size: 1rem;
+    }
+    
+    .course-meta {
+        font-size: 0.7rem;
+        gap: 12px;
+    }
+    
+    .course-price {
+        font-size: 1.1rem;
+    }
+    
+    .course-enroll {
+        padding: 6px 14px;
+        font-size: 0.72rem;
+    }
+    
+    /* Roadmap */
+    .roadmap-line {
+        left: 18px;
+    }
+    
+    .roadmap-item {
+        gap: 16px;
+        margin-bottom: 30px;
+    }
+    
+    .roadmap-dot {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .roadmap-content {
+        padding: 18px;
+    }
+    
+    .roadmap-step {
+        font-size: 0.7rem;
+    }
+    
+    .roadmap-title {
+        font-size: 0.98rem;
+    }
+    
+    .roadmap-desc {
+        font-size: 0.82rem;
+    }
+    
+    /* AI Preview */
+    .ai-chat-mock {
+        padding: 18px;
+    }
+    
+    .ai-avatar {
+        width: 42px;
+        height: 42px;
+        font-size: 1.2rem;
+    }
+    
+    .ai-name {
+        font-size: 0.95rem;
+    }
+    
+    .ai-status {
+        font-size: 0.7rem;
+    }
+    
+    .ai-input-mock {
+        padding: 10px 14px;
+    }
+    
+    .ai-input-mock input {
+        font-size: 0.85rem;
+    }
+    
+    .ai-input-mock button {
+        width: 32px;
+        height: 32px;
+    }
+    
+    /* Testimonials */
+    .testimonial-card {
+        padding: 22px 18px;
+    }
+    
+    .testimonial-quote {
+        font-size: 2.5rem;
+    }
+    
+    .testimonial-text {
+        font-size: 0.9rem;
+        margin-bottom: 18px;
+    }
+    
+    .testimonial-avatar {
+        width: 44px;
+        height: 44px;
+    }
+    
+    .testimonial-name {
+        font-size: 0.92rem;
+    }
+    
+    .testimonial-role {
+        font-size: 0.7rem;
+    }
+    
+    /* Contact */
+    .contact-info-card,
+    .contact-form {
+        padding: 22px 18px;
+    }
+    
+    .contact-info-item {
+        padding: 14px 0;
+        gap: 14px;
+    }
+    
+    .contact-info-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 1.05rem;
+    }
+    
+    .contact-info-label {
+        font-size: 0.7rem;
+    }
+    
+    .contact-info-value {
+        font-size: 0.92rem;
+    }
+    
+    .form-input,
+    .form-textarea,
+    .form-select {
+        padding: 12px 14px;
+        font-size: 0.9rem;
+    }
+    
+    .form-label {
+        font-size: 0.7rem;
+        margin-bottom: 8px;
+    }
+    
+    /* Footer */
+    .ha-footer {
+        padding: 40px 16px 20px;
+    }
+    
+    .footer-brand p {
+        font-size: 0.88rem;
+        margin: 14px 0;
+    }
+    
+    .footer-social a {
+        width: 38px;
+        height: 38px;
+        font-size: 0.9rem;
+    }
+    
+    .footer-col h4 {
+        font-size: 0.88rem;
+        margin-bottom: 16px;
+    }
+    
+    .footer-col ul li {
+        margin-bottom: 10px;
+    }
+    
+    .footer-col ul li a {
+        font-size: 0.82rem;
+    }
+    
+    .footer-bottom {
+        font-size: 0.7rem;
+        padding-top: 20px;
+    }
+    
+    /* Buttons */
+    .btn {
+        padding: 12px 24px;
+        font-size: 0.82rem;
+        letter-spacing: 1.8px;
+    }
+    
+    .btn-lg {
+        padding: 14px 32px;
+        font-size: 0.9rem;
+    }
+    
+    .btn-sm {
+        padding: 7px 14px;
+        font-size: 0.72rem;
+    }
+}
+
+/* ============================================
+   7. MOBILE (max-width: 480px)
+============================================ */
+@media (max-width: 480px) {
+    /* Hero */
+    .hero-title {
+        font-size: clamp(1.5rem, 8.5vw, 2rem);
+    }
+    
+    .hero-typed-wrap {
+        font-size: 0.8rem;
+    }
+    
+    .hero-description {
+        font-size: 0.85rem;
+        padding: 0;
+    }
+    
+    .hero-badge {
+        font-size: 0.6rem;
+        padding: 4px 10px;
+        letter-spacing: 1px;
+    }
+    
+    .hero-stats {
+        gap: 10px;
+    }
+    
+    .stat-card {
+        padding: 14px 8px;
+    }
+    
+    .stat-number {
+        font-size: 1.25rem;
+    }
+    
+    .stat-label {
+        font-size: 0.6rem;
+    }
+    
+    /* About */
+    .about-visual-badge {
+        bottom: 12px;
+        left: 12px;
+        padding: 8px 12px;
+        font-size: 0.68rem;
+    }
+    
+    /* Courses */
+    .courses-filter {
+        gap: 6px;
+    }
+    
+    .filter-btn {
+        padding: 6px 12px;
+        font-size: 0.68rem;
+    }
+    
+    .course-body {
+        padding: 16px;
+    }
+    
+    .course-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .course-enroll {
+        width: 100%;
+        text-align: center;
+    }
+    
+    /* Roadmap */
+    .roadmap-line {
+        left: 14px;
+    }
+    
+    .roadmap-dot {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .roadmap-content {
+        padding: 16px;
+    }
+    
+    .roadmap-step {
+        font-size: 0.65rem;
+        letter-spacing: 1.5px;
+    }
+    
+    .roadmap-title {
+        font-size: 0.92rem;
+    }
+    
+    .roadmap-desc {
+        font-size: 0.78rem;
+    }
+    
+    /* AI Preview */
+    .ai-chat-header {
+        padding-bottom: 14px;
+        margin-bottom: 14px;
+    }
+    
+    .ai-avatar {
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+    }
+    
+    .ai-messages {
+        min-height: 180px;
+        gap: 10px;
+    }
+    
+    .ai-msg {
+        font-size: 0.8rem;
+        padding: 9px 12px;
+        max-width: 90%;
+    }
+    
+    /* Testimonials */
+    .testimonial-quote {
+        font-size: 2rem;
+    }
+    
+    .testimonial-text {
+        font-size: 0.85rem;
+    }
+    
+    /* Contact */
+    .contact-info-item {
+        gap: 12px;
+    }
+    
+    .contact-info-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 0.95rem;
+    }
+    
+    .contact-info-label {
+        font-size: 0.65rem;
+    }
+    
+    .contact-info-value {
+        font-size: 0.85rem;
+    }
+    
+    /* Footer */
+    .footer-social {
+        gap: 8px;
+    }
+    
+    .footer-social a {
+        width: 34px;
+        height: 34px;
+        font-size: 0.85rem;
+    }
+    
+    /* Back to Top */
+    .back-to-top {
+        width: 40px;
+        height: 40px;
+        bottom: 16px;
+        right: 16px;
+        font-size: 0.9rem;
+    }
+    
+    /* Toast */
+    .toast-container {
+        top: 70px;
+        right: 12px;
+        left: 12px;
+    }
+    
+    .toast {
+        padding: 12px 14px;
+        gap: 10px;
+    }
+    
+    .toast-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+    
+    .toast-title {
+        font-size: 0.82rem;
+    }
+    
+    .toast-message {
+        font-size: 0.75rem;
+    }
+    
+    /* Modal */
+    .modal-header,
+    .modal-body,
+    .modal-footer {
+        padding: 16px;
+    }
+    
+    .modal-title {
+        font-size: 0.98rem;
+    }
+    
+    .modal-close {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+/* ============================================
+   8. SMALL MOBILE (max-width: 380px)
+============================================ */
+@media (max-width: 380px) {
+    /* Navigation */
+    .nav-logo-text {
+        font-size: 0.95rem;
+    }
+    
+    .nav-logo-sub {
+        display: none;
+    }
+    
+    .nav-logo-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 1.05rem;
+    }
+    
+    .nav-actions .btn-primary {
+        padding: 7px 12px;
+        font-size: 0.7rem;
+    }
+    
+    /* Hero */
+    .hero-title {
+        font-size: 1.4rem;
+    }
+    
+    .hero-typed-wrap {
+        font-size: 0.75rem;
+    }
+    
+    .hero-description {
+        font-size: 0.8rem;
+    }
+    
+    .hero-stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+    
+    .stat-card {
+        padding: 12px 6px;
+    }
+    
+    .stat-number {
+        font-size: 1.1rem;
+    }
+    
+    .stat-label {
+        font-size: 0.55rem;
+        letter-spacing: 1px;
+    }
+    
+    /* Sections */
+    .ha-section {
+        padding: 50px 14px;
+    }
+    
+    .section-tag {
+        font-size: 0.65rem;
+        padding: 4px 10px;
+    }
+    
+    .section-title {
+        font-size: 1.4rem;
+    }
+    
+    .section-subtitle {
+        font-size: 0.85rem;
+    }
+    
+    /* Features */
+    .feature-card {
+        padding: 22px 18px;
+    }
+    
+    .feature-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 1.3rem;
+    }
+    
+    .feature-card h3 {
+        font-size: 0.98rem;
+    }
+    
+    .feature-card p {
+        font-size: 0.82rem;
+    }
+    
+    /* Courses */
+    .course-title {
+        font-size: 0.95rem;
+    }
+    
+    .course-meta {
+        font-size: 0.65rem;
+        gap: 10px;
+    }
+    
+    /* Roadmap */
+    .roadmap-content {
+        padding: 14px;
+    }
+    
+    .roadmap-title {
+        font-size: 0.88rem;
+    }
+    
+    .roadmap-desc {
+        font-size: 0.75rem;
+    }
+    
+    /* AI Preview */
+    .ai-chat-mock {
+        padding: 14px;
+    }
+    
+    .ai-msg {
+        font-size: 0.75rem;
+        padding: 8px 10px;
+    }
+    
+    /* Testimonials */
+    .testimonial-card {
+        padding: 18px 14px;
+    }
+    
+    .testimonial-text {
+        font-size: 0.82rem;
+    }
+    
+    /* Contact */
+    .contact-info-card,
+    .contact-form {
+        padding: 18px 14px;
+    }
+    
+    /* Footer */
+    .footer-bottom {
+        font-size: 0.65rem;
+    }
+    
+    /* Buttons */
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.75rem;
+        letter-spacing: 1.5px;
+    }
+}
+
+/* ============================================
+   9. LANDSCAPE ORIENTATION
+============================================ */
+@media (max-height: 500px) and (orientation: landscape) {
+    .ha-hero {
+        min-height: auto;
+        padding: 80px 20px 40px;
+    }
+    
+    .hero-title {
+        font-size: clamp(1.5rem, 4vw, 2.2rem);
+        margin-bottom: 16px;
+    }
+    
+    .hero-typed-wrap {
+        font-size: 0.85rem;
+        margin-bottom: 16px;
+    }
+    
+    .hero-description {
+        font-size: 0.85rem;
+        margin-bottom: 24px;
+    }
+    
+    .hero-stats {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+    }
+    
+    .nav-menu {
+        max-height: calc(100vh - 60px);
+    }
+    
+    .modal {
+        max-height: 85vh;
+    }
+}
+
+/* ============================================
+   10. HIGH DPI / RETINA DISPLAYS
+============================================ */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .hero-title,
+    .section-title {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+    }
+    
+    .nav-logo-icon,
+    .feature-icon,
+    .ai-avatar {
+        transform: translateZ(0);
+    }
+}
+
+/* ============================================
+   11. REDUCED MOTION PREFERENCE
+============================================ */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .ha-loader-logo,
+    .ha-loader-logo::before,
+    .ha-loader-bar::after {
+        animation: none !important;
+    }
+    
+    .matrix-canvas {
+        display: none !important;
+    }
+    
+    #vanta-bg {
+        opacity: 0.3 !important;
+    }
+    
+    .scan-line {
+        display: none !important;
+    }
+    
+    .progress-bar::after {
+        animation: none !important;
+    }
+}
+
+/* ============================================
+   12. DARK MODE ENHANCEMENTS (already dark, but for OLED)
+============================================ */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --cyber-black: #000000;
+        --cyber-dark: #000000;
+    }
+    
+    .glass,
+    .card {
+        background: rgba(5, 5, 10, 0.7);
+    }
+}
+
+/* ============================================
+   13. PRINT STYLES
+============================================ */
+@media print {
+    .ha-nav,
+    .ha-footer,
+    .back-to-top,
+    .cursor-glow,
+    .ha-loader,
+    .matrix-canvas,
+    #vanta-bg,
+    .hero-grid-overlay,
+    .hero-vignette,
+    .scan-line {
+        display: none !important;
+    }
+    
+    body {
+        background: white !important;
+        color: black !important;
+    }
+    
+    .ha-section {
+        padding: 20px 0 !important;
+        page-break-inside: avoid;
+    }
+    
+    .glass,
+    .card,
+    .feature-card,
+    .course-card,
+    .testimonial-card {
+        background: white !important;
+        color: black !important;
+        border: 1px solid #ddd !important;
+        box-shadow: none !important;
+        backdrop-filter: none !important;
+    }
+    
+    .text-gradient,
+    .text-gradient-neon,
+    .neon-text {
+        color: black !important;
+        -webkit-text-fill-color: black !important;
+        text-shadow: none !important;
+    }
+    
+    .btn {
+        border: 1px solid black !important;
+        background: white !important;
+        color: black !important;
+    }
+    
+    a {
+        color: black !important;
+        text-decoration: underline !important;
+    }
+    
+    img {
+        max-width: 100% !important;
+        page-break-inside: avoid;
+    }
+    
+    h1, h2, h3, h4 {
+        page-break-after: avoid;
+    }
+}
+
+/* ============================================
+   14. TOUCH DEVICE OPTIMIZATIONS
+============================================ */
+@media (hover: none) and (pointer: coarse) {
+    /* Disable hover effects on touch devices */
+    .card:hover,
+    .feature-card:hover,
+    .course-card:hover,
+    .testimonial-card:hover,
+    .stat-card:hover,
+    .about-feature:hover {
+        transform: none !important;
+    }
+    
+    /* Larger touch targets */
+    .btn {
+        min-height: 44px;
+    }
+    
+    .nav-link {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .faq-question {
+        min-height: 48px;
+    }
+    
+    .accordion-header {
+        min-height: 48px;
+    }
+    
+    /* Disable cursor glow */
+    .cursor-glow {
+        display: none !important;
+    }
+    
+    /* Remove hover underline animations */
+    .nav-link::after {
+        display: none;
+    }
+    
+    /* Active states instead of hover */
+    .btn:active {
+        transform: scale(0.97);
+    }
+    
+    .card:active,
+    .feature-card:active,
+    .course-card:active {
+        transform: scale(0.98);
+        border-color: var(--neon-green);
+    }
+}
+
+/* ============================================
+   15. KEYBOARD NAVIGATION
+============================================ */
+@media (hover: hover) and (pointer: fine) {
+    /* Only apply hover effects on devices with hover capability */
+    .nav-link:hover::after {
+        width: 100%;
+    }
+    
+    .card:hover,
+    .feature-card:hover,
+    .course-card:hover {
+        transform: translateY(-6px);
+    }
+}
+
+/* ============================================
+   16. RESPONSIVE UTILITIES CLASSES
+============================================ */
+@media (max-width: 992px) {
+    .hide-tablet { display: none !important; }
+    .show-tablet { display: block !important; }
+}
+
+@media (max-width: 768px) {
+    .hide-mobile { display: none !important; }
+    .show-mobile { display: block !important; }
+    
+    .text-center-mobile { text-align: center !important; }
+    .text-left-mobile { text-align: left !important; }
+    
+    .grid-2-mobile { grid-template-columns: repeat(2, 1fr) !important; }
+    .grid-1-mobile { grid-template-columns: 1fr !important; }
+    
+    .flex-col-mobile { flex-direction: column !important; }
+    .flex-row-mobile { flex-direction: row !important; }
+}
+
+@media (max-width: 576px) {
+    .grid-1-small { grid-template-columns: 1fr !important; }
+    .text-center-small { text-align: center !important; }
+}
+
+/* ============================================
+   17. SAFE AREA INSETS (Notch Devices)
+============================================ */
+@supports (padding: max(0px)) {
+    .ha-nav {
+        padding-top: max(14px, env(safe-area-inset-top));
+    }
+    
+    .ha-footer {
+        padding-bottom: max(24px, env(safe-area-inset-bottom));
+    }
+    
+    .back-to-top {
+        bottom: max(20px, env(safe-area-inset-bottom));
+        right: max(20px, env(safe-area-inset-right));
+    }
+    
+    .toast-container {
+        top: max(80px, env(safe-area-inset-top));
+        right: max(16px, env(safe-area-inset-right));
+        left: max(16px, env(safe-area-inset-left));
+    }
+}
+
+/* ============================================
+   18. FOLDABLE DEVICES
+============================================ */
+@media (horizontal-viewport-segments: 2) {
+    .hero-stats {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .features-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .courses-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ============================================
+   END OF RESPONSIVE STYLESHEET
+============================================ */

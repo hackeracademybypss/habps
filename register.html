@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ============================================
+         HACKER ACADEMY - REGISTRATION PAGE
+         Founded & Owned by Er. Priyanshu Sharma
+         File: register.html
+    ============================================ -->
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Register | Hacker Academy - Join the Elite Cybersecurity Community</title>
+    <meta name="title" content="Register | Hacker Academy - Join the Elite Cybersecurity Community">
+    <meta name="description" content="Join Hacker Academy and start your journey to becoming an elite cybersecurity professional. Register now for access to 30+ premium courses, AI-powered tutoring, and hands-on labs.">
+    <meta name="keywords" content="Hacker Academy Registration, Cyber Security Course Registration, Ethical Hacking Course, SOC Analyst Training, Penetration Testing Course, Online Cyber Security Learning, Cyber Security Academy, Er. Priyanshu Sharma">
+    <meta name="author" content="Er. Priyanshu Sharma">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#00ff9d">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://hackeracademy.example.com/register.html">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23000'/%3E%3Ctext x='50' y='68' font-family='Arial Black' font-size='60' font-weight='900' text-anchor='middle' fill='%2300ff9d'%3EH%3C/text%3E%3C/svg%3E">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hackeracademy.example.com/register.html">
+    <meta property="og:title" content="Register | Hacker Academy">
+    <meta property="og:description" content="Join Hacker Academy and start your cybersecurity journey today.">
+    <meta property="og:site_name" content="Hacker Academy">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Register | Hacker Academy">
+    <meta name="twitter:description" content="Join Hacker Academy and start your cybersecurity journey today.">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Register - Hacker Academy",
+      "description": "Join Hacker Academy and start your journey to becoming an elite cybersecurity professional.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Hacker Academy",
+        "url": "https://hackeracademy.example.com/"
+      },
+      "about": {
+        "@type": "EducationalOrganization",
+        "name": "Hacker Academy",
+        "founder": "Er. Priyanshu Sharma"
+      }
+    }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/register.css">
+
+    <!-- Critical Inline Styles -->
+    <style>
+        /* Loading Screen */
+        .ha-loader {
+            position: fixed;
+            inset: 0;
+            background: var(--cyber-black);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        .ha-loader.hidden { opacity: 0; visibility: hidden; }
+        .ha-loader-logo {
+            width: 100px; height: 100px;
+            border: 3px solid var(--neon-green);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--neon-green);
+            box-shadow: 0 0 40px var(--neon-green), inset 0 0 40px rgba(0, 255, 157, 0.2);
+            animation: pulseGlow 2s ease-in-out infinite, rotateLogo 4s linear infinite;
+            position: relative;
+        }
+        .ha-loader-logo::before {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            border: 2px dashed var(--neon-blue);
+            border-radius: 24px;
+            animation: rotateLogo 8s linear infinite reverse;
+        }
+        .ha-loader-text {
+            margin-top: 30px;
+            font-family: var(--font-mono);
+            color: var(--neon-green);
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+        }
+        .ha-loader-bar {
+            width: 200px;
+            height: 2px;
+            background: rgba(0, 255, 157, 0.1);
+            margin-top: 20px;
+            overflow: hidden;
+            border-radius: 2px;
+        }
+        .ha-loader-bar::after {
+            content: '';
+            display: block;
+            width: 40%;
+            height: 100%;
+            background: var(--gradient-primary);
+            animation: loadBar 1.5s ease-in-out infinite;
+            box-shadow: 0 0 10px var(--neon-green);
+        }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 40px var(--neon-green), inset 0 0 40px rgba(0, 255, 157, 0.2); }
+            50% { box-shadow: 0 0 80px var(--neon-green), inset 0 0 60px rgba(0, 255, 157, 0.3); }
+        }
+        @keyframes rotateLogo {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes loadBar {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(350%); }
+        }
+
+        /* Cursor Glow */
+        .cursor-glow {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 255, 157, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease-out;
+            mix-blend-mode: screen;
+        }
+
+        /* Matrix Canvas */
+        .register-matrix-canvas {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.12;
+            z-index: 1;
+        }
+
+        /* Floating Particles */
+        .register-particles {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+        .register-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--neon-green);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--neon-green);
+            opacity: 0.5;
+            animation: particleFloat 8s ease-in-out infinite;
+        }
+        .register-particle:nth-child(2n) {
+            background: var(--neon-blue);
+            box-shadow: 0 0 10px var(--neon-blue);
+            animation-duration: 10s;
+        }
+        .register-particle:nth-child(3n) {
+            background: var(--neon-purple);
+            box-shadow: 0 0 10px var(--neon-purple);
+            animation-duration: 12s;
+        }
+        .register-particle:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+        .register-particle:nth-child(2) { top: 60%; left: 80%; animation-delay: 1s; }
+        .register-particle:nth-child(3) { top: 80%; left: 20%; animation-delay: 2s; }
+        .register-particle:nth-child(4) { top: 30%; left: 70%; animation-delay: 3s; }
+        .register-particle:nth-child(5) { top: 50%; left: 40%; animation-delay: 4s; }
+        .register-particle:nth-child(6) { top: 10%; left: 60%; animation-delay: 5s; }
+        .register-particle:nth-child(7) { top: 70%; left: 90%; animation-delay: 6s; }
+        .register-particle:nth-child(8) { top: 40%; left: 5%; animation-delay: 7s; }
+        @keyframes particleFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+            25% { transform: translate(20px, -30px) scale(1.2); opacity: 0.8; }
+            50% { transform: translate(-15px, -60px) scale(0.8); opacity: 0.3; }
+            75% { transform: translate(10px, -90px) scale(1.1); opacity: 0.6; }
+        }
+
+        /* Toast Container */
+        .toast-container {
+            position: fixed;
+            top: 100px;
+            right: 30px;
+            z-index: 10001;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================
+         LOADING SCREEN
+    ============================================ -->
+    <div class="ha-loader" id="haLoader">
+        <div class="ha-loader-logo">H</div>
+        <div class="ha-loader-text">INITIALIZING SYSTEM...</div>
+        <div class="ha-loader-bar"></div>
+    </div>
+
+    <!-- ============================================
+         CURSOR GLOW EFFECT
+    ============================================ -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- ============================================
+         MATRIX RAIN CANVAS
+    ============================================ -->
+    <canvas class="register-matrix-canvas" id="matrixCanvas"></canvas>
+
+    <!-- ============================================
+         FLOATING PARTICLES
+    ============================================ -->
+    <div class="register-particles">
+        <div class="register-particle"></div>
+        <div class="register-particle"></div>
+        <div class="register-particle"></div>
+        <div class="register-particle"></div>
+        <div class="register-particle"></div>
+        <div class="register-particle"></div>
+        <div class="register-particle"></div>
+        <div class="register-particle"></div>
+    </div>
+
+    <!-- ============================================
+         BACK TO HOME LINK
+    ============================================ -->
+    <a href="index.html" class="register-back-home">
+        <i class="fas fa-arrow-left"></i> Back to Home
+    </a>
+
+    <!-- ============================================
+         REGISTRATION LAYOUT
+    ============================================ -->
+    <div class="register-layout">
+        
+        <!-- Grid Overlay -->
+        <div class="register-grid-overlay"></div>
+
+        <!-- ============================================
+             BRANDING PANEL (LEFT)
+        ============================================ -->
+        <div class="register-brand-panel">
+            <div class="register-brand-top">
+                <!-- Logo -->
+                <div class="register-brand-logo">
+                    <div class="register-brand-logo-icon">H</div>
+                    <div class="register-brand-logo-text">
+                        <span class="register-brand-logo-title">HACKER ACADEMY</span>
+                        <span class="register-brand-logo-sub">BY ER. PRIYANSHU SHARMA</span>
+                    </div>
+                </div>
+
+                <!-- Badge -->
+                <div class="register-brand-badge">
+                    <span class="pulse-dot"></span>
+                    <span>JOIN 10,000+ STUDENTS</span>
+                </div>
+
+                <!-- Title -->
+                <h1 class="register-brand-title">
+                    BECOME A
+                    <span class="gradient-text">CYBER WARRIOR</span>
+                </h1>
+
+                <!-- Description -->
+                <p class="register-brand-description">
+                    Join the most elite cybersecurity learning platform. Master ethical hacking, 
+                    SOC analysis, penetration testing, and AI security with world-class training.
+                </p>
+
+                <!-- Perks -->
+                <div class="register-brand-perks">
+                    <div class="register-brand-perk">
+                        <div class="register-brand-perk-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="register-brand-perk-text">
+                            <strong>30+ Premium Courses</strong> — From beginner to expert
+                        </div>
+                    </div>
+                    <div class="register-brand-perk">
+                        <div class="register-brand-perk-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="register-brand-perk-text">
+                            <strong>AI-Powered Tutor</strong> — 24/7 personalized guidance
+                        </div>
+                    </div>
+                    <div class="register-brand-perk">
+                        <div class="register-brand-perk-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div class="register-brand-perk-text">
+                            <strong>Verified Certificates</strong> — Industry-recognized credentials
+                        </div>
+                    </div>
+                    <div class="register-brand-perk">
+                        <div class="register-brand-perk-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="register-brand-perk-text">
+                            <strong>Global Community</strong> — Connect with 10,000+ hackers
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="register-brand-bottom">
+                <div class="register-brand-stats">
+                    <div class="register-brand-stat">
+                        <div class="register-brand-stat-value">30+</div>
+                        <div class="register-brand-stat-label">Courses</div>
+                    </div>
+                    <div class="register-brand-stat">
+                        <div class="register-brand-stat-value">500+</div>
+                        <div class="register-brand-stat-label">Lessons</div>
+                    </div>
+                    <div class="register-brand-stat">
+                        <div class="register-brand-stat-value">10K+</div>
+                        <div class="register-brand-stat-label">Students</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================
+             REGISTRATION FORM PANEL (RIGHT)
+        ============================================ -->
+        <div class="register-form-panel">
+            <div class="register-form-wrapper">
+                
+                <!-- Header -->
+                <div class="register-form-header">
+                    <div class="register-form-tag">
+                        <i class="fas fa-user-plus"></i>
+                        CREATE ACCOUNT
+                    </div>
+                    <h2 class="register-form-title">
+                        START YOUR <span class="accent">JOURNEY</span>
+                    </h2>
+                    <p class="register-form-subtitle">
+                        Already have an account? <a href="login.html">Login here</a>
+                    </p>
+                </div>
+
+                <!-- ============================================
+                     STEP PROGRESS INDICATOR
+                ============================================ -->
+                <div class="register-steps">
+                    <div class="register-steps-progress"></div>
+                    
+                    <div class="register-step active" data-step="1">
+                        <div class="register-step-circle">1</div>
+                        <div class="register-step-label">Personal</div>
+                    </div>
+                    
+                    <div class="register-step" data-step="2">
+                        <div class="register-step-circle">2</div>
+                        <div class="register-step-label">Credentials</div>
+                    </div>
+                    
+                    <div class="register-step" data-step="3">
+                        <div class="register-step-circle">3</div>
+                        <div class="register-step-label">Location</div>
+                    </div>
+                    
+                    <div class="register-step" data-step="4">
+                        <div class="register-step-circle">4</div>
+                        <div class="register-step-label">Final</div>
+                    </div>
+                </div>
+
+                <!-- ============================================
+                     STEP 1: PERSONAL INFORMATION
+                ============================================ -->
+                <div class="register-step-content active" data-step="1">
+                    <div class="register-step-section-title">
+                        <i class="fas fa-user"></i>
+                        Personal Information
+                    </div>
+                    <p class="register-step-section-desc">
+                        Tell us about yourself. This information helps us personalize your learning experience.
+                    </p>
+
+                    <form class="register-form" id="step1Form">
+                        <div class="register-form-row">
+                            <div class="register-form-group">
+                                <label class="register-form-label" for="fullName">
+                                    Full Name <span class="required">*</span>
+                                </label>
+                                <div class="register-input-wrap">
+                                    <i class="fas fa-user register-input-icon"></i>
+                                    <input type="text" id="fullName" class="register-form-input" 
+                                           placeholder="John Doe" required>
+                                </div>
+                                <div class="register-form-error"></div>
+                            </div>
+
+                            <div class="register-form-group">
+                                <label class="register-form-label" for="fatherName">
+                                    Father's Name
+                                </label>
+                                <div class="register-input-wrap">
+                                    <i class="fas fa-user-tie register-input-icon"></i>
+                                    <input type="text" id="fatherName" class="register-form-input" 
+                                           placeholder="Father's name">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="register-form-row">
+                            <div class="register-form-group">
+                                <label class="register-form-label" for="motherName">
+                                    Mother's Name
+                                </label>
+                                <div class="register-input-wrap">
+                                    <i class="fas fa-user register-input-icon"></i>
+                                    <input type="text" id="motherName" class="register-form-input" 
+                                           placeholder="Mother's name">
+                                </div>
+                            </div>
+
+                            <div class="register-form-group">
+                                <label class="register-form-label" for="regEmail">
+                                    Email Address <span class="required">*</span>
+                                </label>
+                                <div class="register-input-wrap">
+                                    <i class="fas fa-envelope register-input-icon"></i>
+                                    <input type="email" id="regEmail" class="register-form-input" 
+                                           placeholder="you@example.com" required>
+                                </div>
+                                <div class="register-form-error"></div>
+                            </div>
+                        </div>
+
+                        <div class="register-form-group full-width">
+                            <label class="register-form-label" for="whatsapp">
+                                WhatsApp Number <span class="required">*</span>
+                            </label>
+                            <div class="register-input-wrap">
+                                <i class="fab fa-whatsapp register-input-icon"></i>
+                                <input type="tel" id="whatsapp" class="register-form-input" 
+                                       placeholder="+91 9876543210" required>
+                            </div>
+                            <div class="register-form-helper">
+                                <i class="fas fa-info-circle"></i>
+                                We'll send important updates to this number
+                            </div>
+                            <div class="register-form-error"></div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- ============================================
+                     STEP 2: ACCOUNT CREDENTIALS
+                ============================================ -->
+                <div class="register-step-content" data-step="2">
+                    <div class="register-step-section-title">
+                        <i class="fas fa-lock"></i>
+                        Account Credentials
+                    </div>
+                    <p class="register-step-section-desc">
+                        Create a secure password to protect your account. Make it strong and memorable.
+                    </p>
+
+                    <form class="register-form" id="step2Form">
+                        <div class="register-form-group">
+                            <label class="register-form-label" for="regPassword">
+                                Password <span class="required">*</span>
+                            </label>
+                            <div class="register-input-wrap">
+                                <i class="fas fa-key register-input-icon"></i>
+                                <input type="password" id="regPassword" class="register-form-input" 
+                                       placeholder="Create a strong password" required>
+                                <button type="button" class="register-input-toggle" id="passwordToggle1">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            
+                            <!-- Password Strength Meter -->
+                            <div class="register-password-strength">
+                                <div class="register-password-strength-bar"></div>
+                                <div class="register-password-strength-bar"></div>
+                                <div class="register-password-strength-bar"></div>
+                                <div class="register-password-strength-bar"></div>
+                                <div class="register-password-strength-text"></div>
+                            </div>
+
+                            <!-- Password Requirements -->
+                            <div class="password-requirements">
+                                <div class="password-requirements-title">Password Requirements</div>
+                                <div class="password-requirement" data-check="length">
+                                    <i class="fas fa-xmark"></i>
+                                    <span>At least 8 characters</span>
+                                </div>
+                                <div class="password-requirement" data-check="uppercase">
+                                    <i class="fas fa-xmark"></i>
+                                    <span>One uppercase letter</span>
+                                </div>
+                                <div class="password-requirement" data-check="lowercase">
+                                    <i class="fas fa-xmark"></i>
+                                    <span>One lowercase letter</span>
+                                </div>
+                                <div class="password-requirement" data-check="number">
+                                    <i class="fas fa-xmark"></i>
+                                    <span>One number</span>
+                                </div>
+                                <div class="password-requirement" data-check="special">
+                                    <i class="fas fa-xmark"></i>
+                                    <span>One special character (!@#$%^&*)</span>
+                                </div>
+                            </div>
+
+                            <div class="register-form-error"></div>
+                        </div>
+
+                        <div class="register-form-group">
+                            <label class="register-form-label" for="confirmPassword">
+                                Confirm Password <span class="required">*</span>
+                            </label>
+                            <div class="register-input-wrap">
+                                <i class="fas fa-key register-input-icon"></i>
+                                <input type="password" id="confirmPassword" class="register-form-input" 
+                                       placeholder="Confirm your password" required>
+                                <button type="button" class="register-input-toggle" id="passwordToggle2">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <div class="register-form-error"></div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- ============================================
+                     STEP 3: LOCATION & EDUCATION
+                ============================================ -->
+                <div class="register-step-content" data-step="3">
+                    <div class="register-step-section-title">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Location & Education
+                    </div>
+                    <p class="register-step-section-desc">
+                        Help us understand your background and location for better course recommendations.
+                    </p>
+
+                    <form class="register-form" id="step3Form">
+                        <div class="register-form-group">
+                            <label class="register-form-label" for="lastEducation">
+                                Last Education <span class="required">*</span>
+                            </label>
+                            <select id="lastEducation" class="register-form-select no-icon" required>
+                                <option value="">Select Education Level</option>
+                                <option value="high-school">High School</option>
+                                <option value="diploma">Diploma</option>
+                                <option value="bachelors">Bachelor's Degree</option>
+                                <option value="masters">Master's Degree</option>
+                                <option value="phd">PhD</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <div class="register-form-error"></div>
+                        </div>
+
+                        <div class="register-form-row-3">
+                            <div class="register-form-group">
+                                <label class="register-form-label" for="country">
+                                    Country <span class="required">*</span>
+                                </label>
+                                <select id="country" class="register-form-select no-icon" required>
+                                    <option value="">Select Country</option>
+                                </select>
+                                <div class="register-form-error"></div>
+                            </div>
+
+                            <div class="register-form-group">
+                                <label class="register-form-label" for="state">
+                                    State <span class="required">*</span>
+                                </label>
+                                <select id="state" class="register-form-select no-icon" required>
+                                    <option value="">Select State</option>
+                                </select>
+                                <div class="register-form-error"></div>
+                            </div>
+
+                            <div class="register-form-group">
+                                <label class="register-form-label" for="city">
+                                    City <span class="required">*</span>
+                                </label>
+                                <select id="city" class="register-form-select no-icon" required>
+                                    <option value="">Select City</option>
+                                </select>
+                                <div class="register-form-error"></div>
+                            </div>
+                        </div>
+
+                        <div class="register-form-group full-width">
+                            <label class="register-form-label" for="address">
+                                Address
+                            </label>
+                            <textarea id="address" class="register-form-textarea no-icon" 
+                                      placeholder="Your full address (optional)" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- ============================================
+                     STEP 4: PHOTO & TERMS
+                ============================================ -->
+                <div class="register-step-content" data-step="4">
+                    <div class="register-step-section-title">
+                        <i class="fas fa-camera"></i>
+                        Photo & Terms
+                    </div>
+                    <p class="register-step-section-desc">
+                        Upload a profile photo and accept our terms to complete your registration.
+                    </p>
+
+                    <form class="register-form" id="step4Form">
+                        <!-- Photo Upload -->
+                        <div class="register-photo-upload">
+                            <input type="file" id="photoInput" accept="image/*">
+                            <div class="register-photo-preview">
+                                <img src="" alt="Profile photo preview">
+                                <i class="fas fa-camera"></i>
+                            </div>
+                            <div class="register-photo-upload-text">Upload Profile Photo</div>
+                            <div class="register-photo-upload-hint">JPG, PNG, WebP or GIF (Max 5MB)</div>
+                            <button type="button" class="register-photo-upload-btn">
+                                <i class="fas fa-upload"></i> Choose Photo
+                            </button>
+                            <button type="button" class="register-photo-remove">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+
+                        <!-- Terms & Conditions -->
+                        <div class="register-terms">
+                            <label class="register-terms-checkbox">
+                                <input type="checkbox" id="termsCheckbox" required>
+                                <span class="register-terms-text">
+                                    I agree to the <a href="#" target="_blank">Terms of Service</a> and 
+                                    <a href="#" target="_blank">Privacy Policy</a> of Hacker Academy. 
+                                    I understand that my data will be processed in accordance with these policies.
+                                </span>
+                            </label>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- ============================================
+                     SUCCESS SCREEN
+                ============================================ -->
+                <div class="register-success">
+                    <div class="register-success-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <h2 class="register-success-title">
+                        WELCOME TO <span class="accent">HACKER ACADEMY!</span>
+                    </h2>
+                    <p class="register-success-text">
+                        Your account has been created successfully. You're now part of the elite cybersecurity community!
+                    </p>
+
+                    <!-- HABPS ID Card -->
+                    <div class="habps-id-card">
+                        <div class="habps-id-label">Your Unique HABPS ID</div>
+                        <div class="habps-id-value">HABPS-00000000</div>
+                        <div class="habps-id-note">
+                            Save this ID! You'll need it to login and track your progress.
+                        </div>
+                        <button class="habps-id-copy">
+                            <i class="fas fa-copy"></i> Copy ID
+                        </button>
+                    </div>
+
+                    <!-- Success Actions -->
+                    <div class="register-success-actions">
+                        <button class="btn btn-primary" id="goToDashboardBtn">
+                            <i class="fas fa-rocket"></i> Go to Dashboard
+                        </button>
+                        <button class="btn btn-ghost" id="goToLoginBtn">
+                            <i class="fas fa-right-to-bracket"></i> Go to Login
+                        </button>
+                    </div>
+
+                    <!-- Info Box -->
+                    <div class="register-success-info">
+                        <i class="fas fa-info-circle"></i>
+                        <div class="register-success-info-content">
+                            <div class="register-success-info-title">What's Next?</div>
+                            <div class="register-success-info-text">
+                                Check your email for a welcome message. Start with our beginner courses 
+                                and join our community forum to connect with other hackers!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============================================
+                     FORM NAVIGATION (Prev/Next/Submit)
+                ============================================ -->
+                <div class="register-form-nav">
+                    <button type="button" class="register-nav-btn prev" id="prevBtn" style="display: none;">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </button>
+                    <button type="button" class="register-nav-btn next" id="nextBtn">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button type="submit" class="register-nav-btn submit" id="submitBtn" style="display: none;">
+                        <span class="btn-text">Create Account</span>
+                        <span class="spinner"></span>
+                        <i class="fas fa-rocket"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ============================================
+         EXTERNAL SCRIPTS
+    ============================================ -->
+    <script src="js/storage.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/register.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ============================================
+         HACKER ACADEMY - ADMIN LOGIN PAGE
+         Founded & Owned by Er. Priyanshu Sharma
+         File: admin/admin-login.html
+    ============================================ -->
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Admin Login | Hacker Academy - Secure Administrative Access</title>
+    <meta name="title" content="Admin Login | Hacker Academy - Secure Administrative Access">
+    <meta name="description" content="Secure administrative login for Hacker Academy management panel. Access student management, course administration, analytics, and system settings.">
+    <meta name="keywords" content="Hacker Academy Admin Login, Admin Panel, Management System, Cyber Security Academy, Er. Priyanshu Sharma">
+    <meta name="author" content="Er. Priyanshu Sharma">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#ff2e9a">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://hackeracademy.example.com/admin/admin-login.html">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23000'/%3E%3Ctext x='50' y='68' font-family='Arial Black' font-size='60' font-weight='900' text-anchor='middle' fill='%23ff2e9a'%3EA%3C/text%3E%3C/svg%3E">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hackeracademy.example.com/admin/admin-login.html">
+    <meta property="og:title" content="Admin Login | Hacker Academy">
+    <meta property="og:description" content="Secure administrative login for Hacker Academy management panel.">
+    <meta property="og:site_name" content="Hacker Academy">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Admin Login | Hacker Academy">
+    <meta name="twitter:description" content="Secure administrative login for Hacker Academy management panel.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/admin.css">
+
+    <!-- ============================================
+         ADMIN LOGIN STYLES (Pink/Purple Theme)
+    ============================================ -->
+    <style>
+        /* Admin Theme Variables */
+        :root {
+            --admin-primary: #ff2e9a;
+            --admin-secondary: #b537f2;
+            --admin-accent: #ff3860;
+            --admin-gradient: linear-gradient(135deg, #ff2e9a 0%, #b537f2 100%);
+            --admin-glow: rgba(255, 46, 154, 0.4);
+        }
+
+        /* Override login.css colors for admin */
+        .auth-brand-logo-icon {
+            border-color: var(--admin-primary) !important;
+            color: var(--admin-primary) !important;
+            box-shadow: 0 0 30px var(--admin-glow) !important;
+        }
+
+        .auth-brand-logo-icon::before {
+            background: linear-gradient(135deg, transparent 40%, rgba(255, 46, 154, 0.3)) !important;
+        }
+
+        .auth-brand-logo-title {
+            background: var(--admin-gradient) !important;
+            -webkit-background-clip: text !important;
+            background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+        }
+
+        .auth-brand-badge {
+            border-color: rgba(255, 46, 154, 0.3) !important;
+            color: var(--admin-primary) !important;
+        }
+
+        .auth-brand-badge .pulse-dot {
+            background: var(--admin-primary) !important;
+            box-shadow: 0 0 10px var(--admin-primary) !important;
+        }
+
+        .auth-brand-title .gradient-text {
+            background: var(--admin-gradient) !important;
+            -webkit-background-clip: text !important;
+            background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            filter: drop-shadow(0 0 20px var(--admin-glow)) !important;
+        }
+
+        .auth-brand-feature-icon {
+            background: linear-gradient(135deg, rgba(255, 46, 154, 0.15), rgba(181, 55, 242, 0.1)) !important;
+            border-color: var(--admin-primary) !important;
+            color: var(--admin-primary) !important;
+        }
+
+        .auth-form-tag {
+            background: rgba(255, 46, 154, 0.08) !important;
+            border-color: rgba(255, 46, 154, 0.3) !important;
+            color: var(--admin-primary) !important;
+        }
+
+        .auth-form-title .accent {
+            background: var(--admin-gradient) !important;
+            -webkit-background-clip: text !important;
+            background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+        }
+
+        .auth-form-subtitle a {
+            color: var(--admin-primary) !important;
+            border-bottom-color: var(--admin-primary) !important;
+        }
+
+        .auth-input-wrap:focus-within .auth-input-icon {
+            color: var(--admin-primary) !important;
+        }
+
+        .auth-form-input:focus {
+            border-color: var(--admin-primary) !important;
+            box-shadow: 0 0 0 3px rgba(255, 46, 154, 0.15), 0 0 20px rgba(255, 46, 154, 0.15) !important;
+        }
+
+        .auth-submit-btn {
+            background: var(--admin-gradient) !important;
+            box-shadow: 0 4px 20px var(--admin-glow) !important;
+        }
+
+        .auth-submit-btn:hover {
+            box-shadow: 0 8px 35px rgba(255, 46, 154, 0.5) !important;
+        }
+
+        .auth-remember input[type="checkbox"]:checked {
+            background: var(--admin-primary) !important;
+            border-color: var(--admin-primary) !important;
+            box-shadow: 0 0 10px var(--admin-glow) !important;
+        }
+
+        .auth-forgot-link {
+            color: var(--admin-secondary) !important;
+        }
+
+        .auth-forgot-link:hover {
+            color: var(--admin-primary) !important;
+            text-shadow: 0 0 10px var(--admin-glow) !important;
+        }
+
+        .auth-alert.success {
+            border-color: var(--admin-primary) !important;
+            color: var(--admin-primary) !important;
+        }
+
+        .auth-security-badge i {
+            color: var(--admin-primary) !important;
+        }
+
+        /* Admin-specific styles */
+        .admin-warning-banner {
+            padding: 16px 20px;
+            background: rgba(255, 56, 96, 0.08);
+            border: 1px solid rgba(255, 56, 96, 0.3);
+            border-radius: 12px;
+            margin-bottom: 24px;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .admin-warning-banner i {
+            color: var(--admin-accent);
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .admin-warning-banner strong {
+            color: var(--admin-accent);
+            font-weight: 600;
+        }
+
+        .admin-level-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: linear-gradient(135deg, rgba(255, 46, 154, 0.15), rgba(181, 55, 242, 0.1));
+            border: 1px solid rgba(255, 46, 154, 0.3);
+            border-radius: 50px;
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            color: var(--admin-primary);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 14px;
+            box-shadow: 0 0 15px rgba(255, 46, 154, 0.15);
+        }
+
+        .admin-level-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--admin-primary);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--admin-primary);
+            animation: pulse 2s infinite;
+        }
+
+        /* Matrix Canvas - Admin Colors */
+        .auth-matrix-canvas {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.12;
+            z-index: 1;
+        }
+
+        /* Floating Particles - Admin Colors */
+        .auth-particle:nth-child(1),
+        .auth-particle:nth-child(4),
+        .auth-particle:nth-child(7) {
+            background: var(--admin-primary) !important;
+            box-shadow: 0 0 10px var(--admin-primary) !important;
+        }
+
+        .auth-particle:nth-child(2),
+        .auth-particle:nth-child(5),
+        .auth-particle:nth-child(8) {
+            background: var(--admin-secondary) !important;
+            box-shadow: 0 0 10px var(--admin-secondary) !important;
+        }
+
+        .auth-particle:nth-child(3),
+        .auth-particle:nth-child(6) {
+            background: var(--admin-accent) !important;
+            box-shadow: 0 0 10px var(--admin-accent) !important;
+        }
+
+        /* Loading Screen - Admin Theme */
+        .ha-loader-logo {
+            border-color: var(--admin-primary) !important;
+            color: var(--admin-primary) !important;
+            box-shadow: 0 0 40px var(--admin-glow), inset 0 0 40px rgba(255, 46, 154, 0.2) !important;
+        }
+
+        .ha-loader-logo::before {
+            border-color: var(--admin-secondary) !important;
+        }
+
+        .ha-loader-text {
+            color: var(--admin-primary) !important;
+        }
+
+        .ha-loader-bar::after {
+            background: var(--admin-gradient) !important;
+            box-shadow: 0 0 10px var(--admin-primary) !important;
+        }
+
+        /* Cursor Glow - Admin Colors */
+        .cursor-glow {
+            background: radial-gradient(circle, rgba(255, 46, 154, 0.15) 0%, transparent 70%) !important;
+        }
+
+        /* Forgot Modal - Admin Theme */
+        .forgot-modal {
+            border-color: rgba(255, 46, 154, 0.3) !important;
+            box-shadow: 0 30px 80px rgba(255, 46, 154, 0.2) !important;
+        }
+
+        .forgot-modal::before {
+            background: var(--admin-gradient) !important;
+            box-shadow: 0 0 20px var(--admin-primary) !important;
+        }
+
+        .forgot-modal-icon {
+            background: linear-gradient(135deg, rgba(255, 46, 154, 0.15), rgba(181, 55, 242, 0.1)) !important;
+            border-color: var(--admin-primary) !important;
+            color: var(--admin-primary) !important;
+            box-shadow: 0 0 30px var(--admin-glow) !important;
+        }
+
+        /* Back to Home - Admin Theme */
+        .auth-back-home:hover {
+            color: var(--admin-primary) !important;
+            border-color: var(--admin-primary) !important;
+            box-shadow: 0 0 20px var(--admin-glow) !important;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .admin-warning-banner {
+                font-size: 0.8rem;
+                padding: 14px 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .admin-warning-banner {
+                padding: 12px 14px;
+                font-size: 0.75rem;
+            }
+
+            .admin-level-badge {
+                font-size: 0.62rem;
+                padding: 5px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================
+         LOADING SCREEN
+    ============================================ -->
+    <div class="ha-loader" id="haLoader">
+        <div class="ha-loader-logo">
+            <i class="fas fa-shield-halved"></i>
+        </div>
+        <div class="ha-loader-text">ADMIN AUTHENTICATION...</div>
+        <div class="ha-loader-bar"></div>
+    </div>
+
+    <!-- ============================================
+         CURSOR GLOW EFFECT
+    ============================================ -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- ============================================
+         MATRIX RAIN CANVAS
+    ============================================ -->
+    <canvas class="auth-matrix-canvas" id="matrixCanvas"></canvas>
+
+    <!-- ============================================
+         FLOATING PARTICLES
+    ============================================ -->
+    <div class="auth-particles">
+        <div class="auth-particle"></div>
+        <div class="auth-particle"></div>
+        <div class="auth-particle"></div>
+        <div class="auth-particle"></div>
+        <div class="auth-particle"></div>
+        <div class="auth-particle"></div>
+        <div class="auth-particle"></div>
+        <div class="auth-particle"></div>
+    </div>
+
+    <!-- ============================================
+         BACK TO HOME LINK
+    ============================================ -->
+    <a href="../index.html" class="auth-back-home">
+        <i class="fas fa-arrow-left"></i> Back to Home
+    </a>
+
+    <!-- ============================================
+         AUTH LAYOUT
+    ============================================ -->
+    <div class="auth-layout">
+        
+        <!-- Grid Overlay -->
+        <div class="auth-grid-overlay"></div>
+
+        <!-- ============================================
+             BRANDING PANEL (LEFT)
+        ============================================ -->
+        <div class="auth-brand-panel">
+            <div class="auth-brand-top">
+                <!-- Logo -->
+                <div class="auth-brand-logo">
+                    <div class="auth-brand-logo-icon">
+                        <i class="fas fa-shield-halved"></i>
+                    </div>
+                    <div class="auth-brand-logo-text">
+                        <span class="auth-brand-logo-title">HACKER ACADEMY</span>
+                        <span class="auth-brand-logo-sub">ADMIN CONTROL PANEL</span>
+                    </div>
+                </div>
+
+                <!-- Badge -->
+                <div class="auth-brand-badge">
+                    <span class="pulse-dot"></span>
+                    <span>RESTRICTED ACCESS</span>
+                </div>
+
+                <!-- Title -->
+                <h1 class="auth-brand-title">
+                    ADMIN
+                    <span class="gradient-text">COMMAND CENTER</span>
+                </h1>
+
+                <!-- Description -->
+                <p class="auth-brand-description">
+                    Welcome to the Hacker Academy administrative control panel. 
+                    Manage students, courses, analytics, and system settings with enterprise-grade security.
+                </p>
+
+                <!-- Features -->
+                <div class="auth-brand-features">
+                    <div class="auth-brand-feature">
+                        <div class="auth-brand-feature-icon">
+                            <i class="fas fa-users-gear"></i>
+                        </div>
+                        <div class="auth-brand-feature-text">
+                            Student Management
+                        </div>
+                    </div>
+                    <div class="auth-brand-feature">
+                        <div class="auth-brand-feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="auth-brand-feature-text">
+                            Advanced Analytics
+                        </div>
+                    </div>
+                    <div class="auth-brand-feature">
+                        <div class="auth-brand-feature-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <div class="auth-brand-feature-text">
+                            Course Administration
+                        </div>
+                    </div>
+                    <div class="auth-brand-feature">
+                        <div class="auth-brand-feature-icon">
+                            <i class="fas fa-gear"></i>
+                        </div>
+                        <div class="auth-brand-feature-text">
+                            System Configuration
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quote -->
+            <div class="auth-brand-bottom">
+                <div class="auth-brand-quote">
+                    With great power comes great responsibility. Admin access is monitored and logged.
+                </div>
+                <div class="auth-brand-author">— Er. Priyanshu Sharma</div>
+                <div class="admin-level-badge">
+                    SUPER ADMIN LEVEL
+                </div>
+            </div>
+        </div>
+
+        <!-- ============================================
+             LOGIN FORM PANEL (RIGHT)
+        ============================================ -->
+        <div class="auth-form-panel">
+            <div class="auth-form-wrapper">
+                
+                <!-- Header -->
+                <div class="auth-form-header">
+                    <div class="auth-form-tag">
+                        <i class="fas fa-shield-halved"></i>
+                        ADMIN LOGIN
+                    </div>
+                    <h2 class="auth-form-title">
+                        ACCESS <span class="accent">ADMIN PANEL</span>
+                    </h2>
+                    <p class="auth-form-subtitle">
+                        Enter your administrator credentials to continue
+                    </p>
+                </div>
+
+                <!-- Security Warning -->
+                <div class="admin-warning-banner">
+                    <i class="fas fa-triangle-exclamation"></i>
+                    <div>
+                        <strong>Security Notice:</strong> This is a restricted area. 
+                        All login attempts are monitored and logged. Unauthorized access will be prosecuted.
+                    </div>
+                </div>
+
+                <!-- Alert Box -->
+                <div class="auth-alert" id="loginAlert" style="display: none;"></div>
+
+                <!-- ============================================
+                     ADMIN LOGIN FORM
+                ============================================ -->
+                <form class="auth-form" id="adminLoginForm">
+                    
+                    <!-- Username/Email Input -->
+                    <div class="auth-form-group">
+                        <label class="auth-form-label" for="adminUsername">
+                            Username or Email <span class="required">*</span>
+                        </label>
+                        <div class="auth-input-wrap">
+                            <i class="fas fa-user-shield auth-input-icon"></i>
+                            <input type="text" id="adminUsername" class="auth-form-input" 
+                                   placeholder="admin or admin@hackeracademy.com" 
+                                   required autocomplete="username">
+                        </div>
+                        <div class="auth-form-error"></div>
+                    </div>
+
+                    <!-- Password Input -->
+                    <div class="auth-form-group">
+                        <label class="auth-form-label" for="adminPassword">
+                            Password <span class="required">*</span>
+                        </label>
+                        <div class="auth-input-wrap">
+                            <i class="fas fa-key auth-input-icon"></i>
+                            <input type="password" id="adminPassword" class="auth-form-input" 
+                                   placeholder="Enter admin password" 
+                                   required autocomplete="current-password">
+                            <button type="button" class="auth-input-toggle" id="passwordToggle">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="auth-form-error"></div>
+                    </div>
+
+                    <!-- Remember Me -->
+                    <div class="auth-form-options">
+                        <label class="auth-remember">
+                            <input type="checkbox" id="rememberMe">
+                            <span>Remember this device</span>
+                        </label>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="auth-submit-btn" id="submitBtn">
+                        <span class="btn-text">
+                            <i class="fas fa-shield-halved"></i>
+                            Access Admin Panel
+                        </span>
+                        <span class="spinner"></span>
+                    </button>
+
+                </form>
+
+                <!-- ============================================
+                     DIVIDER
+                ============================================ -->
+                <div class="auth-divider">SECURE ACCESS</div>
+
+                <!-- Security Info -->
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <div style="display: inline-flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
+                        <div style="display: flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); letter-spacing: 1px;">
+                            <i class="fas fa-lock" style="color: var(--admin-primary);"></i>
+                            <span>256-bit SSL</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); letter-spacing: 1px;">
+                            <i class="fas fa-shield-halved" style="color: var(--admin-primary);"></i>
+                            <span>2FA Ready</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-muted); letter-spacing: 1px;">
+                            <i class="fas fa-clock-rotate-left" style="color: var(--admin-primary);"></i>
+                            <span>Audit Logged</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ============================================
+                     FOOTER
+                ============================================ -->
+                <div class="auth-form-footer">
+                    <p>
+                        Need help? Contact 
+                        <a href="mailto:admin@hackeracademy.com">admin@hackeracademy.com</a>
+                    </p>
+                </div>
+
+                <!-- Terms -->
+                <div class="auth-terms">
+                    By logging in, you agree to the 
+                    <a href="#" target="_blank">Admin Terms of Service</a> and 
+                    <a href="#" target="_blank">Security Policy</a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ============================================
+         EXTERNAL SCRIPTS
+    ============================================ -->
+    <script src="../js/storage.js"></script>
+    <script src="../js/utils.js"></script>
+
+    <!-- ============================================
+         ADMIN LOGIN CONTROLLER
+    ============================================ -->
+    <script>
+        /**
+         * Admin Login Controller
+         * Premium Cyberpunk Admin Authentication
+         */
+        (function() {
+            'use strict';
+
+            // ============================================
+            // 1. PRIVATE STATE
+            // ============================================
+            let isSubmitting = false;
+            let matrixInstance = null;
+
+            // ============================================
+            // 2. DOM REFERENCES
+            // ============================================
+            const DOM = {
+                loader: null,
+                loginForm: null,
+                usernameInput: null,
+                passwordInput: null,
+                passwordToggle: null,
+                rememberMe: null,
+                submitBtn: null,
+                alertBox: null,
+                cursorGlow: null,
+                matrixCanvas: null
+            };
+
+            // ============================================
+            // 3. INITIALIZATION
+            // ============================================
+
+            /**
+             * Cache DOM references
+             */
+            function _cacheDOM() {
+                DOM.loader = document.getElementById('haLoader');
+                DOM.loginForm = document.getElementById('adminLoginForm');
+                DOM.usernameInput = document.getElementById('adminUsername');
+                DOM.passwordInput = document.getElementById('adminPassword');
+                DOM.passwordToggle = document.getElementById('passwordToggle');
+                DOM.rememberMe = document.getElementById('rememberMe');
+                DOM.submitBtn = document.getElementById('submitBtn');
+                DOM.alertBox = document.getElementById('loginAlert');
+                DOM.cursorGlow = document.getElementById('cursorGlow');
+                DOM.matrixCanvas = document.getElementById('matrixCanvas');
+            }
+
+            /**
+             * Check if already logged in
+             */
+            function _checkAuth() {
+                const admin = HA.Storage.getAdminSession();
+                if (admin) {
+                    console.log('[HA.AdminLogin] Admin already logged in, redirecting...');
+                    
+                    HA.Utils.toast({
+                        type: 'info',
+                        title: 'Welcome Back!',
+                        message: 'Redirecting to admin dashboard...',
+                        duration: 2000
+                    });
+                    
+                    setTimeout(() => {
+                        window.location.href = 'admin-dashboard.html';
+                    }, 1000);
+                    
+                    return true;
+                }
+                return false;
+            }
+
+            /**
+             * Initialize Matrix rain effect (Admin colors)
+             */
+            function _initMatrix() {
+                if (!DOM.matrixCanvas) return;
+                
+                const canvas = DOM.matrixCanvas;
+                const ctx = canvas.getContext('2d');
+                
+                const resize = () => {
+                    canvas.width = window.innerWidth;
+                    canvas.height = window.innerHeight;
+                };
+                resize();
+                window.addEventListener('resize', resize);
+                
+                // Admin-themed characters
+                const chars = 'ADMIN01アイウエオカキクケコサシスセソタチツテト@#$%&*SECURITY';
+                const fontSize = 14;
+                let columns = Math.floor(canvas.width / fontSize);
+                let drops = Array(columns).fill(1);
+                
+                const draw = () => {
+                    ctx.fillStyle = 'rgba(5, 5, 10, 0.06)';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    
+                    ctx.font = `${fontSize}px 'JetBrains Mono', monospace`;
+                    
+                    for (let i = 0; i < drops.length; i++) {
+                        const text = chars[Math.floor(Math.random() * chars.length)];
+                        const x = i * fontSize;
+                        const y = drops[i] * fontSize;
+                        
+                        // Admin color palette (pink/purple/red)
+                        const colors = [
+                            'rgba(255, 46, 154, ALPHA)',
+                            'rgba(181, 55, 242, ALPHA)',
+                            'rgba(255, 56, 96, ALPHA)'
+                        ];
+                        const color = colors[Math.floor(Math.random() * colors.length)];
+                        const alpha = 0.4 + Math.random() * 0.6;
+                        ctx.fillStyle = color.replace('ALPHA', alpha);
+                        ctx.fillText(text, x, y);
+                        
+                        if (y > canvas.height && Math.random() > 0.975) {
+                            drops[i] = 0;
+                        }
+                        drops[i]++;
+                    }
+                };
+                
+                const interval = setInterval(draw, 55);
+                
+                window.addEventListener('resize', () => {
+                    const newColumns = Math.floor(canvas.width / fontSize);
+                    if (newColumns !== columns) {
+                        columns = newColumns;
+                        drops = Array(columns).fill(1);
+                    }
+                });
+                
+                matrixInstance = { canvas, ctx, interval };
+            }
+
+            /**
+             * Initialize cursor glow effect
+             */
+            function _initCursorGlow() {
+                if (!DOM.cursorGlow) return;
+                
+                if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+                    DOM.cursorGlow.style.display = 'none';
+                    return;
+                }
+                
+                let mouseX = window.innerWidth / 2;
+                let mouseY = window.innerHeight / 2;
+                let glowX = mouseX;
+                let glowY = mouseY;
+                
+                document.addEventListener('mousemove', (e) => {
+                    mouseX = e.clientX;
+                    mouseY = e.clientY;
+                });
+                
+                const animate = () => {
+                    glowX += (mouseX - glowX) * 0.12;
+                    glowY += (mouseY - glowY) * 0.12;
+                    
+                    DOM.cursorGlow.style.left = glowX + 'px';
+                    DOM.cursorGlow.style.top = glowY + 'px';
+                    
+                    requestAnimationFrame(animate);
+                };
+                
+                animate();
+            }
+
+            // ============================================
+            // 4. PASSWORD TOGGLE
+            // ============================================
+
+            /**
+             * Initialize password show/hide toggle
+             */
+            function _initPasswordToggle() {
+                if (!DOM.passwordToggle || !DOM.passwordInput) return;
+                
+                DOM.passwordToggle.addEventListener('click', () => {
+                    const isPassword = DOM.passwordInput.type === 'password';
+                    DOM.passwordInput.type = isPassword ? 'text' : 'password';
+                    
+                    const icon = DOM.passwordToggle.querySelector('i');
+                    if (icon) {
+                        icon.className = isPassword ? 'fas fa-eye-slash' : 'fas fa-eye';
+                    }
+                });
+            }
+
+            // ============================================
+            // 5. FORM VALIDATION
+            // ============================================
+
+            /**
+             * Validate admin login form
+             */
+            function _validateForm() {
+                const errors = [];
+                
+                const username = DOM.usernameInput.value.trim();
+                const password = DOM.passwordInput.value;
+                
+                if (!username) {
+                    errors.push({ field: 'adminUsername', message: 'Username or email is required' });
+                }
+                
+                if (!password) {
+                    errors.push({ field: 'adminPassword', message: 'Password is required' });
+                } else if (password.length < 6) {
+                    errors.push({ field: 'adminPassword', message: 'Password too short' });
+                }
+                
+                return {
+                    valid: errors.length === 0,
+                    errors,
+                    data: { username, password }
+                };
+            }
+
+            /**
+             * Show field error
+             */
+            function _showFieldError(fieldId, message) {
+                const input = document.getElementById(fieldId);
+                if (!input) return;
+                
+                const group = input.closest('.auth-form-group');
+                if (!group) return;
+                
+                group.classList.add('has-error');
+                
+                const errorEl = group.querySelector('.auth-form-error');
+                if (errorEl) {
+                    errorEl.innerHTML = `<i class="fas fa-circle-exclamation"></i> ${message}`;
+                }
+            }
+
+            /**
+             * Clear field error
+             */
+            function _clearFieldError(fieldId) {
+                const input = document.getElementById(fieldId);
+                if (!input) return;
+                
+                const group = input.closest('.auth-form-group');
+                if (group) {
+                    group.classList.remove('has-error');
+                }
+            }
+
+            /**
+             * Clear all errors
+             */
+            function _clearAllErrors() {
+                document.querySelectorAll('.auth-form-group.has-error').forEach(el => {
+                    el.classList.remove('has-error');
+                });
+                
+                if (DOM.alertBox) {
+                    DOM.alertBox.style.display = 'none';
+                }
+            }
+
+            /**
+             * Show alert message
+             */
+            function _showAlert(type, message) {
+                if (!DOM.alertBox) return;
+                
+                const icons = {
+                    success: 'fa-circle-check',
+                    error: 'fa-circle-xmark',
+                    warning: 'fa-triangle-exclamation',
+                    info: 'fa-circle-info'
+                };
+                
+                DOM.alertBox.className = `auth-alert ${type}`;
+                DOM.alertBox.innerHTML = `
+                    <i class="fas ${icons[type]} auth-alert-icon"></i>
+                    <div class="auth-alert-content">${message}</div>
+                `;
+                DOM.alertBox.style.display = 'flex';
+                
+                setTimeout(() => {
+                    if (DOM.alertBox) {
+                        DOM.alertBox.style.display = 'none';
+                    }
+                }, 6000);
+            }
+
+            // ============================================
+            // 6. FORM SUBMISSION
+            // ============================================
+
+            /**
+             * Initialize login form
+             */
+            function _initLoginForm() {
+                if (!DOM.loginForm) return;
+                
+                // Real-time validation
+                [DOM.usernameInput, DOM.passwordInput].forEach(input => {
+                    if (!input) return;
+                    
+                    input.addEventListener('input', () => {
+                        _clearFieldError(input.id);
+                    });
+                });
+                
+                // Form submission
+                DOM.loginForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+                    
+                    if (isSubmitting) return;
+                    
+                    _clearAllErrors();
+                    
+                    const validation = _validateForm();
+                    
+                    if (!validation.valid) {
+                        validation.errors.forEach(err => {
+                            _showFieldError(err.field, err.message);
+                        });
+                        
+                        HA.Utils.toast({
+                            type: 'error',
+                            title: 'Validation Error',
+                            message: validation.errors[0].message,
+                            duration: 3000
+                        });
+                        
+                        _shakeElement(DOM.submitBtn);
+                        return;
+                    }
+                    
+                    await _submitLogin(validation.data);
+                });
+            }
+
+            /**
+             * Submit login request
+             */
+            async function _submitLogin(data) {
+                isSubmitting = true;
+                _setLoadingState(true);
+                
+                // Simulate network delay
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                
+                try {
+                    const result = HA.Storage.adminLogin({
+                        username: data.username,
+                        email: data.username,
+                        password: data.password
+                    });
+                    
+                    if (result.success) {
+                        _handleLoginSuccess(result.user);
+                    } else {
+                        _handleLoginError(result.error);
+                    }
+                } catch (error) {
+                    console.error('[HA.AdminLogin] Login error:', error);
+                    _handleLoginError('An unexpected error occurred. Please try again.');
+                } finally {
+                    isSubmitting = false;
+                    _setLoadingState(false);
+                }
+            }
+
+            /**
+             * Handle successful login
+             */
+            function _handleLoginSuccess(user) {
+                HA.Utils.toast({
+                    type: 'success',
+                    title: 'Welcome, Admin!',
+                    message: 'Redirecting to admin dashboard...',
+                    duration: 3000
+                });
+                
+                _successAnimation();
+                
+                setTimeout(() => {
+                    window.location.href = 'admin-dashboard.html';
+                }, 1800);
+            }
+
+            /**
+             * Handle login error
+             */
+            function _handleLoginError(errorMessage) {
+                HA.Utils.toast({
+                    type: 'error',
+                    title: 'Login Failed',
+                    message: errorMessage,
+                    duration: 4000
+                });
+                
+                _showAlert('error', errorMessage);
+                _shakeElement(DOM.submitBtn);
+                
+                if (DOM.usernameInput) {
+                    DOM.usernameInput.focus();
+                }
+            }
+
+            /**
+             * Set loading state
+             */
+            function _setLoadingState(loading) {
+                if (!DOM.submitBtn) return;
+                
+                if (loading) {
+                    DOM.submitBtn.classList.add('loading');
+                    DOM.submitBtn.disabled = true;
+                } else {
+                    DOM.submitBtn.classList.remove('loading');
+                    DOM.submitBtn.disabled = false;
+                }
+            }
+
+            /**
+             * Shake animation
+             */
+            function _shakeElement(el) {
+                if (!el) return;
+                
+                el.style.animation = 'none';
+                el.offsetHeight;
+                el.style.animation = 'shake 0.5s ease';
+                
+                setTimeout(() => {
+                    el.style.animation = '';
+                }, 500);
+            }
+
+            /**
+             * Success animation
+             */
+            function _successAnimation() {
+                const colors = ['#ff2e9a', '#b537f2', '#ff3860'];
+                
+                for (let i = 0; i < 15; i++) {
+                    setTimeout(() => {
+                        const particle = document.createElement('div');
+                        particle.style.cssText = `
+                            position: fixed;
+                            width: 6px;
+                            height: 6px;
+                            background: ${colors[Math.floor(Math.random() * colors.length)]};
+                            border-radius: 50%;
+                            pointer-events: none;
+                            z-index: 9999;
+                            left: 50%;
+                            top: 50%;
+                            box-shadow: 0 0 10px currentColor;
+                        `;
+                        
+                        document.body.appendChild(particle);
+                        
+                        const angle = (Math.PI * 2 * i) / 15;
+                        const velocity = 120 + Math.random() * 80;
+                        const dx = Math.cos(angle) * velocity;
+                        const dy = Math.sin(angle) * velocity;
+                        
+                        particle.animate([
+                            { transform: 'translate(-50%, -50%) scale(1)', opacity: 1 },
+                            { transform: `translate(calc(-50% + ${dx}px), calc(-50% + ${dy}px)) scale(0)`, opacity: 0 }
+                        ], {
+                            duration: 1000,
+                            easing: 'cubic-bezier(0, 0.5, 0.5, 1)'
+                        }).onfinish = () => particle.remove();
+                    }, i * 40);
+                }
+            }
+
+            // ============================================
+            // 7. KEYBOARD SHORTCUTS
+            // ============================================
+
+            /**
+             * Initialize keyboard shortcuts
+             */
+            function _initKeyboardShortcuts() {
+                // Ctrl/Cmd + Enter to submit
+                document.addEventListener('keydown', (e) => {
+                    if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+                        if (DOM.loginForm) {
+                            DOM.loginForm.dispatchEvent(new Event('submit'));
+                        }
+                    }
+                });
+            }
+
+            // ============================================
+            // 8. LOADING SCREEN
+            // ============================================
+
+            /**
+             * Hide loading screen
+             */
+            function _hideLoader() {
+                if (!DOM.loader) return;
+                
+                const minDisplayTime = 1200;
+                const startTime = Date.now();
+                
+                const hide = () => {
+                    const elapsed = Date.now() - startTime;
+                    const remaining = Math.max(0, minDisplayTime - elapsed);
+                    
+                    setTimeout(() => {
+                        DOM.loader.classList.add('hidden');
+                        document.body.style.overflow = '';
+                        
+                        setTimeout(() => {
+                            if (DOM.loader && DOM.loader.parentNode) {
+                                DOM.loader.style.display = 'none';
+                            }
+                        }, 800);
+                        
+                        // Focus username input
+                        setTimeout(() => {
+                            if (DOM.usernameInput) DOM.usernameInput.focus();
+                        }, 900);
+                    }, remaining);
+                };
+                
+                if (document.readyState === 'complete') {
+                    hide();
+                } else {
+                    window.addEventListener('load', hide);
+                }
+            }
+
+            // ============================================
+            // 9. CONSOLE MESSAGE
+            // ============================================
+
+            /**
+             * Show console message with demo credentials
+             */
+            function _showConsoleMessage() {
+                const styles = [
+                    'background: linear-gradient(135deg, #ff2e9a, #b537f2)',
+                    'color: white',
+                    'padding: 12px 20px',
+                    'font-family: monospace',
+                    'font-size: 14px',
+                    'font-weight: bold',
+                    'border-radius: 6px',
+                    'text-shadow: 0 0 10px rgba(255, 255, 255, 0.5)'
+                ].join(';');
+                
+                console.log('%c🛡️ HACKER ACADEMY - ADMIN LOGIN', styles);
+                console.log('%cSecure administrative access panel', 
+                    'color: #ff2e9a; font-size: 12px; font-family: monospace;');
+                console.log('');
+                console.log('%c🔐 Demo Credentials:', 
+                    'color: #b537f2; font-size: 12px; font-weight: bold; font-family: monospace;');
+                console.log('%c  Username: PS774926', 
+                    'color: #00ff9d; font-size: 11px; font-family: monospace;');
+                console.log('%c  Email: rootparrotblack@gmail.com', 
+                    'color: #00ff9d; font-size: 11px; font-family: monospace;');
+                console.log('%c  Password: #Ps*(99)', 
+                    'color: #00ff9d; font-size: 11px; font-family: monospace;');
+                console.log('');
+                console.log('%c⚠️  Warning: All login attempts are logged', 
+                    'color: #ffd60a; font-size: 10px; font-family: monospace;');
+                console.log('%cFounded by Er. Priyanshu Sharma', 
+                    'color: #a0a0b8; font-size: 10px; font-family: monospace;');
+            }
+
+            // ============================================
+            // 10. ERROR HANDLING
+            // ============================================
+
+            /**
+             * Initialize error handling
+             */
+            function _initErrorHandling() {
+                window.addEventListener('error', (e) => {
+                    console.error('[HA.AdminLogin] Global error:', e.message);
+                });
+                
+                window.addEventListener('unhandledrejection', (e) => {
+                    console.error('[HA.AdminLogin] Unhandled promise rejection:', e.reason);
+                });
+            }
+
+            /**
+             * Initialize cleanup
+             */
+            function _initCleanup() {
+                window.addEventListener('beforeunload', () => {
+                    if (matrixInstance && matrixInstance.interval) {
+                        clearInterval(matrixInstance.interval);
+                    }
+                });
+            }
+
+            // ============================================
+            // 11. INITIALIZATION
+            // ============================================
+
+            /**
+             * Initialize admin login page
+             */
+            function init() {
+                console.log('[HA.AdminLogin] 🛡️ Initializing Admin Login Page...');
+                console.log('[HA.AdminLogin] Founded by Er. Priyanshu Sharma');
+                
+                // Prevent double initialization
+                if (window.__HA_ADMIN_LOGIN_INITIALIZED__) {
+                    console.warn('[HA.AdminLogin] Already initialized');
+                    return;
+                }
+                window.__HA_ADMIN_LOGIN_INITIALIZED__ = true;
+                
+                // Cache DOM
+                _cacheDOM();
+                
+                // Check if already logged in
+                if (_checkAuth()) return;
+                
+                // Initialize storage
+                if (HA.Storage) {
+                    HA.Storage.init();
+                }
+                
+                // Initialize effects
+                _initMatrix();
+                _initCursorGlow();
+                
+                // Initialize UI
+                _initPasswordToggle();
+                _initLoginForm();
+                _initKeyboardShortcuts();
+                
+                // Initialize utilities
+                _initErrorHandling();
+                _initCleanup();
+                
+                // Show console message
+                _showConsoleMessage();
+                
+                // Hide loader
+                _hideLoader();
+                
+                console.log('[HA.AdminLogin] ✅ Initialization complete');
+            }
+
+            // Initialize on DOM ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
+            }
+        })();
+
+        // Inject shake animation
+        (function() {
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes shake {
+                    0%, 100% { transform: translateX(0); }
+                    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+                    20%, 40%, 60%, 80% { transform: translateX(5px); }
+                }
+            `;
+            document.head.appendChild(style);
+        })();
+    </script>
+
+</body>
+</html>

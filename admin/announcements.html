@@ -1,0 +1,2325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ============================================
+         HACKER ACADEMY - ADMIN ANNOUNCEMENTS MANAGEMENT
+         Founded & Owned by Er. Priyanshu Sharma
+         File: admin/announcements.html
+    ============================================ -->
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Announcements Management | Hacker Academy Admin</title>
+    <meta name="title" content="Announcements Management | Hacker Academy Admin">
+    <meta name="description" content="Manage all Hacker Academy announcements. Create, edit, pin, and publish announcements to students. Track read counts and engagement.">
+    <meta name="keywords" content="Hacker Academy Admin, Announcements Management, Admin Panel, Student Notifications, Cyber Security Academy, Er. Priyanshu Sharma">
+    <meta name="author" content="Er. Priyanshu Sharma">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#ff2e9a">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://hackeracademy.example.com/admin/announcements.html">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23000'/%3E%3Ctext x='50' y='68' font-family='Arial Black' font-size='60' font-weight='900' text-anchor='middle' fill='%23ff2e9a'%3EA%3C/text%3E%3C/svg%3E">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hackeracademy.example.com/admin/announcements.html">
+    <meta property="og:title" content="Announcements Management | Hacker Academy Admin">
+    <meta property="og:description" content="Manage all Hacker Academy announcements from the admin panel.">
+    <meta property="og:site_name" content="Hacker Academy">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Announcements Management | Hacker Academy Admin">
+    <meta name="twitter:description" content="Manage all Hacker Academy announcements from the admin panel.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/admin.css">
+
+    <!-- Critical Inline Styles -->
+    <style>
+        /* Loading Screen */
+        .ha-loader {
+            position: fixed;
+            inset: 0;
+            background: var(--cyber-black);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        .ha-loader.hidden { opacity: 0; visibility: hidden; }
+        .ha-loader-logo {
+            width: 100px; height: 100px;
+            border: 3px solid var(--neon-pink);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--neon-pink);
+            box-shadow: 0 0 40px rgba(255, 46, 154, 0.5), inset 0 0 40px rgba(255, 46, 154, 0.2);
+            animation: pulseGlow 2s ease-in-out infinite, rotateLogo 4s linear infinite;
+            position: relative;
+        }
+        .ha-loader-logo::before {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            border: 2px dashed var(--neon-purple);
+            border-radius: 24px;
+            animation: rotateLogo 8s linear infinite reverse;
+        }
+        .ha-loader-text {
+            margin-top: 30px;
+            font-family: var(--font-mono);
+            color: var(--neon-pink);
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+        }
+        .ha-loader-bar {
+            width: 200px;
+            height: 2px;
+            background: rgba(255, 46, 154, 0.1);
+            margin-top: 20px;
+            overflow: hidden;
+            border-radius: 2px;
+        }
+        .ha-loader-bar::after {
+            content: '';
+            display: block;
+            width: 40%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));
+            animation: loadBar 1.5s ease-in-out infinite;
+            box-shadow: 0 0 10px var(--neon-pink);
+        }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 40px rgba(255, 46, 154, 0.5), inset 0 0 40px rgba(255, 46, 154, 0.2); }
+            50% { box-shadow: 0 0 80px rgba(255, 46, 154, 0.7), inset 0 0 60px rgba(255, 46, 154, 0.3); }
+        }
+        @keyframes rotateLogo {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes loadBar {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(350%); }
+        }
+
+        /* Toast Container */
+        .toast-container {
+            position: fixed;
+            top: 100px;
+            right: 30px;
+            z-index: 10001;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            pointer-events: none;
+        }
+
+        /* Sidebar Overlay */
+        .sidebar-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .sidebar-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Announcements Stats Grid */
+        .ann-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .ann-stat-card {
+            padding: 22px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .ann-stat-card:hover {
+            border-color: var(--neon-pink);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 46, 154, 0.15);
+        }
+
+        .ann-stat-icon {
+            width: 52px;
+            height: 52px;
+            background: linear-gradient(135deg, rgba(255, 46, 154, 0.15), rgba(181, 55, 242, 0.1));
+            border: 1px solid var(--neon-pink);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--neon-pink);
+            font-size: 1.3rem;
+            flex-shrink: 0;
+            box-shadow: 0 0 15px rgba(255, 46, 154, 0.2);
+        }
+
+        .ann-stat-icon.green {
+            background: linear-gradient(135deg, rgba(0, 255, 157, 0.15), rgba(0, 212, 255, 0.1));
+            border-color: var(--neon-green);
+            color: var(--neon-green);
+        }
+
+        .ann-stat-icon.yellow {
+            background: linear-gradient(135deg, rgba(255, 214, 10, 0.15), rgba(255, 122, 0, 0.1));
+            border-color: var(--neon-yellow);
+            color: var(--neon-yellow);
+        }
+
+        .ann-stat-icon.red {
+            background: linear-gradient(135deg, rgba(255, 56, 96, 0.15), rgba(255, 46, 154, 0.1));
+            border-color: var(--neon-red);
+            color: var(--neon-red);
+        }
+
+        .ann-stat-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .ann-stat-value {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .ann-stat-label {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* Toolbar */
+        .ann-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .ann-toolbar-left {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+            flex: 1;
+        }
+
+        .ann-toolbar-right {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .ann-search {
+            position: relative;
+            flex: 1;
+            min-width: 240px;
+            max-width: 400px;
+        }
+
+        .ann-search-input {
+            width: 100%;
+            padding: 12px 16px 12px 44px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .ann-search-input:focus {
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 0 3px rgba(255, 46, 154, 0.15);
+        }
+
+        .ann-search-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            pointer-events: none;
+        }
+
+        .ann-filter-select {
+            padding: 12px 40px 12px 16px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 0.88rem;
+            outline: none;
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23ff2e9a' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            transition: all 0.3s ease;
+            min-width: 150px;
+        }
+
+        .ann-filter-select:focus {
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 0 3px rgba(255, 46, 154, 0.15);
+        }
+
+        .ann-filter-select option {
+            background: var(--cyber-dark);
+            color: var(--text-primary);
+        }
+
+        /* View Toggle */
+        .view-toggle {
+            display: flex;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            padding: 4px;
+            gap: 2px;
+        }
+
+        .view-toggle-btn {
+            width: 36px;
+            height: 36px;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .view-toggle-btn.active {
+            background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));
+            color: white;
+            box-shadow: 0 0 15px rgba(255, 46, 154, 0.3);
+        }
+
+        .view-toggle-btn:hover:not(.active) {
+            color: var(--neon-pink);
+        }
+
+        /* Toolbar Buttons */
+        .toolbar-btn {
+            padding: 12px 20px;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: none;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .toolbar-btn.primary {
+            background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));
+            color: white;
+            box-shadow: 0 4px 20px rgba(255, 46, 154, 0.3);
+        }
+
+        .toolbar-btn.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(255, 46, 154, 0.5);
+        }
+
+        .toolbar-btn.ghost {
+            background: transparent;
+            color: var(--neon-pink);
+            border: 1px solid var(--neon-pink);
+        }
+
+        .toolbar-btn.ghost:hover {
+            background: rgba(255, 46, 154, 0.1);
+            box-shadow: 0 0 20px rgba(255, 46, 154, 0.3);
+        }
+
+        /* Announcements Grid View */
+        .ann-grid-view {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 24px;
+        }
+
+        .ann-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .ann-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--neon-pink);
+            box-shadow: 0 15px 40px rgba(255, 46, 154, 0.18);
+        }
+
+        .ann-card.pinned {
+            border-color: var(--neon-yellow);
+            box-shadow: 0 0 20px rgba(255, 214, 10, 0.1);
+        }
+
+        .ann-card.pinned::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--neon-yellow), var(--neon-orange));
+            box-shadow: 0 0 10px var(--neon-yellow);
+        }
+
+        .ann-card-header {
+            padding: 18px 20px;
+            background: linear-gradient(135deg, rgba(255, 46, 154, 0.05), rgba(181, 55, 242, 0.03));
+            border-bottom: 1px solid var(--glass-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .ann-type-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .ann-type-badge.info {
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--neon-blue);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .ann-type-badge.urgent {
+            background: rgba(255, 56, 96, 0.1);
+            color: var(--neon-red);
+            border: 1px solid rgba(255, 56, 96, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        .ann-type-badge.success {
+            background: rgba(0, 255, 157, 0.1);
+            color: var(--neon-green);
+            border: 1px solid rgba(0, 255, 157, 0.3);
+        }
+
+        .ann-type-badge.warning {
+            background: rgba(255, 214, 10, 0.1);
+            color: var(--neon-yellow);
+            border: 1px solid rgba(255, 214, 10, 0.3);
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .ann-pin-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 10px;
+            background: linear-gradient(135deg, var(--neon-yellow), var(--neon-orange));
+            color: var(--cyber-black);
+            font-family: var(--font-mono);
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border-radius: 50px;
+            box-shadow: 0 0 10px rgba(255, 214, 10, 0.3);
+        }
+
+        .ann-card-body {
+            padding: 22px 20px;
+        }
+
+        .ann-title {
+            font-family: var(--font-heading);
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .ann-content {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 16px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .ann-meta {
+            display: flex;
+            gap: 14px;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            flex-wrap: wrap;
+            margin-bottom: 14px;
+        }
+
+        .ann-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .ann-meta i {
+            color: var(--neon-pink);
+            font-size: 0.8rem;
+        }
+
+        .ann-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 14px;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .ann-stats-mini {
+            display: flex;
+            gap: 12px;
+        }
+
+        .ann-stat-mini {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+        }
+
+        .ann-stat-mini i {
+            color: var(--neon-pink);
+        }
+
+        .ann-card-actions {
+            display: flex;
+            gap: 6px;
+        }
+
+        .ann-card-action {
+            width: 32px;
+            height: 32px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-sm);
+            color: var(--text-secondary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .ann-card-action:hover {
+            transform: translateY(-2px);
+        }
+
+        .ann-card-action.view:hover {
+            color: var(--neon-blue);
+            border-color: var(--neon-blue);
+            background: rgba(0, 212, 255, 0.1);
+        }
+
+        .ann-card-action.pin:hover {
+            color: var(--neon-yellow);
+            border-color: var(--neon-yellow);
+            background: rgba(255, 214, 10, 0.1);
+        }
+
+        .ann-card-action.pin.pinned {
+            color: var(--neon-yellow);
+            border-color: var(--neon-yellow);
+            background: rgba(255, 214, 10, 0.15);
+        }
+
+        .ann-card-action.edit:hover {
+            color: var(--neon-green);
+            border-color: var(--neon-green);
+            background: rgba(0, 255, 157, 0.1);
+        }
+
+        .ann-card-action.delete:hover {
+            color: var(--neon-red);
+            border-color: var(--neon-red);
+            background: rgba(255, 56, 96, 0.1);
+        }
+
+        /* List View */
+        .ann-list-view {
+            display: none;
+        }
+
+        .ann-list-view.active {
+            display: block;
+        }
+
+        .ann-grid-view.active {
+            display: grid;
+        }
+
+        .ann-grid-view:not(.active) {
+            display: none;
+        }
+
+        /* Empty State */
+        .ann-empty {
+            padding: 60px 30px;
+            text-align: center;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px dashed var(--glass-border);
+            border-radius: var(--radius-lg);
+            grid-column: 1 / -1;
+        }
+
+        .ann-empty-icon {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 20px;
+            background: rgba(255, 46, 154, 0.08);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--neon-pink);
+            font-size: 2.2rem;
+        }
+
+        .ann-empty-title {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .ann-empty-text {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        /* Announcement Preview */
+        .ann-preview {
+            padding: 24px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            margin-bottom: 16px;
+        }
+
+        .ann-preview-header {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+        }
+
+        .ann-preview-title {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .ann-preview-content {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            white-space: pre-wrap;
+        }
+
+        .ann-preview-footer {
+            margin-top: 16px;
+            padding-top: 14px;
+            border-top: 1px solid var(--glass-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+        }
+
+        /* Form Section */
+        .ann-form-section {
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .ann-form-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .ann-form-section-title {
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--neon-pink);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Type Selector */
+        .type-selector {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .type-option {
+            padding: 14px 10px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .type-option:hover {
+            transform: translateY(-2px);
+        }
+
+        .type-option.selected {
+            transform: translateY(-2px);
+        }
+
+        .type-option.info.selected {
+            border-color: var(--neon-blue);
+            background: rgba(0, 212, 255, 0.1);
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
+        }
+
+        .type-option.urgent.selected {
+            border-color: var(--neon-red);
+            background: rgba(255, 56, 96, 0.1);
+            box-shadow: 0 0 15px rgba(255, 56, 96, 0.2);
+        }
+
+        .type-option.success.selected {
+            border-color: var(--neon-green);
+            background: rgba(0, 255, 157, 0.1);
+            box-shadow: 0 0 15px rgba(0, 255, 157, 0.2);
+        }
+
+        .type-option.warning.selected {
+            border-color: var(--neon-yellow);
+            background: rgba(255, 214, 10, 0.1);
+            box-shadow: 0 0 15px rgba(255, 214, 10, 0.2);
+        }
+
+        .type-option-icon {
+            font-size: 1.3rem;
+        }
+
+        .type-option.info .type-option-icon { color: var(--neon-blue); }
+        .type-option.urgent .type-option-icon { color: var(--neon-red); }
+        .type-option.success .type-option-icon { color: var(--neon-green); }
+        .type-option.warning .type-option-icon { color: var(--neon-yellow); }
+
+        .type-option-label {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            color: var(--text-secondary);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .ann-toolbar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .ann-toolbar-left,
+            .ann-toolbar-right {
+                width: 100%;
+            }
+            .ann-search {
+                max-width: 100%;
+            }
+            .ann-grid-view {
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            }
+            .type-selector {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .ann-stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .toolbar-btn {
+                padding: 10px 16px;
+                font-size: 0.78rem;
+            }
+            .ann-grid-view {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .ann-stats-grid {
+                grid-template-columns: 1fr;
+            }
+            .ann-toolbar-right {
+                flex-direction: column;
+            }
+            .toolbar-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .type-selector {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================
+         LOADING SCREEN
+    ============================================ -->
+    <div class="ha-loader" id="haLoader">
+        <div class="ha-loader-logo">
+            <i class="fas fa-bullhorn"></i>
+        </div>
+        <div class="ha-loader-text">LOADING ANNOUNCEMENTS...</div>
+        <div class="ha-loader-bar"></div>
+    </div>
+
+    <!-- ============================================
+         ADMIN LAYOUT
+    ============================================ -->
+    <div class="admin-layout">
+        
+        <!-- ============================================
+             ADMIN SIDEBAR
+        ============================================ -->
+        <aside class="admin-sidebar">
+            <div class="admin-sidebar-header">
+                <a href="admin-dashboard.html" class="admin-logo">
+                    <div class="admin-logo-icon">
+                        <i class="fas fa-shield-halved"></i>
+                    </div>
+                    <div class="admin-logo-text">
+                        <span class="admin-logo-title">HACKER ACADEMY</span>
+                        <span class="admin-logo-sub">ADMIN PANEL</span>
+                    </div>
+                </a>
+                <div class="admin-role-badge">SUPER ADMIN</div>
+            </div>
+
+            <!-- Main Navigation -->
+            <div class="admin-sidebar-section">
+                <div class="admin-sidebar-section-title">Main</div>
+                <ul class="admin-sidebar-menu">
+                    <li>
+                        <a href="admin-dashboard.html" class="admin-sidebar-link">
+                            <i class="fas fa-gauge-high"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="analytics.html" class="admin-sidebar-link">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Analytics</span>
+                            <span class="admin-sidebar-badge">NEW</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Management -->
+            <div class="admin-sidebar-section">
+                <div class="admin-sidebar-section-title">Management</div>
+                <ul class="admin-sidebar-menu">
+                    <li>
+                        <a href="students.html" class="admin-sidebar-link">
+                            <i class="fas fa-users"></i>
+                            <span>Students</span>
+                            <span class="admin-sidebar-badge">12</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="courses.html" class="admin-sidebar-link">
+                            <i class="fas fa-book-open"></i>
+                            <span>Courses</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="lessons.html" class="admin-sidebar-link">
+                            <i class="fas fa-file-lines"></i>
+                            <span>Lessons</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="today-class.html" class="admin-sidebar-link">
+                            <i class="fas fa-video"></i>
+                            <span>Today's Class</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="quiz-management.html" class="admin-sidebar-link">
+                            <i class="fas fa-brain"></i>
+                            <span>Quizzes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="admin-sidebar-link">
+                            <i class="fas fa-certificate"></i>
+                            <span>Certificates</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="announcements.html" class="admin-sidebar-link active">
+                            <i class="fas fa-bullhorn"></i>
+                            <span>Announcements</span>
+                            <span class="admin-sidebar-badge warning">3</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- System -->
+            <div class="admin-sidebar-section">
+                <div class="admin-sidebar-section-title">System</div>
+                <ul class="admin-sidebar-menu">
+                    <li>
+                        <a href="settings.html" class="admin-sidebar-link">
+                            <i class="fas fa-gear"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../index.html" class="admin-sidebar-link">
+                            <i class="fas fa-globe"></i>
+                            <span>View Website</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Logout -->
+            <div class="admin-sidebar-footer">
+                <div class="admin-sidebar-footer-text">
+                    <i class="fas fa-shield-halved"></i>
+                    SECURE SESSION ACTIVE
+                </div>
+                <button class="admin-sidebar-footer-btn" id="adminLogoutBtn">
+                    <i class="fas fa-right-from-bracket"></i>
+                    Logout
+                </button>
+            </div>
+        </aside>
+
+        <!-- Sidebar Overlay (Mobile) -->
+        <div class="sidebar-overlay"></div>
+
+        <!-- ============================================
+             ADMIN MAIN CONTENT
+        ============================================ -->
+        <main class="admin-main">
+            
+            <!-- ============================================
+                 ADMIN HEADER
+            ============================================ -->
+            <header class="admin-header">
+                <div class="admin-header-left">
+                    <button class="admin-sidebar-toggle" aria-label="Toggle Sidebar">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="admin-page-title">
+                        <h1>Announcements</h1>
+                        <div class="admin-page-breadcrumb">
+                            <span>Admin</span>
+                            <span class="separator">/</span>
+                            <span class="current">Announcements</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="admin-header-right">
+                    <!-- Server Status -->
+                    <div class="admin-server-status">
+                        <span class="status-dot"></span>
+                        ONLINE
+                    </div>
+
+                    <!-- Notifications -->
+                    <button class="admin-header-btn" aria-label="Notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge-dot"></span>
+                    </button>
+
+                    <!-- Admin User Menu -->
+                    <div class="admin-user-menu">
+                        <div class="admin-user-menu-avatar">PS</div>
+                        <div class="admin-user-menu-info">
+                            <div class="admin-user-menu-name">Er. Priyanshu Sharma</div>
+                            <div class="admin-user-menu-role">SUPER ADMIN</div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- ============================================
+                 ADMIN CONTENT
+            ============================================ -->
+            <div class="admin-content">
+                
+                <!-- Stats Grid -->
+                <div class="ann-stats-grid">
+                    <div class="ann-stat-card">
+                        <div class="ann-stat-icon">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <div class="ann-stat-info">
+                            <div class="ann-stat-value" id="totalAnnouncements">0</div>
+                            <div class="ann-stat-label">Total Announcements</div>
+                        </div>
+                    </div>
+
+                    <div class="ann-stat-card">
+                        <div class="ann-stat-icon yellow">
+                            <i class="fas fa-thumbtack"></i>
+                        </div>
+                        <div class="ann-stat-info">
+                            <div class="ann-stat-value" id="pinnedAnnouncements">0</div>
+                            <div class="ann-stat-label">Pinned</div>
+                        </div>
+                    </div>
+
+                    <div class="ann-stat-card">
+                        <div class="ann-stat-icon red">
+                            <i class="fas fa-triangle-exclamation"></i>
+                        </div>
+                        <div class="ann-stat-info">
+                            <div class="ann-stat-value" id="urgentAnnouncements">0</div>
+                            <div class="ann-stat-label">Urgent</div>
+                        </div>
+                    </div>
+
+                    <div class="ann-stat-card">
+                        <div class="ann-stat-icon green">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <div class="ann-stat-info">
+                            <div class="ann-stat-value" id="totalReads">0</div>
+                            <div class="ann-stat-label">Total Reads</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Toolbar -->
+                <div class="ann-toolbar">
+                    <div class="ann-toolbar-left">
+                        <!-- Search -->
+                        <div class="ann-search">
+                            <i class="fas fa-search ann-search-icon"></i>
+                            <input type="text" class="ann-search-input" id="annSearch" 
+                                   placeholder="Search announcements by title or content...">
+                        </div>
+
+                        <!-- Type Filter -->
+                        <select class="ann-filter-select" id="typeFilter">
+                            <option value="all">All Types</option>
+                            <option value="info">Info</option>
+                            <option value="urgent">Urgent</option>
+                            <option value="success">Success</option>
+                            <option value="warning">Warning</option>
+                        </select>
+
+                        <!-- Pinned Filter -->
+                        <select class="ann-filter-select" id="pinnedFilter">
+                            <option value="all">All</option>
+                            <option value="pinned">Pinned Only</option>
+                            <option value="unpinned">Unpinned Only</option>
+                        </select>
+                    </div>
+
+                    <div class="ann-toolbar-right">
+                        <!-- View Toggle -->
+                        <div class="view-toggle">
+                            <button class="view-toggle-btn active" id="gridViewBtn" title="Grid View">
+                                <i class="fas fa-grip"></i>
+                            </button>
+                            <button class="view-toggle-btn" id="listViewBtn" title="List View">
+                                <i class="fas fa-list"></i>
+                            </button>
+                        </div>
+
+                        <button class="toolbar-btn ghost" id="exportAnnBtn">
+                            <i class="fas fa-download"></i> Export
+                        </button>
+                        <button class="toolbar-btn primary" id="addAnnBtn">
+                            <i class="fas fa-plus-circle"></i> New Announcement
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Announcements Grid View -->
+                <div class="ann-grid-view active" id="annGridView">
+                    <!-- Announcements will be rendered here -->
+                </div>
+
+                <!-- Announcements List View -->
+                <div class="ann-list-view" id="annListView">
+                    <div class="admin-table-card">
+                        <div class="admin-table-wrapper">
+                            <table class="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Type</th>
+                                        <th>Author</th>
+                                        <th>Date</th>
+                                        <th>Reads</th>
+                                        <th>Status</th>
+                                        <th style="width: 160px;">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="annTableBody">
+                                    <!-- Announcements will be rendered here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+    </div>
+
+    <!-- ============================================
+         ADD/EDIT ANNOUNCEMENT MODAL
+    ============================================ -->
+    <div class="admin-modal-overlay" id="annModal">
+        <div class="admin-modal" style="max-width: 800px;">
+            <div class="admin-modal-header">
+                <div class="admin-modal-title">
+                    <i class="fas fa-bullhorn"></i>
+                    <span id="annModalTitle">New Announcement</span>
+                </div>
+                <button class="admin-modal-close" id="annModalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="admin-modal-body" style="max-height: 65vh; overflow-y: auto;">
+                <form id="annForm">
+                    
+                    <!-- Basic Info Section -->
+                    <div class="ann-form-section">
+                        <div class="ann-form-section-title">
+                            <i class="fas fa-info-circle"></i>
+                            Announcement Details
+                        </div>
+                        <div class="admin-form-grid">
+                            <div class="admin-form-group full-width">
+                                <label class="admin-form-label">Title <span class="required">*</span></label>
+                                <input type="text" name="title" class="admin-form-input" 
+                                       placeholder="e.g., Welcome to Hacker Academy 2026" required>
+                            </div>
+                            <div class="admin-form-group full-width">
+                                <label class="admin-form-label">Type <span class="required">*</span></label>
+                                <div class="type-selector">
+                                    <div class="type-option info selected" data-type="info">
+                                        <i class="fas fa-circle-info type-option-icon"></i>
+                                        <span class="type-option-label">Info</span>
+                                    </div>
+                                    <div class="type-option urgent" data-type="urgent">
+                                        <i class="fas fa-triangle-exclamation type-option-icon"></i>
+                                        <span class="type-option-label">Urgent</span>
+                                    </div>
+                                    <div class="type-option success" data-type="success">
+                                        <i class="fas fa-circle-check type-option-icon"></i>
+                                        <span class="type-option-label">Success</span>
+                                    </div>
+                                    <div class="type-option warning" data-type="warning">
+                                        <i class="fas fa-bell type-option-icon"></i>
+                                        <span class="type-option-label">Warning</span>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="type" value="info" id="annTypeInput">
+                            </div>
+                            <div class="admin-form-group">
+                                <label class="admin-form-label">Author</label>
+                                <input type="text" name="author" class="admin-form-input" 
+                                       placeholder="e.g., Er. Priyanshu Sharma" value="Er. Priyanshu Sharma">
+                            </div>
+                            <div class="admin-form-group">
+                                <label class="admin-form-label">Target Audience</label>
+                                <select name="audience" class="admin-form-select">
+                                    <option value="all">All Students</option>
+                                    <option value="premium">Premium Students</option>
+                                    <option value="beginners">Beginners</option>
+                                    <option value="advanced">Advanced Students</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Content Section -->
+                    <div class="ann-form-section">
+                        <div class="ann-form-section-title">
+                            <i class="fas fa-align-left"></i>
+                            Content
+                        </div>
+                        <div class="admin-form-group">
+                            <label class="admin-form-label">Content <span class="required">*</span></label>
+                            <textarea name="content" class="admin-form-textarea" rows="6" 
+                                      placeholder="Write your announcement content here..." required></textarea>
+                            <div class="admin-form-helper">
+                                <i class="fas fa-info-circle"></i>
+                                Plain text content. Use line breaks for paragraphs.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Settings Section -->
+                    <div class="ann-form-section">
+                        <div class="ann-form-section-title">
+                            <i class="fas fa-cog"></i>
+                            Settings
+                        </div>
+                        <div class="admin-form-grid">
+                            <div class="admin-form-group">
+                                <label class="form-checkbox" style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                                    <input type="checkbox" name="pinned" id="pinnedCheckbox" style="width: 18px; height: 18px; cursor: pointer;">
+                                    <span>Pin to top</span>
+                                </label>
+                            </div>
+                            <div class="admin-form-group">
+                                <label class="form-checkbox" style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                                    <input type="checkbox" name="notifyStudents" checked style="width: 18px; height: 18px; cursor: pointer;">
+                                    <span>Notify all students</span>
+                                </label>
+                            </div>
+                            <div class="admin-form-group">
+                                <label class="form-checkbox" style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                                    <input type="checkbox" name="sendEmail" style="width: 18px; height: 18px; cursor: pointer;">
+                                    <span>Send email notification</span>
+                                </label>
+                            </div>
+                            <div class="admin-form-group">
+                                <label class="form-checkbox" style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                                    <input type="checkbox" name="active" checked style="width: 18px; height: 18px; cursor: pointer;">
+                                    <span>Active (visible to students)</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="admin-modal-footer">
+                <button class="btn btn-ghost admin-modal-cancel">Cancel</button>
+                <button class="btn btn-admin-primary" id="saveAnnBtn">
+                    <span class="btn-text">
+                        <i class="fas fa-paper-plane"></i> Publish Announcement
+                    </span>
+                    <span class="spinner"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         VIEW ANNOUNCEMENT MODAL
+    ============================================ -->
+    <div class="admin-modal-overlay" id="viewAnnModal">
+        <div class="admin-modal" style="max-width: 700px;">
+            <div class="admin-modal-header">
+                <div class="admin-modal-title">
+                    <i class="fas fa-bullhorn"></i>
+                    Announcement Preview
+                </div>
+                <button class="admin-modal-close" id="viewAnnModalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="admin-modal-body" id="viewAnnModalBody">
+                <!-- Announcement preview will be rendered here -->
+            </div>
+            <div class="admin-modal-footer">
+                <button class="btn btn-ghost admin-modal-cancel">Close</button>
+                <button class="btn btn-admin-primary" id="editFromViewAnnBtn">
+                    <i class="fas fa-edit"></i> Edit Announcement
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================
+         EXTERNAL SCRIPTS
+    ============================================ -->
+    <script src="../js/storage.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/admin.js"></script>
+
+    <!-- ============================================
+         ANNOUNCEMENTS PAGE CONTROLLER
+    ============================================ -->
+    <script>
+        /**
+         * Announcements Management Page Controller
+         */
+        (function() {
+            'use strict';
+
+            // ============================================
+            // 1. STATE
+            // ============================================
+            let allAnnouncements = [];
+            let filteredAnnouncements = [];
+            let currentView = 'grid';
+            let currentEditId = null;
+            let selectedType = 'info';
+
+            // ============================================
+            // 2. DEMO ANNOUNCEMENTS DATA
+            // ============================================
+            const DEMO_ANNOUNCEMENTS = [
+                {
+                    id: 'A001',
+                    title: 'Welcome to Hacker Academy 2026',
+                    content: 'We are thrilled to launch the most advanced cybersecurity learning platform. Join 10,000+ students mastering ethical hacking, SOC analysis, and AI security.\n\nNew features include:\n• AI-Powered Tutor with Gemini\n• 30+ Premium Courses\n• Live Hands-on Labs\n• Verified Certificates\n• Global Community\n\nStart your journey today and become the defender the digital world needs!',
+                    type: 'success',
+                    author: 'Er. Priyanshu Sharma',
+                    audience: 'all',
+                    pinned: true,
+                    active: true,
+                    notifyStudents: true,
+                    sendEmail: true,
+                    date: '2026-07-20T10:00:00Z',
+                    reads: 2847
+                },
+                {
+                    id: 'A002',
+                    title: 'New AI Tutor Powered by Gemini',
+                    content: 'Our AI tutor is now live! Ask anything about cybersecurity and get instant, expert-level answers 24/7.\n\nFeatures:\n• Real-time code analysis\n• Personalized learning paths\n• CTF challenge walkthroughs\n• Vulnerability explanations\n• Debugging assistance\n\nAccess the AI Tutor from your dashboard and take your learning to the next level!',
+                    type: 'info',
+                    author: 'AI Team',
+                    audience: 'all',
+                    pinned: true,
+                    active: true,
+                    notifyStudents: true,
+                    sendEmail: false,
+                    date: '2026-07-18T14:30:00Z',
+                    reads: 1923
+                },
+                {
+                    id: 'A003',
+                    title: 'Critical: Server Maintenance Tonight',
+                    content: 'Scheduled maintenance will occur tonight from 2:00 AM to 4:00 AM IST. During this time, all services will be temporarily unavailable.\n\nWhat to expect:\n• Platform downtime: ~2 hours\n• All courses and lessons inaccessible\n• AI Tutor offline\n• Live classes cancelled\n\nPlease save your progress before the maintenance window. We apologize for any inconvenience.',
+                    type: 'urgent',
+                    author: 'System Admin',
+                    audience: 'all',
+                    pinned: true,
+                    active: true,
+                    notifyStudents: true,
+                    sendEmail: true,
+                    date: '2026-07-25T18:00:00Z',
+                    reads: 3421
+                },
+                {
+                    id: 'A004',
+                    title: 'New Course: AI & Machine Learning for Security',
+                    content: 'We\'re excited to announce our newest course: AI & Machine Learning for Security!\n\nCourse highlights:\n• 65 hours of content\n• 78 video lessons\n• 11 comprehensive modules\n• Hands-on labs with real datasets\n• Industry-recognized certificate\n\nLearn how to apply AI/ML to cybersecurity - threat detection, anomaly detection, and adversarial ML. Enroll now and stay ahead of the curve!',
+                    type: 'success',
+                    author: 'Course Team',
+                    audience: 'all',
+                    pinned: false,
+                    active: true,
+                    notifyStudents: true,
+                    sendEmail: true,
+                    date: '2026-07-22T09:00:00Z',
+                    reads: 1567
+                },
+                {
+                    id: 'A005',
+                    title: 'Quiz System Upgrade - New Features',
+                    content: 'We\'ve upgraded our quiz system with exciting new features:\n\n✨ New Features:\n• Timed quizzes with countdown\n• Question navigation panel\n• Instant results with explanations\n• Performance analytics\n• Retry functionality\n• Leaderboard integration\n\nTake a quiz today and test your knowledge!',
+                    type: 'info',
+                    author: 'Development Team',
+                    audience: 'all',
+                    pinned: false,
+                    active: true,
+                    notifyStudents: true,
+                    sendEmail: false,
+                    date: '2026-07-21T11:00:00Z',
+                    reads: 987
+                },
+                {
+                    id: 'A006',
+                    title: 'Reminder: Complete Your Profile',
+                    content: 'Don\'t forget to complete your profile to unlock all platform features!\n\nBenefits of a complete profile:\n• Personalized course recommendations\n• Verified certificates with your name\n• Leaderboard visibility\n• Community engagement\n• Career placement opportunities\n\nGo to Profile > Edit Profile to update your information.',
+                    type: 'warning',
+                    author: 'Student Success Team',
+                    audience: 'all',
+                    pinned: false,
+                    active: true,
+                    notifyStudents: true,
+                    sendEmail: false,
+                    date: '2026-07-23T15:00:00Z',
+                    reads: 1234
+                },
+                {
+                    id: 'A007',
+                    title: 'Bug Bounty Training - New Lab Available',
+                    content: 'A new hands-on lab is now available in our Bug Bounty Hunting Masterclass course!\n\nLab details:\n• Real-world vulnerable application\n• 3-hour estimated completion time\n• Guided walkthrough included\n• Certificate upon completion\n\nPractice your bug hunting skills in a safe, legal environment. Access the lab from your course dashboard.',
+                    type: 'info',
+                    author: 'Lab Team',
+                    audience: 'all',
+                    pinned: false,
+                    active: true,
+                    notifyStudents: false,
+                    sendEmail: false,
+                    date: '2026-07-24T13:00:00Z',
+                    reads: 756
+                },
+                {
+                    id: 'A008',
+                    title: 'Community Forum Now Open',
+                    content: 'Our community forum is now live! Connect with 10,000+ cybersecurity enthusiasts from around the world.\n\nForum features:\n• Topic-based discussions\n• Expert Q&A sessions\n• Study groups\n• Job opportunities\n• CTF team formation\n\nJoin the conversation and share your knowledge with the community!',
+                    type: 'success',
+                    author: 'Community Team',
+                    audience: 'all',
+                    pinned: false,
+                    active: true,
+                    notifyStudents: true,
+                    sendEmail: true,
+                    date: '2026-07-19T16:00:00Z',
+                    reads: 2156
+                }
+            ];
+
+            // ============================================
+            // 3. INITIALIZATION
+            // ============================================
+            function init() {
+                console.log('[HA.Announcements] 📢 Initializing Announcements Management...');
+                
+                // Load data
+                loadData();
+                
+                // Initialize UI
+                initSearch();
+                initFilters();
+                initViewToggle();
+                initToolbarButtons();
+                initModals();
+                initTypeSelector();
+                initLogout();
+                
+                // Render
+                renderStats();
+                renderAnnouncements();
+                
+                // Hide loader
+                setTimeout(() => {
+                    const loader = document.getElementById('haLoader');
+                    if (loader) loader.classList.add('hidden');
+                }, 800);
+                
+                console.log('[HA.Announcements] ✅ Announcements page ready');
+            }
+
+            // ============================================
+            // 4. DATA LOADING
+            // ============================================
+            function loadData() {
+                // Load announcements (use demo data for now)
+                allAnnouncements = [...DEMO_ANNOUNCEMENTS];
+                filteredAnnouncements = [...allAnnouncements];
+                
+                console.log(`[HA.Announcements] Loaded ${allAnnouncements.length} announcements`);
+            }
+
+            // ============================================
+            // 5. TYPE SELECTOR
+            // ============================================
+            function initTypeSelector() {
+                const typeOptions = document.querySelectorAll('.type-option');
+                const typeInput = document.getElementById('annTypeInput');
+                
+                typeOptions.forEach(option => {
+                    option.addEventListener('click', () => {
+                        // Remove selected from all
+                        typeOptions.forEach(opt => opt.classList.remove('selected'));
+                        
+                        // Add selected to clicked
+                        option.classList.add('selected');
+                        
+                        // Update hidden input
+                        selectedType = option.dataset.type;
+                        if (typeInput) typeInput.value = selectedType;
+                    });
+                });
+            }
+
+            // ============================================
+            // 6. STATS RENDERING
+            // ============================================
+            function renderStats() {
+                const total = allAnnouncements.length;
+                const pinned = allAnnouncements.filter(a => a.pinned).length;
+                const urgent = allAnnouncements.filter(a => a.type === 'urgent').length;
+                const totalReads = allAnnouncements.reduce((sum, a) => sum + (a.reads || 0), 0);
+                
+                animateCounter('totalAnnouncements', total);
+                animateCounter('pinnedAnnouncements', pinned);
+                animateCounter('urgentAnnouncements', urgent);
+                animateCounter('totalReads', totalReads);
+            }
+
+            function animateCounter(elementId, target) {
+                const el = document.getElementById(elementId);
+                if (!el) return;
+                
+                const duration = 1200;
+                const startTime = performance.now();
+                
+                const update = (currentTime) => {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const easeProgress = 1 - Math.pow(1 - progress, 3);
+                    const current = Math.floor(target * easeProgress);
+                    el.textContent = HA.Utils.formatNumber(current);
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(update);
+                    } else {
+                        el.textContent = HA.Utils.formatNumber(target);
+                    }
+                };
+                
+                requestAnimationFrame(update);
+            }
+
+            // ============================================
+            // 7. ANNOUNCEMENTS RENDERING
+            // ============================================
+            function renderAnnouncements() {
+                renderGridView();
+                renderListView();
+            }
+
+            function getTypeIcon(type) {
+                const icons = {
+                    'info': 'fa-circle-info',
+                    'urgent': 'fa-triangle-exclamation',
+                    'success': 'fa-circle-check',
+                    'warning': 'fa-bell'
+                };
+                return icons[type] || 'fa-circle-info';
+            }
+
+            function renderGridView() {
+                const container = document.getElementById('annGridView');
+                if (!container) return;
+                
+                if (filteredAnnouncements.length === 0) {
+                    container.innerHTML = `
+                        <div class="ann-empty">
+                            <div class="ann-empty-icon">
+                                <i class="fas fa-bullhorn"></i>
+                            </div>
+                            <h3 class="ann-empty-title">No Announcements Found</h3>
+                            <p class="ann-empty-text">
+                                ${allAnnouncements.length === 0 
+                                    ? 'No announcements have been created yet. Click "New Announcement" to get started!'
+                                    : 'No announcements match your current filters. Try adjusting your search criteria.'}
+                            </p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                const html = filteredAnnouncements.map(ann => {
+                    const pinnedClass = ann.pinned ? 'pinned' : '';
+                    const pinnedBadge = ann.pinned ? '<span class="ann-pin-badge"><i class="fas fa-thumbtack"></i> PINNED</span>' : '';
+                    
+                    return `
+                        <div class="ann-card ${pinnedClass}" data-ann-id="${ann.id}">
+                            <div class="ann-card-header">
+                                <span class="ann-type-badge ${ann.type}">
+                                    <i class="fas ${getTypeIcon(ann.type)}"></i>
+                                    ${ann.type}
+                                </span>
+                                ${pinnedBadge}
+                            </div>
+                            <div class="ann-card-body">
+                                <h3 class="ann-title">${ann.title}</h3>
+                                <p class="ann-content">${ann.content}</p>
+                                <div class="ann-meta">
+                                    <span><i class="fas fa-user"></i> ${ann.author}</span>
+                                    <span><i class="fas fa-calendar"></i> ${HA.Utils.formatRelativeTime(ann.date)}</span>
+                                    <span><i class="fas fa-users"></i> ${ann.audience === 'all' ? 'All Students' : ann.audience}</span>
+                                </div>
+                                <div class="ann-card-footer">
+                                    <div class="ann-stats-mini">
+                                        <div class="ann-stat-mini">
+                                            <i class="fas fa-eye"></i>
+                                            ${HA.Utils.formatNumber(ann.reads || 0)} reads
+                                        </div>
+                                    </div>
+                                    <div class="ann-card-actions">
+                                        <button class="ann-card-action view" data-id="${ann.id}" title="View">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="ann-card-action pin ${ann.pinned ? 'pinned' : ''}" data-id="${ann.id}" title="${ann.pinned ? 'Unpin' : 'Pin'}">
+                                            <i class="fas fa-thumbtack"></i>
+                                        </button>
+                                        <button class="ann-card-action edit" data-id="${ann.id}" title="Edit">
+                                            <i class="fas fa-pen"></i>
+                                        </button>
+                                        <button class="ann-card-action delete" data-id="${ann.id}" title="Delete">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+                
+                container.innerHTML = html;
+                
+                attachCardActionListeners();
+            }
+
+            function renderListView() {
+                const tbody = document.getElementById('annTableBody');
+                if (!tbody) return;
+                
+                if (filteredAnnouncements.length === 0) {
+                    tbody.innerHTML = `
+                        <tr>
+                            <td colspan="7" style="text-align: center; padding: 40px;">
+                                <i class="fas fa-bullhorn" style="font-size: 2rem; color: var(--text-muted); margin-bottom: 12px; display: block;"></i>
+                                <p style="color: var(--text-secondary);">No announcements found</p>
+                            </td>
+                        </tr>
+                    `;
+                    return;
+                }
+                
+                const html = filteredAnnouncements.map(ann => {
+                    return `
+                        <tr data-id="${ann.id}">
+                            <td>
+                                <div class="admin-table-user">
+                                    <div class="admin-table-user-avatar" style="border-radius: 8px; background: linear-gradient(135deg, rgba(255, 46, 154, 0.15), rgba(181, 55, 242, 0.1)); color: var(--neon-pink);">
+                                        <i class="fas ${getTypeIcon(ann.type)}"></i>
+                                    </div>
+                                    <div class="admin-table-user-info">
+                                        <div class="admin-table-user-name">${ann.title}</div>
+                                        <div class="admin-table-user-email">${ann.content ? ann.content.substring(0, 50) + '...' : 'No content'}</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="ann-type-badge ${ann.type}" style="font-size: 0.62rem;">
+                                    <i class="fas ${getTypeIcon(ann.type)}"></i>
+                                    ${ann.type}
+                                </span>
+                            </td>
+                            <td style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-secondary);">
+                                ${ann.author}
+                            </td>
+                            <td style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-secondary);">
+                                ${HA.Utils.formatDate(ann.date)}
+                            </td>
+                            <td style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--neon-pink); font-weight: 600;">
+                                ${HA.Utils.formatNumber(ann.reads || 0)}
+                            </td>
+                            <td>
+                                ${ann.pinned 
+                                    ? '<span class="ann-pin-badge" style="font-size: 0.6rem;"><i class="fas fa-thumbtack"></i> PINNED</span>'
+                                    : '<span style="font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); letter-spacing: 1px;">NORMAL</span>'}
+                            </td>
+                            <td>
+                                <div class="admin-table-actions-cell">
+                                    <button class="admin-table-action-btn view" data-id="${ann.id}" title="View">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="admin-table-action-btn edit" data-id="${ann.id}" title="Edit">
+                                        <i class="fas fa-pen"></i>
+                                    </button>
+                                    <button class="admin-table-action-btn delete" data-id="${ann.id}" title="Delete">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    `;
+                }).join('');
+                
+                tbody.innerHTML = html;
+                
+                attachListActionListeners();
+            }
+
+            function attachCardActionListeners() {
+                document.querySelectorAll('.ann-card-action.view').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        viewAnnouncement(btn.dataset.id);
+                    });
+                });
+                
+                document.querySelectorAll('.ann-card-action.pin').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        togglePin(btn.dataset.id);
+                    });
+                });
+                
+                document.querySelectorAll('.ann-card-action.edit').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        editAnnouncement(btn.dataset.id);
+                    });
+                });
+                
+                document.querySelectorAll('.ann-card-action.delete').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        deleteAnnouncement(btn.dataset.id);
+                    });
+                });
+                
+                document.querySelectorAll('.ann-card').forEach(card => {
+                    card.addEventListener('click', () => {
+                        viewAnnouncement(card.dataset.annId);
+                    });
+                });
+            }
+
+            function attachListActionListeners() {
+                document.querySelectorAll('#annTableBody .admin-table-action-btn.view').forEach(btn => {
+                    btn.addEventListener('click', () => viewAnnouncement(btn.dataset.id));
+                });
+                
+                document.querySelectorAll('#annTableBody .admin-table-action-btn.edit').forEach(btn => {
+                    btn.addEventListener('click', () => editAnnouncement(btn.dataset.id));
+                });
+                
+                document.querySelectorAll('#annTableBody .admin-table-action-btn.delete').forEach(btn => {
+                    btn.addEventListener('click', () => deleteAnnouncement(btn.dataset.id));
+                });
+            }
+
+            // ============================================
+            // 8. SEARCH & FILTERS
+            // ============================================
+            function initSearch() {
+                const searchInput = document.getElementById('annSearch');
+                if (!searchInput) return;
+                
+                searchInput.addEventListener('input', HA.Utils.debounce(() => {
+                    applyFilters();
+                }, 300));
+            }
+
+            function initFilters() {
+                const typeFilter = document.getElementById('typeFilter');
+                const pinnedFilter = document.getElementById('pinnedFilter');
+                
+                if (typeFilter) typeFilter.addEventListener('change', applyFilters);
+                if (pinnedFilter) pinnedFilter.addEventListener('change', applyFilters);
+            }
+
+            function applyFilters() {
+                const search = document.getElementById('annSearch').value.toLowerCase();
+                const type = document.getElementById('typeFilter').value;
+                const pinned = document.getElementById('pinnedFilter').value;
+                
+                filteredAnnouncements = allAnnouncements.filter(ann => {
+                    const matchesSearch = !search || 
+                        ann.title.toLowerCase().includes(search) ||
+                        ann.content.toLowerCase().includes(search) ||
+                        ann.author.toLowerCase().includes(search);
+                    
+                    const matchesType = type === 'all' || ann.type === type;
+                    const matchesPinned = pinned === 'all' || 
+                        (pinned === 'pinned' && ann.pinned) ||
+                        (pinned === 'unpinned' && !ann.pinned);
+                    
+                    return matchesSearch && matchesType && matchesPinned;
+                });
+                
+                renderAnnouncements();
+            }
+
+            // ============================================
+            // 9. VIEW TOGGLE
+            // ============================================
+            function initViewToggle() {
+                const gridBtn = document.getElementById('gridViewBtn');
+                const listBtn = document.getElementById('listViewBtn');
+                const gridView = document.getElementById('annGridView');
+                const listView = document.getElementById('annListView');
+                
+                if (gridBtn) {
+                    gridBtn.addEventListener('click', () => {
+                        currentView = 'grid';
+                        gridBtn.classList.add('active');
+                        listBtn.classList.remove('active');
+                        gridView.classList.add('active');
+                        listView.classList.remove('active');
+                    });
+                }
+                
+                if (listBtn) {
+                    listBtn.addEventListener('click', () => {
+                        currentView = 'list';
+                        listBtn.classList.add('active');
+                        gridBtn.classList.remove('active');
+                        listView.classList.add('active');
+                        gridView.classList.remove('active');
+                    });
+                }
+            }
+
+            // ============================================
+            // 10. TOOLBAR BUTTONS
+            // ============================================
+            function initToolbarButtons() {
+                const addBtn = document.getElementById('addAnnBtn');
+                if (addBtn) {
+                    addBtn.addEventListener('click', () => openAddAnnouncementModal());
+                }
+                
+                const exportBtn = document.getElementById('exportAnnBtn');
+                if (exportBtn) {
+                    exportBtn.addEventListener('click', exportAnnouncements);
+                }
+            }
+
+            // ============================================
+            // 11. CRUD OPERATIONS
+            // ============================================
+            function openAddAnnouncementModal() {
+                currentEditId = null;
+                selectedType = 'info';
+                
+                const modal = document.getElementById('annModal');
+                const title = document.getElementById('annModalTitle');
+                const form = document.getElementById('annForm');
+                const typeInput = document.getElementById('annTypeInput');
+                
+                if (title) title.textContent = 'New Announcement';
+                if (form) form.reset();
+                if (typeInput) typeInput.value = 'info';
+                
+                // Reset type selector
+                document.querySelectorAll('.type-option').forEach(opt => opt.classList.remove('selected'));
+                document.querySelector('.type-option.info').classList.add('selected');
+                
+                openModal('annModal');
+            }
+
+            function viewAnnouncement(id) {
+                const ann = allAnnouncements.find(a => a.id === id);
+                if (!ann) return;
+                
+                const modalBody = document.getElementById('viewAnnModalBody');
+                if (!modalBody) return;
+                
+                modalBody.innerHTML = `
+                    <div class="ann-preview">
+                        <div class="ann-preview-header">
+                            <span class="ann-type-badge ${ann.type}">
+                                <i class="fas ${getTypeIcon(ann.type)}"></i>
+                                ${ann.type}
+                            </span>
+                            ${ann.pinned ? '<span class="ann-pin-badge"><i class="fas fa-thumbtack"></i> PINNED</span>' : ''}
+                            <span style="padding: 4px 12px; background: rgba(0, 0, 0, 0.3); border: 1px solid var(--glass-border); border-radius: 50px; font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); letter-spacing: 1px;">
+                                <i class="fas fa-users"></i> ${ann.audience === 'all' ? 'All Students' : ann.audience}
+                            </span>
+                        </div>
+                        
+                        <h2 class="ann-preview-title">${ann.title}</h2>
+                        
+                        <div class="ann-preview-content">${ann.content}</div>
+                        
+                        <div class="ann-preview-footer">
+                            <div>
+                                <i class="fas fa-user"></i> ${ann.author}
+                            </div>
+                            <div>
+                                <i class="fas fa-calendar"></i> ${HA.Utils.formatDateTime(ann.date)}
+                            </div>
+                            <div>
+                                <i class="fas fa-eye"></i> ${HA.Utils.formatNumber(ann.reads || 0)} reads
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="padding: 16px; background: rgba(0, 0, 0, 0.3); border: 1px solid var(--glass-border); border-radius: var(--radius-md);">
+                        <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--neon-pink); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px;">
+                            <i class="fas fa-cog"></i> Settings
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.85rem;">
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <i class="fas ${ann.notifyStudents ? 'fa-check-circle' : 'fa-times-circle'}" style="color: ${ann.notifyStudents ? 'var(--neon-green)' : 'var(--text-muted)'};"></i>
+                                <span style="color: var(--text-secondary);">Notify Students</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <i class="fas ${ann.sendEmail ? 'fa-check-circle' : 'fa-times-circle'}" style="color: ${ann.sendEmail ? 'var(--neon-green)' : 'var(--text-muted)'};"></i>
+                                <span style="color: var(--text-secondary);">Send Email</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <i class="fas ${ann.active ? 'fa-check-circle' : 'fa-times-circle'}" style="color: ${ann.active ? 'var(--neon-green)' : 'var(--text-muted)'};"></i>
+                                <span style="color: var(--text-secondary);">Active</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <i class="fas ${ann.pinned ? 'fa-check-circle' : 'fa-times-circle'}" style="color: ${ann.pinned ? 'var(--neon-yellow)' : 'var(--text-muted)'};"></i>
+                                <span style="color: var(--text-secondary);">Pinned</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                currentEditId = id;
+                openModal('viewAnnModal');
+            }
+
+            function editAnnouncement(id) {
+                const ann = allAnnouncements.find(a => a.id === id);
+                if (!ann) return;
+                
+                currentEditId = id;
+                selectedType = ann.type;
+                
+                const modal = document.getElementById('annModal');
+                const title = document.getElementById('annModalTitle');
+                const form = document.getElementById('annForm');
+                const typeInput = document.getElementById('annTypeInput');
+                
+                if (title) title.textContent = 'Edit Announcement';
+                
+                if (form) {
+                    form.title.value = ann.title || '';
+                    form.content.value = ann.content || '';
+                    form.author.value = ann.author || '';
+                    form.audience.value = ann.audience || 'all';
+                    
+                    if (form.pinned) form.pinned.checked = ann.pinned || false;
+                    if (form.notifyStudents) form.notifyStudents.checked = ann.notifyStudents !== false;
+                    if (form.sendEmail) form.sendEmail.checked = ann.sendEmail || false;
+                    if (form.active) form.active.checked = ann.active !== false;
+                }
+                
+                if (typeInput) typeInput.value = ann.type;
+                
+                // Update type selector
+                document.querySelectorAll('.type-option').forEach(opt => opt.classList.remove('selected'));
+                const selectedOption = document.querySelector(`.type-option.${ann.type}`);
+                if (selectedOption) selectedOption.classList.add('selected');
+                
+                openModal('annModal');
+            }
+
+            async function deleteAnnouncement(id) {
+                const ann = allAnnouncements.find(a => a.id === id);
+                if (!ann) return;
+                
+                const confirmed = await HA.Utils.confirm({
+                    title: 'Delete Announcement',
+                    message: `Are you sure you want to delete "${ann.title}"? This action cannot be undone.`,
+                    confirmText: 'Delete',
+                    cancelText: 'Cancel',
+                    type: 'danger'
+                });
+                
+                if (confirmed) {
+                    allAnnouncements = allAnnouncements.filter(a => a.id !== id);
+                    filteredAnnouncements = filteredAnnouncements.filter(a => a.id !== id);
+                    
+                    HA.Utils.toast({
+                        type: 'success',
+                        title: 'Deleted!',
+                        message: `"${ann.title}" has been deleted`,
+                        duration: 3000
+                    });
+                    
+                    renderStats();
+                    renderAnnouncements();
+                }
+            }
+
+            async function togglePin(id) {
+                const ann = allAnnouncements.find(a => a.id === id);
+                if (!ann) return;
+                
+                ann.pinned = !ann.pinned;
+                
+                HA.Utils.toast({
+                    type: 'success',
+                    title: ann.pinned ? 'Pinned!' : 'Unpinned!',
+                    message: `"${ann.title}" has been ${ann.pinned ? 'pinned to top' : 'unpinned'}`,
+                    duration: 2500
+                });
+                
+                renderStats();
+                renderAnnouncements();
+            }
+
+            // ============================================
+            // 12. SAVE ANNOUNCEMENT
+            // ============================================
+            async function saveAnnouncement() {
+                const form = document.getElementById('annForm');
+                const saveBtn = document.getElementById('saveAnnBtn');
+                
+                if (!form || !saveBtn) return;
+                
+                // Validate
+                if (!form.title.value.trim() || !form.content.value.trim()) {
+                    HA.Utils.toast({
+                        type: 'error',
+                        title: 'Validation Error',
+                        message: 'Please fill in all required fields',
+                        duration: 3000
+                    });
+                    return;
+                }
+                
+                // Set loading state
+                saveBtn.classList.add('loading');
+                saveBtn.disabled = true;
+                
+                await new Promise(resolve => setTimeout(resolve, 800));
+                
+                try {
+                    const data = {
+                        id: currentEditId || `A${Date.now()}`,
+                        title: form.title.value.trim(),
+                        content: form.content.value.trim(),
+                        type: selectedType,
+                        author: form.author.value.trim() || 'Admin',
+                        audience: form.audience.value,
+                        pinned: form.pinned?.checked || false,
+                        active: form.active?.checked !== false,
+                        notifyStudents: form.notifyStudents?.checked !== false,
+                        sendEmail: form.sendEmail?.checked || false,
+                        date: currentEditId 
+                            ? (allAnnouncements.find(a => a.id === currentEditId)?.date || new Date().toISOString())
+                            : new Date().toISOString(),
+                        reads: currentEditId 
+                            ? (allAnnouncements.find(a => a.id === currentEditId)?.reads || 0)
+                            : 0
+                    };
+                    
+                    if (currentEditId) {
+                        const index = allAnnouncements.findIndex(a => a.id === currentEditId);
+                        if (index !== -1) {
+                            allAnnouncements[index] = { ...allAnnouncements[index], ...data };
+                        }
+                    } else {
+                        allAnnouncements.unshift(data); // Add to top
+                    }
+                    
+                    filteredAnnouncements = [...allAnnouncements];
+                    
+                    HA.Utils.toast({
+                        type: 'success',
+                        title: currentEditId ? 'Updated!' : 'Published!',
+                        message: `Announcement ${currentEditId ? 'updated' : 'published'} successfully${data.notifyStudents ? '. Students have been notified.' : ''}`,
+                        duration: 3500
+                    });
+                    
+                    closeModal('annModal');
+                    renderStats();
+                    renderAnnouncements();
+                } catch (error) {
+                    HA.Utils.toast({
+                        type: 'error',
+                        title: 'Error',
+                        message: 'An unexpected error occurred',
+                        duration: 3000
+                    });
+                } finally {
+                    saveBtn.classList.remove('loading');
+                    saveBtn.disabled = false;
+                }
+            }
+
+            // ============================================
+            // 13. EXPORT
+            // ============================================
+            function exportAnnouncements() {
+                const json = JSON.stringify(filteredAnnouncements, null, 2);
+                const blob = new Blob([json], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `hacker-academy-announcements-${Date.now()}.json`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                
+                HA.Utils.toast({
+                    type: 'success',
+                    title: 'Export Complete!',
+                    message: `${filteredAnnouncements.length} announcement(s) exported`,
+                    duration: 3000
+                });
+            }
+
+            // ============================================
+            // 14. MODALS
+            // ============================================
+            function initModals() {
+                // Announcement modal
+                const annModalClose = document.getElementById('annModalClose');
+                if (annModalClose) {
+                    annModalClose.addEventListener('click', () => closeModal('annModal'));
+                }
+                
+                const saveAnnBtn = document.getElementById('saveAnnBtn');
+                if (saveAnnBtn) {
+                    saveAnnBtn.addEventListener('click', saveAnnouncement);
+                }
+                
+                // View announcement modal
+                const viewAnnModalClose = document.getElementById('viewAnnModalClose');
+                if (viewAnnModalClose) {
+                    viewAnnModalClose.addEventListener('click', () => closeModal('viewAnnModal'));
+                }
+                
+                const editFromViewAnnBtn = document.getElementById('editFromViewAnnBtn');
+                if (editFromViewAnnBtn) {
+                    editFromViewAnnBtn.addEventListener('click', () => {
+                        closeModal('viewAnnModal');
+                        setTimeout(() => editAnnouncement(currentEditId), 300);
+                    });
+                }
+                
+                // Cancel buttons
+                document.querySelectorAll('.admin-modal-cancel').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        document.querySelectorAll('.admin-modal-overlay.active').forEach(modal => {
+                            modal.classList.remove('active');
+                        });
+                        document.body.style.overflow = '';
+                    });
+                });
+                
+                // Close on overlay click
+                document.querySelectorAll('.admin-modal-overlay').forEach(overlay => {
+                    overlay.addEventListener('click', (e) => {
+                        if (e.target === overlay) {
+                            overlay.classList.remove('active');
+                            document.body.style.overflow = '';
+                        }
+                    });
+                });
+                
+                // Escape key
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') {
+                        document.querySelectorAll('.admin-modal-overlay.active').forEach(modal => {
+                            modal.classList.remove('active');
+                        });
+                        document.body.style.overflow = '';
+                    }
+                });
+            }
+
+            function openModal(modalId) {
+                const modal = document.getElementById(modalId);
+                if (modal) {
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+
+            function closeModal(modalId) {
+                const modal = document.getElementById(modalId);
+                if (modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
+
+            // ============================================
+            // 15. LOGOUT
+            // ============================================
+            function initLogout() {
+                const logoutBtn = document.getElementById('adminLogoutBtn');
+                if (!logoutBtn) return;
+                
+                logoutBtn.addEventListener('click', async () => {
+                    const confirmed = await HA.Utils.confirm({
+                        title: 'Logout Confirmation',
+                        message: 'Are you sure you want to logout?',
+                        confirmText: 'Logout',
+                        cancelText: 'Cancel',
+                        type: 'warning'
+                    });
+                    
+                    if (confirmed) {
+                        HA.Storage.adminLogout();
+                        
+                        HA.Utils.toast({
+                            type: 'success',
+                            title: 'Logged Out',
+                            message: 'You have been successfully logged out',
+                            duration: 2500
+                        });
+                        
+                        setTimeout(() => {
+                            window.location.href = 'admin-login.html';
+                        }, 1500);
+                    }
+                });
+            }
+
+            // ============================================
+            // 16. KEYBOARD SHORTCUTS
+            // ============================================
+            document.addEventListener('keydown', (e) => {
+                // Ctrl/Cmd + K = Focus search
+                if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                    e.preventDefault();
+                    const search = document.getElementById('annSearch');
+                    if (search) search.focus();
+                }
+                
+                // Ctrl/Cmd + N = New announcement
+                if ((e.ctrlKey || e.metaKey) && e.key === 'n') {
+                    e.preventDefault();
+                    openAddAnnouncementModal();
+                }
+            });
+
+            // ============================================
+            // 17. INITIALIZE
+            // ============================================
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
+            }
+        })();
+    </script>
+
+</body>
+</html>

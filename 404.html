@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ============================================
+         HACKER ACADEMY - 404 ERROR PAGE
+         Founded & Owned by Er. Priyanshu Sharma
+         File: 404.html
+    ============================================ -->
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+
+    <!-- Primary Meta Tags -->
+    <title>404 - Page Not Found | Hacker Academy</title>
+    <meta name="title" content="404 - Page Not Found | Hacker Academy">
+    <meta name="description" content="The page you're looking for doesn't exist or has been moved. Return to Hacker Academy's premium cybersecurity learning platform.">
+    <meta name="keywords" content="Hacker Academy 404, Page Not Found, Error Page, Cyber Security Academy, Er. Priyanshu Sharma">
+    <meta name="author" content="Er. Priyanshu Sharma">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#00ff9d">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://hackeracademy.example.com/404.html">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23000'/%3E%3Ctext x='50' y='68' font-family='Arial Black' font-size='60' font-weight='900' text-anchor='middle' fill='%23ff2e9a'%3E4%3C/text%3E%3C/svg%3E">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hackeracademy.example.com/404.html">
+    <meta property="og:title" content="404 - Page Not Found | Hacker Academy">
+    <meta property="og:description" content="The page you're looking for doesn't exist.">
+    <meta property="og:site_name" content="Hacker Academy">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="404 - Page Not Found | Hacker Academy">
+    <meta name="twitter:description" content="The page you're looking for doesn't exist.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- ============================================
+         404 PAGE STYLES
+    ============================================ -->
+    <style>
+        /* Base Styles */
+        :root {
+            --neon-green: #00ff9d;
+            --neon-blue: #00d4ff;
+            --neon-purple: #b537f2;
+            --neon-pink: #ff2e9a;
+            --neon-red: #ff3860;
+            --neon-yellow: #ffd60a;
+            --cyber-black: #000000;
+            --cyber-dark: #05050a;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0b8;
+            --text-muted: #6a6a80;
+            --glass-bg: rgba(10, 10, 20, 0.55);
+            --glass-border: rgba(255, 46, 154, 0.2);
+            --gradient-error: linear-gradient(135deg, #ff2e9a 0%, #ff3860 100%);
+            --gradient-primary: linear-gradient(135deg, #00ff9d 0%, #00d4ff 100%);
+            --font-display: 'Orbitron', sans-serif;
+            --font-heading: 'Rajdhani', sans-serif;
+            --font-body: 'Space Grotesk', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--cyber-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: var(--neon-pink);
+            color: var(--cyber-black);
+        }
+
+        /* Loading Screen */
+        .ha-loader {
+            position: fixed;
+            inset: 0;
+            background: var(--cyber-black);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        .ha-loader.hidden { opacity: 0; visibility: hidden; }
+        .ha-loader-logo {
+            width: 100px; height: 100px;
+            border: 3px solid var(--neon-pink);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--neon-pink);
+            box-shadow: 0 0 40px var(--neon-pink), inset 0 0 40px rgba(255, 46, 154, 0.2);
+            animation: pulseGlow 2s ease-in-out infinite, rotateLogo 4s linear infinite;
+            position: relative;
+        }
+        .ha-loader-logo::before {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            border: 2px dashed var(--neon-red);
+            border-radius: 24px;
+            animation: rotateLogo 8s linear infinite reverse;
+        }
+        .ha-loader-text {
+            margin-top: 30px;
+            font-family: var(--font-mono);
+            color: var(--neon-pink);
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+        }
+        .ha-loader-bar {
+            width: 200px;
+            height: 2px;
+            background: rgba(255, 46, 154, 0.1);
+            margin-top: 20px;
+            overflow: hidden;
+            border-radius: 2px;
+        }
+        .ha-loader-bar::after {
+            content: '';
+            display: block;
+            width: 40%;
+            height: 100%;
+            background: var(--gradient-error);
+            animation: loadBar 1.5s ease-in-out infinite;
+            box-shadow: 0 0 10px var(--neon-pink);
+        }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 40px var(--neon-pink), inset 0 0 40px rgba(255, 46, 154, 0.2); }
+            50% { box-shadow: 0 0 80px var(--neon-pink), inset 0 0 60px rgba(255, 46, 154, 0.3); }
+        }
+        @keyframes rotateLogo {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes loadBar {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(350%); }
+        }
+
+        /* Cursor Glow */
+        .cursor-glow {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 46, 154, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease-out;
+            mix-blend-mode: screen;
+        }
+
+        /* Matrix Canvas */
+        .error-matrix-canvas {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.15;
+            z-index: 1;
+        }
+
+        /* Grid Overlay */
+        .error-grid-overlay {
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255, 46, 154, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 46, 154, 0.04) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 2;
+            mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+            -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+        }
+
+        /* Vignette */
+        .error-vignette {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(ellipse at center, transparent 30%, rgba(0, 0, 0, 0.8) 100%);
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        /* Scanline Effect */
+        .scan-line {
+            position: fixed;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--neon-pink), transparent);
+            box-shadow: 0 0 20px var(--neon-pink);
+            animation: scanline 4s linear infinite;
+            pointer-events: none;
+            z-index: 5;
+            opacity: 0.4;
+        }
+        @keyframes scanline {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100vh); }
+        }
+
+        /* Back to Home */
+        .error-back-home {
+            position: fixed;
+            top: 24px;
+            left: 24px;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            color: var(--text-secondary);
+            font-family: var(--font-heading);
+            font-size: 0.82rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .error-back-home:hover {
+            color: var(--neon-pink);
+            border-color: var(--neon-pink);
+            transform: translateX(-4px);
+            box-shadow: 0 0 20px rgba(255, 46, 154, 0.2);
+        }
+
+        /* Error Layout */
+        .error-layout {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 30px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .error-container {
+            max-width: 900px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Status Badge */
+        .error-status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 20px;
+            background: rgba(255, 46, 154, 0.08);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 46, 154, 0.3);
+            border-radius: 50px;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--neon-pink);
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            animation: fadeInDown 0.6s ease;
+        }
+        .error-status-badge .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--neon-pink);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--neon-pink);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.3); }
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 404 Number */
+        .error-number {
+            font-family: var(--font-display);
+            font-size: clamp(8rem, 20vw, 16rem);
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -5px;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            background: linear-gradient(135deg, var(--neon-pink) 0%, var(--neon-red) 50%, var(--neon-purple) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 40px rgba(255, 46, 154, 0.5));
+            animation: glitch 3s infinite, fadeIn 0.8s ease;
+        }
+        @keyframes glitch {
+            0%, 100% { transform: translate(0); }
+            2% { transform: translate(-2px, 2px); }
+            4% { transform: translate(2px, -2px); }
+            6% { transform: translate(0); }
+            40% { transform: translate(0); }
+            42% { transform: translate(3px, -1px); }
+            44% { transform: translate(-3px, 1px); }
+            46% { transform: translate(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Glitch Layers */
+        .error-number::before,
+        .error-number::after {
+            content: '404';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: inherit;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .error-number::before {
+            animation: glitchLayer1 3s infinite;
+            opacity: 0.7;
+            clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+        }
+        .error-number::after {
+            animation: glitchLayer2 3s infinite;
+            opacity: 0.7;
+            clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+        }
+        @keyframes glitchLayer1 {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-3px, 0); }
+            40% { transform: translate(3px, 0); }
+            60% { transform: translate(-2px, 0); }
+            80% { transform: translate(2px, 0); }
+        }
+        @keyframes glitchLayer2 {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(3px, 0); }
+            40% { transform: translate(-3px, 0); }
+            60% { transform: translate(2px, 0); }
+            80% { transform: translate(-2px, 0); }
+        }
+
+        /* Error Title */
+        .error-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+        }
+        .error-title .accent {
+            background: var(--gradient-error);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Error Description */
+        .error-description {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            animation: fadeInUp 0.8s ease 0.4s backwards;
+        }
+
+        /* Terminal Box */
+        .error-terminal {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-lg, 14px);
+            overflow: hidden;
+            text-align: left;
+            animation: fadeInUp 0.8s ease 0.6s backwards;
+            box-shadow: 0 20px 60px rgba(255, 46, 154, 0.15);
+        }
+        .error-terminal-header {
+            padding: 12px 18px;
+            background: rgba(255, 46, 154, 0.08);
+            border-bottom: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .error-terminal-dots {
+            display: flex;
+            gap: 6px;
+        }
+        .error-terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .error-terminal-dot.red { background: #ff5f56; }
+        .error-terminal-dot.yellow { background: #ffbd2e; }
+        .error-terminal-dot.green { background: #27c93f; }
+        .error-terminal-title {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            letter-spacing: 1.5px;
+            margin-left: auto;
+        }
+        .error-terminal-body {
+            padding: 20px;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            line-height: 1.8;
+            color: var(--neon-pink);
+        }
+        .error-terminal-line {
+            display: block;
+            margin-bottom: 4px;
+        }
+        .error-terminal-line .prompt {
+            color: var(--neon-green);
+            margin-right: 8px;
+        }
+        .error-terminal-line .command {
+            color: var(--text-primary);
+        }
+        .error-terminal-line .output {
+            color: var(--text-muted);
+            padding-left: 20px;
+        }
+        .error-terminal-line .error-text {
+            color: var(--neon-red);
+        }
+        .error-terminal-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 14px;
+            background: var(--neon-pink);
+            animation: blink 1s infinite;
+            vertical-align: middle;
+            margin-left: 4px;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Action Buttons */
+        .error-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+            animation: fadeInUp 0.8s ease 0.8s backwards;
+        }
+        .error-btn {
+            padding: 14px 32px;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+        .error-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+        .error-btn:hover::before {
+            transform: translateX(100%);
+        }
+        .error-btn.primary {
+            background: var(--gradient-error);
+            color: white;
+            box-shadow: 0 4px 20px rgba(255, 46, 154, 0.3);
+        }
+        .error-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 35px rgba(255, 46, 154, 0.5);
+        }
+        .error-btn.ghost {
+            background: transparent;
+            color: var(--neon-green);
+            border: 1px solid var(--neon-green);
+        }
+        .error-btn.ghost:hover {
+            background: rgba(0, 255, 157, 0.1);
+            box-shadow: 0 0 20px rgba(0, 255, 157, 0.3);
+            transform: translateY(-3px);
+        }
+
+        /* Quick Links */
+        .error-links {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 30px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            animation: fadeInUp 0.8s ease 1s backwards;
+        }
+        .error-links-title {
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+        }
+        .error-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+        }
+        .error-link {
+            padding: 14px 18px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            color: var(--text-secondary);
+            font-family: var(--font-heading);
+            font-size: 0.88rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .error-link i {
+            color: var(--neon-pink);
+            font-size: 0.95rem;
+        }
+        .error-link:hover {
+            color: var(--text-primary);
+            border-color: var(--neon-pink);
+            background: rgba(255, 46, 154, 0.05);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 46, 154, 0.15);
+        }
+
+        /* Footer */
+        .error-footer {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid var(--glass-border);
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 1.5px;
+            animation: fadeInUp 0.8s ease 1.2s backwards;
+        }
+        .error-footer strong {
+            color: var(--neon-pink);
+            font-weight: 700;
+        }
+
+        /* Floating Particles */
+        .error-particles {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 4;
+            overflow: hidden;
+        }
+        .error-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--neon-pink);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--neon-pink);
+            opacity: 0.5;
+            animation: particleFloat 8s ease-in-out infinite;
+        }
+        .error-particle:nth-child(2n) {
+            background: var(--neon-red);
+            box-shadow: 0 0 10px var(--neon-red);
+            animation-duration: 10s;
+        }
+        .error-particle:nth-child(3n) {
+            background: var(--neon-purple);
+            box-shadow: 0 0 10px var(--neon-purple);
+            animation-duration: 12s;
+        }
+        .error-particle:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
+        .error-particle:nth-child(2) { top: 60%; left: 80%; animation-delay: 1s; }
+        .error-particle:nth-child(3) { top: 80%; left: 20%; animation-delay: 2s; }
+        .error-particle:nth-child(4) { top: 30%; left: 70%; animation-delay: 3s; }
+        .error-particle:nth-child(5) { top: 50%; left: 40%; animation-delay: 4s; }
+        .error-particle:nth-child(6) { top: 10%; left: 60%; animation-delay: 5s; }
+        .error-particle:nth-child(7) { top: 70%; left: 90%; animation-delay: 6s; }
+        .error-particle:nth-child(8) { top: 40%; left: 5%; animation-delay: 7s; }
+        @keyframes particleFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.5; }
+            25% { transform: translate(20px, -30px) scale(1.2); opacity: 0.8; }
+            50% { transform: translate(-15px, -60px) scale(0.8); opacity: 0.3; }
+            75% { transform: translate(10px, -90px) scale(1.1); opacity: 0.6; }
+        }
+
+        /* Toast Container */
+        .toast-container {
+            position: fixed;
+            top: 100px;
+            right: 30px;
+            z-index: 10001;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            pointer-events: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .error-layout {
+                padding: 60px 20px;
+            }
+            .error-number {
+                font-size: clamp(6rem, 25vw, 10rem);
+                letter-spacing: -3px;
+            }
+            .error-title {
+                font-size: 1.3rem;
+            }
+            .error-description {
+                font-size: 0.95rem;
+            }
+            .error-terminal-body {
+                font-size: 0.78rem;
+            }
+            .error-actions {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .error-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            .error-links {
+                padding: 24px 20px;
+            }
+            .error-links-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .error-back-home {
+                top: 16px;
+                left: 16px;
+                padding: 8px 14px;
+                font-size: 0.72rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .error-number {
+                font-size: 6rem;
+            }
+            .error-links-grid {
+                grid-template-columns: 1fr;
+            }
+            .error-terminal-body {
+                padding: 14px;
+                font-size: 0.72rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .error-number,
+            .error-number::before,
+            .error-number::after,
+            .error-particle,
+            .scan-line,
+            .ha-loader-logo,
+            .ha-loader-logo::before {
+                animation: none !important;
+            }
+            .error-particle {
+                display: none;
+            }
+            .scan-line {
+                display: none;
+            }
+        }
+
+        @media (hover: none) and (pointer: coarse) {
+            .cursor-glow {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================
+         LOADING SCREEN
+    ============================================ -->
+    <div class="ha-loader" id="haLoader">
+        <div class="ha-loader-logo">
+            <i class="fas fa-triangle-exclamation"></i>
+        </div>
+        <div class="ha-loader-text">ERROR DETECTED...</div>
+        <div class="ha-loader-bar"></div>
+    </div>
+
+    <!-- ============================================
+         CURSOR GLOW EFFECT
+    ============================================ -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- ============================================
+         MATRIX RAIN CANVAS
+    ============================================ -->
+    <canvas class="error-matrix-canvas" id="matrixCanvas"></canvas>
+
+    <!-- ============================================
+         GRID OVERLAY
+    ============================================ -->
+    <div class="error-grid-overlay"></div>
+
+    <!-- ============================================
+         VIGNETTE
+    ============================================ -->
+    <div class="error-vignette"></div>
+
+    <!-- ============================================
+         SCANLINE EFFECT
+    ============================================ -->
+    <div class="scan-line"></div>
+
+    <!-- ============================================
+         FLOATING PARTICLES
+    ============================================ -->
+    <div class="error-particles">
+        <div class="error-particle"></div>
+        <div class="error-particle"></div>
+        <div class="error-particle"></div>
+        <div class="error-particle"></div>
+        <div class="error-particle"></div>
+        <div class="error-particle"></div>
+        <div class="error-particle"></div>
+        <div class="error-particle"></div>
+    </div>
+
+    <!-- ============================================
+         BACK TO HOME LINK
+    ============================================ -->
+    <a href="index.html" class="error-back-home">
+        <i class="fas fa-arrow-left"></i> Back to Home
+    </a>
+
+    <!-- ============================================
+         ERROR LAYOUT
+    ============================================ -->
+    <main class="error-layout">
+        <div class="error-container">
+            
+            <!-- Status Badge -->
+            <div class="error-status-badge">
+                <span class="pulse-dot"></span>
+                <span>HTTP ERROR 404 • PAGE NOT FOUND</span>
+            </div>
+
+            <!-- 404 Number -->
+            <h1 class="error-number">404</h1>
+
+            <!-- Error Title -->
+            <h2 class="error-title">
+                SYSTEM <span class="accent">BREACH</span> DETECTED
+            </h2>
+
+            <!-- Error Description -->
+            <p class="error-description">
+                Oops! The page you're looking for has been compromised, relocated, or never existed in this dimension. 
+                Don't worry — even elite hackers get lost sometimes. Let's get you back on track.
+            </p>
+
+            <!-- Terminal Box -->
+            <div class="error-terminal">
+                <div class="error-terminal-header">
+                    <div class="error-terminal-dots">
+                        <div class="error-terminal-dot red"></div>
+                        <div class="error-terminal-dot yellow"></div>
+                        <div class="error-terminal-dot green"></div>
+                    </div>
+                    <div class="error-terminal-title">ha-terminal@hackeracademy:~</div>
+                </div>
+                <div class="error-terminal-body">
+                    <span class="error-terminal-line">
+                        <span class="prompt">$</span>
+                        <span class="command">ping hackeracademy.com</span>
+                    </span>
+                    <span class="error-terminal-line">
+                        <span class="output">PING hackeracademy.com (127.0.0.1): 56 data bytes</span>
+                    </span>
+                    <span class="error-terminal-line">
+                        <span class="output">Request timeout for icmp_seq 0</span>
+                    </span>
+                    <span class="error-terminal-line">
+                        <span class="output">Request timeout for icmp_seq 1</span>
+                    </span>
+                    <span class="error-terminal-line">
+                        <span class="prompt">$</span>
+                        <span class="command">curl -I /current-page</span>
+                    </span>
+                    <span class="error-terminal-line">
+                        <span class="error-text">HTTP/1.1 404 Not Found</span>
+                    </span>
+                    <span class="error-terminal-line">
+                        <span class="error-text">Error: Resource not found in this dimension</span>
+                    </span>
+                    <span class="error-terminal-line">
+                        <span class="prompt">$</span>
+                        <span class="command">sudo recover --path=/home<span class="error-terminal-cursor"></span></span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="error-actions">
+                <a href="index.html" class="error-btn primary">
+                    <i class="fas fa-home"></i>
+                    <span>Return to Home</span>
+                </a>
+                <a href="dashboard.html" class="error-btn ghost">
+                    <i class="fas fa-gauge-high"></i>
+                    <span>Go to Dashboard</span>
+                </a>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="error-links">
+                <div class="error-links-title">Quick Navigation</div>
+                <div class="error-links-grid">
+                    <a href="index.html#courses" class="error-link">
+                        <i class="fas fa-book-open"></i>
+                        <span>Browse Courses</span>
+                    </a>
+                    <a href="register.html" class="error-link">
+                        <i class="fas fa-user-plus"></i>
+                        <span>Register</span>
+                    </a>
+                    <a href="login.html" class="error-link">
+                        <i class="fas fa-right-to-bracket"></i>
+                        <span>Login</span>
+                    </a>
+                    <a href="index.html#contact" class="error-link">
+                        <i class="fas fa-envelope"></i>
+                        <span>Contact Us</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="error-footer">
+                <p>
+                    © 2026 <strong>Hacker Academy</strong>. All Rights Reserved.
+                </p>
+                <p style="margin-top: 8px;">
+                    Founded & Owned by <strong>Er. Priyanshu Sharma</strong>
+                </p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ============================================
+         EXTERNAL SCRIPTS
+    ============================================ -->
+    <script src="js/storage.js"></script>
+    <script src="js/utils.js"></script>
+
+    <!-- ============================================
+         404 PAGE SCRIPTS
+    ============================================ -->
+    <script>
+        /**
+         * 404 Error Page Controller
+         * Premium Cyberpunk Error Experience
+         */
+        (function() {
+            'use strict';
+
+            // ============================================
+            // 1. MATRIX RAIN EFFECT (Pink/Red themed)
+            // ============================================
+            function initMatrixRain() {
+                const canvas = document.getElementById('matrixCanvas');
+                if (!canvas) return;
+                
+                const ctx = canvas.getContext('2d');
+                
+                const resize = () => {
+                    canvas.width = window.innerWidth;
+                    canvas.height = window.innerHeight;
+                };
+                resize();
+                window.addEventListener('resize', resize);
+                
+                // Error-themed characters
+                const chars = 'ERROR404NOTFOUND01アイウエオカキクケコサシスセソタチツテト@#$%&*!?><';
+                const fontSize = 14;
+                let columns = Math.floor(canvas.width / fontSize);
+                let drops = Array(columns).fill(1);
+                
+                const draw = () => {
+                    ctx.fillStyle = 'rgba(5, 5, 10, 0.06)';
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                    
+                    ctx.font = `${fontSize}px 'JetBrains Mono', monospace`;
+                    
+                    for (let i = 0; i < drops.length; i++) {
+                        const text = chars[Math.floor(Math.random() * chars.length)];
+                        const x = i * fontSize;
+                        const y = drops[i] * fontSize;
+                        
+                        // Pink/red color palette
+                        const colors = [
+                            'rgba(255, 46, 154, ALPHA)',
+                            'rgba(255, 56, 96, ALPHA)',
+                            'rgba(181, 55, 242, ALPHA)'
+                        ];
+                        const color = colors[Math.floor(Math.random() * colors.length)];
+                        const alpha = 0.4 + Math.random() * 0.6;
+                        ctx.fillStyle = color.replace('ALPHA', alpha);
+                        ctx.fillText(text, x, y);
+                        
+                        if (y > canvas.height && Math.random() > 0.975) {
+                            drops[i] = 0;
+                        }
+                        drops[i]++;
+                    }
+                };
+                
+                const interval = setInterval(draw, 55);
+                
+                window.addEventListener('resize', () => {
+                    const newColumns = Math.floor(canvas.width / fontSize);
+                    if (newColumns !== columns) {
+                        columns = newColumns;
+                        drops = Array(columns).fill(1);
+                    }
+                });
+                
+                window.addEventListener('beforeunload', () => clearInterval(interval));
+            }
+
+            // ============================================
+            // 2. CURSOR GLOW EFFECT
+            // ============================================
+            function initCursorGlow() {
+                const glow = document.getElementById('cursorGlow');
+                if (!glow) return;
+                
+                if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+                    glow.style.display = 'none';
+                    return;
+                }
+                
+                let mouseX = window.innerWidth / 2;
+                let mouseY = window.innerHeight / 2;
+                let glowX = mouseX;
+                let glowY = mouseY;
+                
+                document.addEventListener('mousemove', (e) => {
+                    mouseX = e.clientX;
+                    mouseY = e.clientY;
+                });
+                
+                const animate = () => {
+                    glowX += (mouseX - glowX) * 0.12;
+                    glowY += (mouseY - glowY) * 0.12;
+                    
+                    glow.style.left = glowX + 'px';
+                    glow.style.top = glowY + 'px';
+                    
+                    requestAnimationFrame(animate);
+                };
+                
+                animate();
+            }
+
+            // ============================================
+            // 3. LOADING SCREEN
+            // ============================================
+            function hideLoader() {
+                const loader = document.getElementById('haLoader');
+                if (!loader) return;
+                
+                const minDisplayTime = 1200;
+                const startTime = Date.now();
+                
+                const hide = () => {
+                    const elapsed = Date.now() - startTime;
+                    const remaining = Math.max(0, minDisplayTime - elapsed);
+                    
+                    setTimeout(() => {
+                        loader.classList.add('hidden');
+                        document.body.style.overflow = '';
+                        
+                        setTimeout(() => {
+                            if (loader && loader.parentNode) {
+                                loader.style.display = 'none';
+                            }
+                        }, 800);
+                    }, remaining);
+                };
+                
+                if (document.readyState === 'complete') {
+                    hide();
+                } else {
+                    window.addEventListener('load', hide);
+                }
+            }
+
+            // ============================================
+            // 4. TERMINAL TYPING EFFECT
+            // ============================================
+            function initTerminalTyping() {
+                const lines = document.querySelectorAll('.error-terminal-line');
+                
+                lines.forEach((line, index) => {
+                    line.style.opacity = '0';
+                    line.style.transform = 'translateX(-10px)';
+                    line.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+                    
+                    setTimeout(() => {
+                        line.style.opacity = '1';
+                        line.style.transform = 'translateX(0)';
+                    }, 1500 + (index * 200));
+                });
+            }
+
+            // ============================================
+            // 5. ERROR NUMBER COUNTER
+            // ============================================
+            function animateErrorNumber() {
+                const numberEl = document.querySelector('.error-number');
+                if (!numberEl) return;
+                
+                const target = 404;
+                const duration = 1500;
+                const startTime = performance.now();
+                
+                const update = (currentTime) => {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const easeProgress = 1 - Math.pow(1 - progress, 3);
+                    const current = Math.floor(target * easeProgress);
+                    
+                    numberEl.childNodes[0].textContent = current;
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(update);
+                    } else {
+                        numberEl.childNodes[0].textContent = target;
+                    }
+                };
+                
+                // Delay to let loader finish
+                setTimeout(() => {
+                    requestAnimationFrame(update);
+                }, 1400);
+            }
+
+            // ============================================
+            // 6. KEYBOARD SHORTCUTS
+            // ============================================
+            function initKeyboardShortcuts() {
+                document.addEventListener('keydown', (e) => {
+                    // H = Home
+                    if (e.key === 'h' || e.key === 'H') {
+                        if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+                            window.location.href = 'index.html';
+                        }
+                    }
+                    
+                    // D = Dashboard
+                    if (e.key === 'd' || e.key === 'D') {
+                        if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+                            window.location.href = 'dashboard.html';
+                        }
+                    }
+                    
+                    // Escape = Home
+                    if (e.key === 'Escape') {
+                        window.location.href = 'index.html';
+                    }
+                });
+            }
+
+            // ============================================
+            // 7. CONSOLE MESSAGE
+            // ============================================
+            function showConsoleMessage() {
+                const styles = [
+                    'background: linear-gradient(135deg, #ff2e9a, #ff3860)',
+                    'color: white',
+                    'padding: 12px 20px',
+                    'font-family: monospace',
+                    'font-size: 14px',
+                    'font-weight: bold',
+                    'border-radius: 6px',
+                    'text-shadow: 0 0 10px rgba(255, 255, 255, 0.5)'
+                ].join(';');
+                
+                console.log('%c🚫 HACKER ACADEMY - 404 ERROR', styles);
+                console.log('%cPage not found. Even elite hackers get lost sometimes!', 
+                    'color: #ff2e9a; font-size: 12px; font-family: monospace;');
+                console.log('%cPress H for Home, D for Dashboard, or Escape to escape!', 
+                    'color: #00ff9d; font-size: 11px; font-family: monospace;');
+                console.log('%cFounded by Er. Priyanshu Sharma', 
+                    'color: #a0a0b8; font-size: 10px; font-family: monospace;');
+            }
+
+            // ============================================
+            // 8. INITIALIZATION
+            // ============================================
+            function init() {
+                console.log('[HA.404] 🚫 Initializing Error Page...');
+                console.log('[HA.404] Founded by Er. Priyanshu Sharma');
+                
+                // Initialize effects
+                initMatrixRain();
+                initCursorGlow();
+                initTerminalTyping();
+                animateErrorNumber();
+                initKeyboardShortcuts();
+                
+                // Show console message
+                showConsoleMessage();
+                
+                // Hide loader
+                hideLoader();
+                
+                console.log('[HA.404] ✅ Error page ready');
+            }
+
+            // Initialize on DOM ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
+            }
+        })();
+    </script>
+
+</body>
+</html>

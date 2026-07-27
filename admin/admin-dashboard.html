@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ============================================
+         HACKER ACADEMY - ADMIN DASHBOARD
+         Founded & Owned by Er. Priyanshu Sharma
+         File: admin/admin-dashboard.html
+    ============================================ -->
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Admin Dashboard | Hacker Academy - Command Center</title>
+    <meta name="title" content="Admin Dashboard | Hacker Academy - Command Center">
+    <meta name="description" content="Hacker Academy administrative dashboard. Manage students, courses, analytics, and system settings from the premium admin command center.">
+    <meta name="keywords" content="Hacker Academy Admin, Admin Dashboard, Management Panel, Cyber Security Academy, Er. Priyanshu Sharma">
+    <meta name="author" content="Er. Priyanshu Sharma">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#ff2e9a">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://hackeracademy.example.com/admin/admin-dashboard.html">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23000'/%3E%3Ctext x='50' y='68' font-family='Arial Black' font-size='60' font-weight='900' text-anchor='middle' fill='%23ff2e9a'%3EA%3C/text%3E%3C/svg%3E">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hackeracademy.example.com/admin/admin-dashboard.html">
+    <meta property="og:title" content="Admin Dashboard | Hacker Academy">
+    <meta property="og:description" content="Hacker Academy administrative dashboard.">
+    <meta property="og:site_name" content="Hacker Academy">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Admin Dashboard | Hacker Academy">
+    <meta name="twitter:description" content="Hacker Academy administrative dashboard.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/admin.css">
+
+    <!-- Critical Inline Styles -->
+    <style>
+        /* Loading Screen */
+        .ha-loader {
+            position: fixed;
+            inset: 0;
+            background: var(--cyber-black);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        .ha-loader.hidden { opacity: 0; visibility: hidden; }
+        .ha-loader-logo {
+            width: 100px; height: 100px;
+            border: 3px solid var(--neon-pink);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--neon-pink);
+            box-shadow: 0 0 40px rgba(255, 46, 154, 0.5), inset 0 0 40px rgba(255, 46, 154, 0.2);
+            animation: pulseGlow 2s ease-in-out infinite, rotateLogo 4s linear infinite;
+            position: relative;
+        }
+        .ha-loader-logo::before {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            border: 2px dashed var(--neon-purple);
+            border-radius: 24px;
+            animation: rotateLogo 8s linear infinite reverse;
+        }
+        .ha-loader-text {
+            margin-top: 30px;
+            font-family: var(--font-mono);
+            color: var(--neon-pink);
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+        }
+        .ha-loader-bar {
+            width: 200px;
+            height: 2px;
+            background: rgba(255, 46, 154, 0.1);
+            margin-top: 20px;
+            overflow: hidden;
+            border-radius: 2px;
+        }
+        .ha-loader-bar::after {
+            content: '';
+            display: block;
+            width: 40%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));
+            animation: loadBar 1.5s ease-in-out infinite;
+            box-shadow: 0 0 10px var(--neon-pink);
+        }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 40px rgba(255, 46, 154, 0.5), inset 0 0 40px rgba(255, 46, 154, 0.2); }
+            50% { box-shadow: 0 0 80px rgba(255, 46, 154, 0.7), inset 0 0 60px rgba(255, 46, 154, 0.3); }
+        }
+        @keyframes rotateLogo {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes loadBar {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(350%); }
+        }
+
+        /* Toast Container */
+        .toast-container {
+            position: fixed;
+            top: 100px;
+            right: 30px;
+            z-index: 10001;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            pointer-events: none;
+        }
+
+        /* Sidebar Overlay */
+        .sidebar-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .sidebar-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Admin Welcome */
+        .admin-welcome {
+            margin-bottom: 30px;
+            padding: 28px;
+            background: linear-gradient(135deg, rgba(255, 46, 154, 0.08), rgba(181, 55, 242, 0.05));
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 46, 154, 0.2);
+            border-radius: var(--radius-xl);
+            position: relative;
+            overflow: hidden;
+        }
+        .admin-welcome::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 46, 154, 0.12), transparent 70%);
+            pointer-events: none;
+        }
+        .admin-welcome-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+            font-weight: 800;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 2;
+        }
+        .admin-welcome-title .accent {
+            background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .admin-welcome-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
+        }
+        .admin-welcome-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: linear-gradient(135deg, rgba(255, 46, 154, 0.15), rgba(181, 55, 242, 0.1));
+            border: 1px solid rgba(255, 46, 154, 0.3);
+            border-radius: 50px;
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            color: var(--neon-pink);
+            letter-spacing: 2px;
+            margin-top: 14px;
+            position: relative;
+            z-index: 2;
+        }
+        .admin-welcome-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--neon-pink);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--neon-pink);
+            animation: pulse 2s infinite;
+        }
+
+        /* Quick Actions */
+        .quick-actions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 14px;
+            margin-top: 20px;
+        }
+        .quick-action-btn {
+            padding: 16px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            color: var(--text-secondary);
+            font-family: var(--font-heading);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        .quick-action-btn i {
+            color: var(--neon-pink);
+            font-size: 1rem;
+        }
+        .quick-action-btn:hover {
+            border-color: var(--neon-pink);
+            color: var(--text-primary);
+            background: rgba(255, 46, 154, 0.05);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255, 46, 154, 0.15);
+        }
+
+        /* Admin Section Title */
+        .admin-section-title {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-transform: uppercase;
+        }
+        .admin-section-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(180deg, var(--neon-pink), var(--neon-purple));
+            border-radius: 2px;
+            box-shadow: 0 0 10px var(--neon-pink);
+        }
+
+        /* Admin Grid */
+        .admin-grid {
+            display: grid;
+            gap: 24px;
+        }
+        .admin-grid-4 { grid-template-columns: repeat(4, 1fr); }
+        .admin-grid-3 { grid-template-columns: repeat(3, 1fr); }
+        .admin-grid-2 { grid-template-columns: repeat(2, 1fr); }
+        .admin-grid-3-2 { grid-template-columns: 3fr 2fr; }
+
+        /* Chart Placeholder */
+        .chart-placeholder {
+            height: 280px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px dashed var(--glass-border);
+            border-radius: var(--radius-md);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+        .chart-placeholder i {
+            font-size: 2.5rem;
+            color: var(--neon-pink);
+            margin-bottom: 14px;
+            opacity: 0.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .admin-grid-4 { grid-template-columns: repeat(2, 1fr); }
+            .admin-grid-3-2 { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .admin-grid-4,
+            .admin-grid-3 { grid-template-columns: 1fr; }
+            .admin-grid-2 { grid-template-columns: 1fr; }
+            .quick-actions-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 480px) {
+            .quick-actions-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================
+         LOADING SCREEN
+    ============================================ -->
+    <div class="ha-loader" id="haLoader">
+        <div class="ha-loader-logo">
+            <i class="fas fa-shield-halved"></i>
+        </div>
+        <div class="ha-loader-text">LOADING COMMAND CENTER...</div>
+        <div class="ha-loader-bar"></div>
+    </div>
+
+    <!-- ============================================
+         ADMIN LAYOUT
+    ============================================ -->
+    <div class="admin-layout">
+        
+        <!-- ============================================
+             ADMIN SIDEBAR
+        ============================================ -->
+        <aside class="admin-sidebar">
+            <div class="admin-sidebar-header">
+                <a href="admin-dashboard.html" class="admin-logo">
+                    <div class="admin-logo-icon">
+                        <i class="fas fa-shield-halved"></i>
+                    </div>
+                    <div class="admin-logo-text">
+                        <span class="admin-logo-title">HACKER ACADEMY</span>
+                        <span class="admin-logo-sub">ADMIN PANEL</span>
+                    </div>
+                </a>
+                <div class="admin-role-badge">SUPER ADMIN</div>
+            </div>
+
+            <!-- Main Navigation -->
+            <div class="admin-sidebar-section">
+                <div class="admin-sidebar-section-title">Main</div>
+                <ul class="admin-sidebar-menu">
+                    <li>
+                        <a href="admin-dashboard.html" class="admin-sidebar-link active">
+                            <i class="fas fa-gauge-high"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="analytics.html" class="admin-sidebar-link">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Analytics</span>
+                            <span class="admin-sidebar-badge">NEW</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Management -->
+            <div class="admin-sidebar-section">
+                <div class="admin-sidebar-section-title">Management</div>
+                <ul class="admin-sidebar-menu">
+                    <li>
+                        <a href="students.html" class="admin-sidebar-link">
+                            <i class="fas fa-users"></i>
+                            <span>Students</span>
+                            <span class="admin-sidebar-badge">12</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="courses.html" class="admin-sidebar-link">
+                            <i class="fas fa-book-open"></i>
+                            <span>Courses</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="lessons.html" class="admin-sidebar-link">
+                            <i class="fas fa-file-lines"></i>
+                            <span>Lessons</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="today-class.html" class="admin-sidebar-link">
+                            <i class="fas fa-video"></i>
+                            <span>Today's Class</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="quiz-management.html" class="admin-sidebar-link">
+                            <i class="fas fa-brain"></i>
+                            <span>Quizzes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="admin-sidebar-link">
+                            <i class="fas fa-certificate"></i>
+                            <span>Certificates</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="announcements.html" class="admin-sidebar-link">
+                            <i class="fas fa-bullhorn"></i>
+                            <span>Announcements</span>
+                            <span class="admin-sidebar-badge warning">3</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- System -->
+            <div class="admin-sidebar-section">
+                <div class="admin-sidebar-section-title">System</div>
+                <ul class="admin-sidebar-menu">
+                    <li>
+                        <a href="settings.html" class="admin-sidebar-link">
+                            <i class="fas fa-gear"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../index.html" class="admin-sidebar-link">
+                            <i class="fas fa-globe"></i>
+                            <span>View Website</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Logout -->
+            <div class="admin-sidebar-footer">
+                <div class="admin-sidebar-footer-text">
+                    <i class="fas fa-shield-halved"></i>
+                    SECURE SESSION ACTIVE
+                </div>
+                <button class="admin-sidebar-footer-btn" id="adminLogoutBtn">
+                    <i class="fas fa-right-from-bracket"></i>
+                    Logout
+                </button>
+            </div>
+        </aside>
+
+        <!-- Sidebar Overlay (Mobile) -->
+        <div class="sidebar-overlay"></div>
+
+        <!-- ============================================
+             ADMIN MAIN CONTENT
+        ============================================ -->
+        <main class="admin-main">
+            
+            <!-- ============================================
+                 ADMIN HEADER
+            ============================================ -->
+            <header class="admin-header">
+                <div class="admin-header-left">
+                    <button class="admin-sidebar-toggle" aria-label="Toggle Sidebar">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="admin-page-title">
+                        <h1>Dashboard</h1>
+                        <div class="admin-page-breadcrumb">
+                            <span>Admin</span>
+                            <span class="separator">/</span>
+                            <span class="current">Dashboard</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="admin-header-right">
+                    <!-- Server Status -->
+                    <div class="admin-server-status">
+                        <span class="status-dot"></span>
+                        ONLINE
+                    </div>
+
+                    <!-- Notifications -->
+                    <button class="admin-header-btn" aria-label="Notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="badge-dot"></span>
+                    </button>
+
+                    <!-- Admin User Menu -->
+                    <div class="admin-user-menu">
+                        <div class="admin-user-menu-avatar">PS</div>
+                        <div class="admin-user-menu-info">
+                            <div class="admin-user-menu-name" id="adminUserName">Er. Priyanshu Sharma</div>
+                            <div class="admin-user-menu-role">SUPER ADMIN</div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- ============================================
+                 ADMIN CONTENT
+            ============================================ -->
+            <div class="admin-content">
+                
+                <!-- Welcome Section -->
+                <div class="admin-welcome">
+                    <h2 class="admin-welcome-title">
+                        Welcome back, <span class="accent" id="welcomeAdminName">Admin</span>! 🛡️
+                    </h2>
+                    <p class="admin-welcome-subtitle">
+                        Here's what's happening with Hacker Academy today. Monitor your platform, manage students, and track performance in real-time.
+                    </p>
+                    <div class="admin-welcome-badge">
+                        SUPER ADMIN ACCESS • FULL PRIVILEGES
+                    </div>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="admin-grid admin-grid-4">
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-header">
+                            <div class="admin-stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="admin-stat-trend">
+                                <i class="fas fa-arrow-up"></i> +8%
+                            </div>
+                        </div>
+                        <div class="admin-stat-value" id="adminStatStudents">0</div>
+                        <div class="admin-stat-label">Total Students</div>
+                        <div class="admin-stat-footer">
+                            <i class="fas fa-user-plus"></i>
+                            <span>3 new today</span>
+                        </div>
+                    </div>
+
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-header">
+                            <div class="admin-stat-icon green">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            <div class="admin-stat-trend">
+                                <i class="fas fa-check"></i> Active
+                            </div>
+                        </div>
+                        <div class="admin-stat-value" id="adminStatCourses">0</div>
+                        <div class="admin-stat-label">Total Courses</div>
+                        <div class="admin-stat-footer">
+                            <i class="fas fa-chart-line"></i>
+                            <span>All published</span>
+                        </div>
+                    </div>
+
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-header">
+                            <div class="admin-stat-icon blue">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <div class="admin-stat-trend">
+                                <i class="fas fa-arrow-up"></i> +12%
+                            </div>
+                        </div>
+                        <div class="admin-stat-value" id="adminStatCertificates">0</div>
+                        <div class="admin-stat-label">Certificates Issued</div>
+                        <div class="admin-stat-footer">
+                            <i class="fas fa-award"></i>
+                            <span>This month</span>
+                        </div>
+                    </div>
+
+                    <div class="admin-stat-card">
+                        <div class="admin-stat-header">
+                            <div class="admin-stat-icon yellow">
+                                <i class="fas fa-indian-rupee-sign"></i>
+                            </div>
+                            <div class="admin-stat-trend">
+                                <i class="fas fa-arrow-up"></i> +24%
+                            </div>
+                        </div>
+                        <div class="admin-stat-value" id="adminStatRevenue">₹0</div>
+                        <div class="admin-stat-label">Total Revenue</div>
+                        <div class="admin-stat-footer">
+                            <i class="fas fa-chart-pie"></i>
+                            <span>Monthly growth</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activity & Quick Actions -->
+                <div class="admin-grid admin-grid-3-2">
+                    
+                    <!-- Recent Activity -->
+                    <div class="admin-activity-card">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                            <h3 class="admin-section-title" style="margin-bottom: 0;">
+                                <i class="fas fa-clock-rotate-left"></i>
+                                Recent Activity
+                            </h3>
+                            <a href="#" style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--neon-pink); letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none;">
+                                View All <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                        <div class="admin-activity-list" id="activityList">
+                            <!-- Activity items will be rendered here -->
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="admin-analytics-card">
+                        <h3 class="admin-section-title">
+                            <i class="fas fa-bolt"></i>
+                            Quick Actions
+                        </h3>
+                        <p style="color: var(--text-secondary); font-size: 0.88rem; margin-bottom: 16px; line-height: 1.6;">
+                            Common administrative tasks at your fingertips.
+                        </p>
+                        <div class="quick-actions-grid">
+                            <a href="students.html" class="quick-action-btn">
+                                <i class="fas fa-user-plus"></i>
+                                <span>Add Student</span>
+                            </a>
+                            <a href="courses.html" class="quick-action-btn">
+                                <i class="fas fa-plus-circle"></i>
+                                <span>New Course</span>
+                            </a>
+                            <a href="announcements.html" class="quick-action-btn">
+                                <i class="fas fa-bullhorn"></i>
+                                <span>Announce</span>
+                            </a>
+                            <a href="today-class.html" class="quick-action-btn">
+                                <i class="fas fa-video"></i>
+                                <span>Schedule Class</span>
+                            </a>
+                            <a href="quiz-management.html" class="quick-action-btn">
+                                <i class="fas fa-brain"></i>
+                                <span>Create Quiz</span>
+                            </a>
+                            <a href="settings.html" class="quick-action-btn">
+                                <i class="fas fa-gear"></i>
+                                <span>Settings</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Students & Analytics -->
+                <div class="admin-grid admin-grid-3-2">
+                    
+                    <!-- Recent Students Table -->
+                    <div class="admin-table-card">
+                        <div class="admin-table-header">
+                            <div class="admin-table-title">
+                                <i class="fas fa-users"></i>
+                                Recent Students
+                                <span class="admin-table-count" id="recentStudentsCount">0</span>
+                            </div>
+                            <a href="students.html" class="btn btn-admin-ghost btn-sm">
+                                View All <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                        <div class="admin-table-wrapper">
+                            <table class="admin-table">
+                                <thead>
+                                    <tr>
+                                        <th>Student</th>
+                                        <th>HABPS ID</th>
+                                        <th>Status</th>
+                                        <th>Joined</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="recentStudentsTable">
+                                    <!-- Recent students will be rendered here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Analytics Preview -->
+                    <div class="admin-chart-card">
+                        <div class="admin-chart-header">
+                            <h3 class="admin-chart-title">
+                                <i class="fas fa-chart-line" style="color: var(--neon-pink);"></i>
+                                Enrollment Trends
+                            </h3>
+                            <div class="admin-chart-controls">
+                                <button class="admin-chart-control active">Week</button>
+                                <button class="admin-chart-control">Month</button>
+                                <button class="admin-chart-control">Year</button>
+                            </div>
+                        </div>
+                        <div class="chart-placeholder">
+                            <i class="fas fa-chart-area"></i>
+                            <span>Chart visualization coming soon</span>
+                            <span style="font-size: 0.72rem; margin-top: 6px; opacity: 0.6;">Powered by Gemini AI Analytics</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- System Status & Performance -->
+                <div class="admin-grid admin-grid-3">
+                    
+                    <!-- System Status -->
+                    <div class="admin-analytics-card">
+                        <h3 class="admin-section-title">
+                            <i class="fas fa-server"></i>
+                            System Status
+                        </h3>
+                        <div style="display: flex; flex-direction: column; gap: 14px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px; background: rgba(0, 255, 157, 0.05); border: 1px solid rgba(0, 255, 157, 0.2); border-radius: var(--radius-md);">
+                                <span style="font-family: var(--font-heading); font-size: 0.9rem; font-weight: 600;">
+                                    <i class="fas fa-circle-check" style="color: var(--neon-green); margin-right: 8px;"></i>
+                                    API Server
+                                </span>
+                                <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--neon-green); letter-spacing: 1.5px;">ONLINE</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px; background: rgba(0, 255, 157, 0.05); border: 1px solid rgba(0, 255, 157, 0.2); border-radius: var(--radius-md);">
+                                <span style="font-family: var(--font-heading); font-size: 0.9rem; font-weight: 600;">
+                                    <i class="fas fa-circle-check" style="color: var(--neon-green); margin-right: 8px;"></i>
+                                    Database
+                                </span>
+                                <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--neon-green); letter-spacing: 1.5px;">ONLINE</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px; background: rgba(0, 255, 157, 0.05); border: 1px solid rgba(0, 255, 157, 0.2); border-radius: var(--radius-md);">
+                                <span style="font-family: var(--font-heading); font-size: 0.9rem; font-weight: 600;">
+                                    <i class="fas fa-circle-check" style="color: var(--neon-green); margin-right: 8px;"></i>
+                                    AI Tutor (Gemini)
+                                </span>
+                                <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--neon-green); letter-spacing: 1.5px;">ONLINE</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px; background: rgba(255, 214, 10, 0.05); border: 1px solid rgba(255, 214, 10, 0.2); border-radius: var(--radius-md);">
+                                <span style="font-family: var(--font-heading); font-size: 0.9rem; font-weight: 600;">
+                                    <i class="fas fa-circle-exclamation" style="color: var(--neon-yellow); margin-right: 8px;"></i>
+                                    CDN
+                                </span>
+                                <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--neon-yellow); letter-spacing: 1.5px;">HIGH LOAD</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Performance Metrics -->
+                    <div class="admin-analytics-card">
+                        <h3 class="admin-section-title">
+                            <i class="fas fa-gauge-high"></i>
+                            Performance
+                        </h3>
+                        <div style="display: flex; flex-direction: column; gap: 16px;">
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                    <span style="font-family: var(--font-heading); font-size: 0.88rem; font-weight: 600;">CPU Usage</span>
+                                    <span style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--neon-pink);">42%</span>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 42%; background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                    <span style="font-family: var(--font-heading); font-size: 0.88rem; font-weight: 600;">Memory</span>
+                                    <span style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--neon-pink);">68%</span>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 68%; background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                    <span style="font-family: var(--font-heading); font-size: 0.88rem; font-weight: 600;">Storage</span>
+                                    <span style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--neon-pink);">35%</span>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 35%; background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                    <span style="font-family: var(--font-heading); font-size: 0.88rem; font-weight: 600;">Bandwidth</span>
+                                    <span style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--neon-pink);">54%</span>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar" style="width: 54%; background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Storage Info -->
+                    <div class="admin-analytics-card">
+                        <h3 class="admin-section-title">
+                            <i class="fas fa-database"></i>
+                            Storage Info
+                        </h3>
+                        <div style="display: flex; flex-direction: column; gap: 12px;">
+                            <div style="display: flex; justify-content: space-between; padding: 12px; background: rgba(0, 0, 0, 0.3); border-radius: var(--radius-md);">
+                                <span style="font-family: var(--font-heading); font-size: 0.88rem; color: var(--text-secondary);">
+                                    <i class="fas fa-users" style="color: var(--neon-pink); margin-right: 8px;"></i>
+                                    Students
+                                </span>
+                                <span style="font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--neon-pink);" id="storageStudents">0</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: 12px; background: rgba(0, 0, 0, 0.3); border-radius: var(--radius-md);">
+                                <span style="font-family: var(--font-heading); font-size: 0.88rem; color: var(--text-secondary);">
+                                    <i class="fas fa-book-open" style="color: var(--neon-pink); margin-right: 8px;"></i>
+                                    Courses
+                                </span>
+                                <span style="font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--neon-pink);" id="storageCourses">0</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: 12px; background: rgba(0, 0, 0, 0.3); border-radius: var(--radius-md);">
+                                <span style="font-family: var(--font-heading); font-size: 0.88rem; color: var(--text-secondary);">
+                                    <i class="fas fa-certificate" style="color: var(--neon-pink); margin-right: 8px;"></i>
+                                    Certificates
+                                </span>
+                                <span style="font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--neon-pink);" id="storageCerts">0</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding: 12px; background: rgba(0, 0, 0, 0.3); border-radius: var(--radius-md);">
+                                <span style="font-family: var(--font-heading); font-size: 0.88rem; color: var(--text-secondary);">
+                                    <i class="fas fa-key" style="color: var(--neon-pink); margin-right: 8px;"></i>
+                                    Storage Keys
+                                </span>
+                                <span style="font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--neon-pink);" id="storageKeys">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+    </div>
+
+    <!-- ============================================
+         EXTERNAL SCRIPTS
+    ============================================ -->
+    <script src="../js/storage.js"></script>
+    <script src="../js/utils.js"></script>
+    <script src="../js/admin.js"></script>
+
+</body>
+</html>

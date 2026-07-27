@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ============================================
+         HACKER ACADEMY - STUDENT DASHBOARD
+         Founded & Owned by Er. Priyanshu Sharma
+         File: dashboard.html
+    ============================================ -->
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Dashboard | Hacker Academy - Your Cybersecurity Command Center</title>
+    <meta name="title" content="Dashboard | Hacker Academy - Your Cybersecurity Command Center">
+    <meta name="description" content="Access your premium cybersecurity dashboard. Track progress, take courses, earn certificates, connect with AI tutor, and join the elite hacker community.">
+    <meta name="keywords" content="Hacker Academy Dashboard, Student Dashboard, Cyber Security Learning, Course Progress, Certificates, AI Tutor, Er. Priyanshu Sharma">
+    <meta name="author" content="Er. Priyanshu Sharma">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#00ff9d">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://hackeracademy.example.com/dashboard.html">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23000'/%3E%3Ctext x='50' y='68' font-family='Arial Black' font-size='60' font-weight='900' text-anchor='middle' fill='%2300ff9d'%3EH%3C/text%3E%3C/svg%3E">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hackeracademy.example.com/dashboard.html">
+    <meta property="og:title" content="Dashboard | Hacker Academy">
+    <meta property="og:description" content="Access your premium cybersecurity dashboard.">
+    <meta property="og:site_name" content="Hacker Academy">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Dashboard | Hacker Academy">
+    <meta name="twitter:description" content="Access your premium cybersecurity dashboard.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+
+    <!-- Critical Inline Styles -->
+    <style>
+        /* Loading Screen */
+        .ha-loader {
+            position: fixed;
+            inset: 0;
+            background: var(--cyber-black);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        .ha-loader.hidden { opacity: 0; visibility: hidden; }
+        .ha-loader-logo {
+            width: 100px; height: 100px;
+            border: 3px solid var(--neon-green);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--neon-green);
+            box-shadow: 0 0 40px var(--neon-green), inset 0 0 40px rgba(0, 255, 157, 0.2);
+            animation: pulseGlow 2s ease-in-out infinite, rotateLogo 4s linear infinite;
+            position: relative;
+        }
+        .ha-loader-logo::before {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            border: 2px dashed var(--neon-blue);
+            border-radius: 24px;
+            animation: rotateLogo 8s linear infinite reverse;
+        }
+        .ha-loader-text {
+            margin-top: 30px;
+            font-family: var(--font-mono);
+            color: var(--neon-green);
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+        }
+        .ha-loader-bar {
+            width: 200px;
+            height: 2px;
+            background: rgba(0, 255, 157, 0.1);
+            margin-top: 20px;
+            overflow: hidden;
+            border-radius: 2px;
+        }
+        .ha-loader-bar::after {
+            content: '';
+            display: block;
+            width: 40%;
+            height: 100%;
+            background: var(--gradient-primary);
+            animation: loadBar 1.5s ease-in-out infinite;
+            box-shadow: 0 0 10px var(--neon-green);
+        }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 40px var(--neon-green), inset 0 0 40px rgba(0, 255, 157, 0.2); }
+            50% { box-shadow: 0 0 80px var(--neon-green), inset 0 0 60px rgba(0, 255, 157, 0.3); }
+        }
+        @keyframes rotateLogo {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes loadBar {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(350%); }
+        }
+
+        /* Toast Container */
+        .toast-container {
+            position: fixed;
+            top: 100px;
+            right: 30px;
+            z-index: 10001;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            pointer-events: none;
+        }
+
+        /* Sidebar Overlay */
+        .sidebar-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .sidebar-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================
+         LOADING SCREEN
+    ============================================ -->
+    <div class="ha-loader" id="haLoader">
+        <div class="ha-loader-logo">H</div>
+        <div class="ha-loader-text">LOADING DASHBOARD...</div>
+        <div class="ha-loader-bar"></div>
+    </div>
+
+    <!-- ============================================
+         DASHBOARD LAYOUT
+    ============================================ -->
+    <div class="dashboard-layout">
+        
+        <!-- ============================================
+             SIDEBAR NAVIGATION
+        ============================================ -->
+        <aside class="dash-sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="sidebar-logo">
+                    <div class="sidebar-logo-icon">H</div>
+                    <div class="sidebar-logo-text">
+                        <span class="sidebar-logo-title">HACKER ACADEMY</span>
+                        <span class="sidebar-logo-sub">STUDENT PORTAL</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Navigation Menu -->
+            <div class="sidebar-section">
+                <div class="sidebar-section-title">Main Menu</div>
+                <ul class="sidebar-menu">
+                    <li>
+                        <a href="dashboard.html" class="sidebar-link active">
+                            <i class="fas fa-gauge-high"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="sidebar-link">
+                            <i class="fas fa-book-open"></i>
+                            <span>My Courses</span>
+                            <span class="sidebar-badge">3</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="sidebar-link">
+                            <i class="fas fa-calendar-check"></i>
+                            <span>Today's Class</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="sidebar-link">
+                            <i class="fas fa-clipboard-check"></i>
+                            <span>Assignments</span>
+                            <span class="sidebar-badge warning">2</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="sidebar-link">
+                            <i class="fas fa-brain"></i>
+                            <span>Quizzes</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="certificate.html" class="sidebar-link">
+                            <i class="fas fa-certificate"></i>
+                            <span>Certificates</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-section-title">Learning</div>
+                <ul class="sidebar-menu">
+                    <li>
+                        <a href="#" class="sidebar-link">
+                            <i class="fas fa-robot"></i>
+                            <span>AI Tutor</span>
+                            <span class="sidebar-badge">NEW</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="sidebar-link">
+                            <i class="fas fa-trophy"></i>
+                            <span>Leaderboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="sidebar-link">
+                            <i class="fas fa-medal"></i>
+                            <span>Achievements</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="sidebar-link">
+                            <i class="fas fa-comments"></i>
+                            <span>Community</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="sidebar-section-title">Account</div>
+                <ul class="sidebar-menu">
+                    <li>
+                        <a href="profile.html" class="sidebar-link">
+                            <i class="fas fa-user"></i>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="sidebar-link">
+                            <i class="fas fa-gear"></i>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="sidebar-link" id="logoutBtn">
+                            <i class="fas fa-right-from-bracket"></i>
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- User Card -->
+            <div class="sidebar-user">
+                <div class="sidebar-user-avatar" id="sidebarUserAvatar">PS</div>
+                <div class="sidebar-user-info">
+                    <div class="sidebar-user-name" id="sidebarUserName">Loading...</div>
+                    <div class="sidebar-user-id" id="sidebarUserId">HABPS-00000000</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Sidebar Overlay (Mobile) -->
+        <div class="sidebar-overlay"></div>
+
+        <!-- ============================================
+             MAIN CONTENT
+        ============================================ -->
+        <main class="dashboard-main">
+            
+            <!-- ============================================
+                 TOP HEADER BAR
+            ============================================ -->
+            <header class="dash-header">
+                <div class="dash-header-left">
+                    <button class="sidebar-toggle" aria-label="Toggle Sidebar">
+                        <i class="fas fa-bars"></i>
+                    </button>
+
+                    <!-- Search -->
+                    <div class="dash-search">
+                        <i class="fas fa-search dash-search-icon"></i>
+                        <input type="text" class="dash-search-input" placeholder="Search courses, lessons, quizzes...">
+                        <span class="dash-search-shortcut">Ctrl+K</span>
+                    </div>
+                </div>
+
+                <div class="dash-header-right">
+                    <!-- Live Clock -->
+                    <div class="dash-clock">
+                        <i class="fas fa-clock"></i>
+                        <span id="dashClock">00:00:00</span>
+                    </div>
+
+                    <!-- Notifications -->
+                    <button class="dash-header-btn" id="notificationBtn" aria-label="Notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-dot"></span>
+                    </button>
+
+                    <!-- User Menu -->
+                    <div class="dash-user-menu">
+                        <div class="dash-user-menu-avatar" id="userMenuAvatar">PS</div>
+                        <div class="dash-user-menu-info">
+                            <div class="dash-user-menu-name" id="userMenuName">Loading...</div>
+                            <div class="dash-user-menu-role" id="userMenuRole">STUDENT</div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- ============================================
+                 DASHBOARD CONTENT
+            ============================================ -->
+            <div class="dashboard-content">
+                
+                <!-- Welcome Section -->
+                <div class="dash-welcome">
+                    <h1 class="dash-welcome-title">
+                        Welcome back, <span id="welcomeName">Student</span>! 👋
+                    </h1>
+                    <p class="dash-welcome-subtitle">
+                        Ready to continue your cybersecurity journey? Let's achieve something great today.
+                    </p>
+                    <div class="dash-welcome-tier" id="welcomeTier">STARTER TIER</div>
+                </div>
+
+                <!-- Stats Grid -->
+                <div class="dash-grid dash-grid-4">
+                    <div class="dash-stat-card">
+                        <div class="dash-stat-header">
+                            <div class="dash-stat-icon">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            <div class="dash-stat-trend">
+                                <i class="fas fa-arrow-up"></i> +2
+                            </div>
+                        </div>
+                        <div class="dash-stat-value" id="statCourses">0</div>
+                        <div class="dash-stat-label">Active Courses</div>
+                        <div class="dash-stat-footer">
+                            <i class="fas fa-chart-line"></i>
+                            <span>30+ available</span>
+                        </div>
+                    </div>
+
+                    <div class="dash-stat-card">
+                        <div class="dash-stat-header">
+                            <div class="dash-stat-icon blue">
+                                <i class="fas fa-chart-pie"></i>
+                            </div>
+                            <div class="dash-stat-trend">
+                                <i class="fas fa-arrow-up"></i> +12%
+                            </div>
+                        </div>
+                        <div class="dash-stat-value" id="statProgress">0%</div>
+                        <div class="dash-stat-label">Avg. Progress</div>
+                        <div class="dash-stat-footer">
+                            <i class="fas fa-trophy"></i>
+                            <span>Keep going!</span>
+                        </div>
+                    </div>
+
+                    <div class="dash-stat-card">
+                        <div class="dash-stat-header">
+                            <div class="dash-stat-icon purple">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <div class="dash-stat-trend">
+                                <i class="fas fa-arrow-up"></i> +1
+                            </div>
+                        </div>
+                        <div class="dash-stat-value" id="statCertificates">0</div>
+                        <div class="dash-stat-label">Certificates</div>
+                        <div class="dash-stat-footer">
+                            <i class="fas fa-award"></i>
+                            <span>Earned this month</span>
+                        </div>
+                    </div>
+
+                    <div class="dash-stat-card">
+                        <div class="dash-stat-header">
+                            <div class="dash-stat-icon yellow">
+                                <i class="fas fa-ranking-star"></i>
+                            </div>
+                            <div class="dash-stat-trend">
+                                <i class="fas fa-arrow-up"></i> +5
+                            </div>
+                        </div>
+                        <div class="dash-stat-value" id="statRank">#-</div>
+                        <div class="dash-stat-label">Leaderboard Rank</div>
+                        <div class="dash-stat-footer">
+                            <i class="fas fa-users"></i>
+                            <span>Top 50 students</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Today's Class & Course Progress -->
+                <div class="dash-grid dash-grid-3-2">
+                    
+                    <!-- Today's Class -->
+                    <div class="today-class-card">
+                        <div class="today-class-header">
+                            <div class="today-class-tag">
+                                <span class="pulse-dot"></span>
+                                LIVE CLASS
+                            </div>
+                            <div class="today-class-time">
+                                <i class="fas fa-clock"></i>
+                                <span id="todayClassTime">10:00 AM</span>
+                            </div>
+                        </div>
+
+                        <h3 class="today-class-title" id="todayClassTitle">Loading...</h3>
+                        <div class="today-class-course" id="todayClassCourse">Course Name</div>
+
+                        <div class="today-class-meta">
+                            <div class="today-class-meta-item">
+                                <div class="today-class-meta-label">Instructor</div>
+                                <div class="today-class-meta-value" id="todayClassInstructor">-</div>
+                            </div>
+                            <div class="today-class-meta-item">
+                                <div class="today-class-meta-label">Duration</div>
+                                <div class="today-class-meta-value" id="todayClassDuration">-</div>
+                            </div>
+                            <div class="today-class-meta-item">
+                                <div class="today-class-meta-label">Status</div>
+                                <div class="today-class-meta-value" id="todayClassStatus">Upcoming</div>
+                            </div>
+                        </div>
+
+                        <button class="btn-start-class" id="startClassBtn">
+                            <i class="fas fa-play"></i>
+                            <span>START TODAY'S CLASS</span>
+                        </button>
+                    </div>
+
+                    <!-- Course Progress -->
+                    <div class="dash-list-card">
+                        <div class="dash-list-header">
+                            <div class="dash-list-title">
+                                <i class="fas fa-book-open"></i>
+                                Course Progress
+                            </div>
+                            <a href="#" class="dash-list-view-all">
+                                View All <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                        <div class="dash-list-body" id="courseProgressList">
+                            <!-- Course progress cards will be rendered here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assignments & Quizzes -->
+                <div class="dash-grid dash-grid-2">
+                    
+                    <!-- Assignments -->
+                    <div class="dash-list-card">
+                        <div class="dash-list-header">
+                            <div class="dash-list-title">
+                                <i class="fas fa-clipboard-check"></i>
+                                Assignments
+                            </div>
+                            <a href="#" class="dash-list-view-all">
+                                View All <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                        <div class="dash-list-body" id="assignmentsList">
+                            <!-- Assignments will be rendered here -->
+                        </div>
+                    </div>
+
+                    <!-- Quizzes -->
+                    <div class="dash-list-card">
+                        <div class="dash-list-header">
+                            <div class="dash-list-title">
+                                <i class="fas fa-brain"></i>
+                                Quizzes
+                            </div>
+                            <a href="#" class="dash-list-view-all">
+                                View All <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                        <div class="dash-list-body" id="quizzesList">
+                            <!-- Quizzes will be rendered here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certificates & Announcements -->
+                <div class="dash-grid dash-grid-3-2">
+                    
+                    <!-- Certificates -->
+                    <div>
+                        <div class="dash-section-title">
+                            <i class="fas fa-certificate"></i>
+                            My Certificates
+                        </div>
+                        <div class="certificates-grid" id="certificatesGrid">
+                            <!-- Certificates will be rendered here -->
+                        </div>
+                    </div>
+
+                    <!-- Announcements -->
+                    <div>
+                        <div class="dash-section-title">
+                            <i class="fas fa-bullhorn"></i>
+                            Announcements
+                        </div>
+                        <div id="announcementsFeed">
+                            <!-- Announcements will be rendered here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Leaderboard -->
+                <div class="dash-section-title">
+                    <i class="fas fa-trophy"></i>
+                    Leaderboard
+                </div>
+                <div class="leaderboard-card">
+                    <div class="leaderboard-body" id="leaderboardList">
+                        <!-- Leaderboard will be rendered here -->
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+    </div>
+
+    <!-- ============================================
+         NOTIFICATIONS PANEL (Slide-in from right)
+    ============================================ -->
+    <div class="notification-panel" id="notificationPanel">
+        <div class="notification-panel-header">
+            <h3 class="notification-panel-title">
+                <i class="fas fa-bell"></i>
+                Notifications
+            </h3>
+            <button class="notification-panel-close" id="notificationClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="notification-panel-body" id="notificationList">
+            <!-- Notifications will be rendered here -->
+        </div>
+    </div>
+
+    <!-- ============================================
+         EXTERNAL SCRIPTS
+    ============================================ -->
+    <script src="js/storage.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/dashboard.js"></script>
+
+</body>
+</html>
